@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>August 23 &middot; Paris & London</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="brand" href="../index.html">Paris <em>&amp;</em> London <em>2026</em></a>
+<div class="navlinks"><a class="back" href="../weather.html">Weather</a><a class="back" href="../phrases.html">Phrases</a><a class="back" href="../restaurants.html">Restaurants</a><a class="back" href="../activities-paris.html">Paris Sights</a><a class="back" href="../activities-london.html">London Sights</a><a class="back" href="../index.html">&larr; All days</a></div>
+</div></nav>
+<header class="day-hero"><div class="wrap">
+<span class="tag travel">London → San Francisco</span>
+<div class="num">Day 14 of 14</div>
+<h1>August 23</h1>
+<p class="weekday">Sunday &middot; Return day</p>
+
+
+</div></header>
+<div class="wrap">
+<div class="flight-card">
+<div class="fnum">Flight DL 5965</div>
+<div class="froute">London (LHR) → San Francisco (SFO)</div>
+<div class="seat-list"><div class="seat"><b>5K</b> &middot; Michael Lee</div><div class="seat"><b>5G</b> &middot; Uwen Kok</div><div class="seat"><b>5D</b> &middot; Carl Kurbat</div></div>
+</div>
+<div class="timeline"><h3>Today's plan</h3><div class="event">
+  <div class="etime">&mdash;</div>
+  <div><div class="etitle">Flight DL 5965 — London (LHR) to San Francisco (SFO)</div><div class="enote">Seats 5K / 5G / 5D</div><div class="event-addr"><div>Heathrow Airport, Hounslow TW6 1QG, United Kingdom</div></div><div class="event-map">
+  <iframe src="https://maps.google.com/maps?q=Heathrow%20Airport%20London&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="event-map-cap"><span>Heathrow Airport London</span><a href="https://www.google.com/maps/search/?api=1&query=Heathrow%20Airport%20London" target="_blank" rel="noopener">Open in Maps &rarr;</a></div>
+</div></div>
+</div>
+</div>
+
+<div class="photos-section">
+  <h3>Photos from this day</h3>
+  <p class="photos-note">Shared with anyone who visits this site &mdash; photos upload to the family's shared album and appear here for everyone, sorted automatically by the date the photo was taken. Drop in photos from any day; they'll sort themselves onto the right date.</p>
+  <div class="photo-dropzone" id="dropzone-aug-23">
+    <input type="file" id="fileinput-aug-23" accept="image/*" multiple style="display:none">
+    <span class="dz-label">Drop photos here or click to add</span>
+  </div>
+  <div class="photo-status" id="status-aug-23"></div>
+  <div class="photo-gallery" id="gallery-aug-23"></div>
+</div>
+</div>
+<div class="wrap"><div class="pager"><a class="prev" href="aug-22.html"><span class="plabel">&larr; Previous</span><span class="pdate">August 22</span></a><a class="next disabled"><span class="plabel">Next &rarr;</span><span class="pdate">&mdash;</span></a></div></div>
+<footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="../index.html">Back to all days</a></div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-firestore-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-storage-compat.min.js"></script>
+<script src="../assets/firebase-config.js"></script>
+<script src="../assets/photos.js"></script>
+<script>
+(function() {
+  var dayDate = "2026-08-23";
+  var zone = document.getElementById("dropzone-aug-23");
+  var input = document.getElementById("fileinput-aug-23");
+  var status = document.getElementById("status-aug-23");
+  var gallery = document.getElementById("gallery-aug-23");
+  TripPhotos.initUploadZone(zone, input, status);
+  TripPhotos.renderDayGallery(gallery, dayDate);
+})();
+</script>
+</body></html>
