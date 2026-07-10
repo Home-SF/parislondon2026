@@ -607,6 +607,85 @@ a { color: inherit; }
   pointer-events: none;
 }
 
+/* ---------- Dining map ---------- */
+
+.map-section {
+  margin: 40px 0;
+}
+.map-section h2 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.map-section#paris h2 { color: var(--paris); }
+.map-section#london h2 { color: var(--london); }
+
+.map-container {
+  height: 420px;
+  border-radius: 10px;
+  border: 1.5px dashed var(--rule-strong);
+  overflow: hidden;
+  background: var(--bg-raised);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-loading {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.map-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 6px 16px;
+  margin-top: 14px;
+}
+.map-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.86rem;
+  padding: 4px 0;
+}
+.map-legend-row:hover .map-legend-num { border-color: var(--paris); }
+.map-legend-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px double var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.map-pin {
+  background: var(--paris);
+  color: #fff;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
+.map-section#london .map-pin { background: var(--london); }
+
 /* ---------- Photos ---------- */
 
 .photos-section {
@@ -896,38 +975,27 @@ a { color: inherit; }
 
 /* ---------- Restaurants page ---------- */
 
-.rest-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+.rest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-top: 12px;
   padding-bottom: 40px;
 }
-
-.rest-col h2 {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0 0 18px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-}
-.rest-col.paris h2 { color: var(--paris); }
-.rest-col.london h2 { color: var(--london); }
 
 .rest-card {
   border: 1.5px dashed var(--rule-strong);
   border-radius: 8px;
   padding: 18px 20px;
-  margin-bottom: 16px;
   background: var(--bg-raised);
+  scroll-margin-top: 90px;
 }
 .rest-card.reserved {
   background: #E7EDD8;
   border-color: #BFCE9E;
 }
-.rest-col.paris .rest-card { border-left: 4px solid var(--paris); }
-.rest-col.london .rest-card { border-left: 4px solid var(--london); }
+.rest-list.paris .rest-card { border-left: 4px solid var(--paris); }
+.rest-list.london .rest-card { border-left: 4px solid var(--london); }
 
 .rest-card-head {
   display: flex;
@@ -935,6 +1003,25 @@ a { color: inherit; }
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
+}
+.rest-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rest-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px double var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
 }
 .rest-status {
   font-family: var(--mono);
@@ -1090,7 +1177,8 @@ footer {
   .schedule-table { font-size: 0.76rem; }
   .phrase-row { grid-template-columns: 1fr; gap: 2px; padding: 10px 0; }
   .phrase-en { font-size: 0.88rem; }
-  .rest-columns { grid-template-columns: 1fr; gap: 36px; }
+  .map-container { height: 320px; }
+  .map-legend { grid-template-columns: 1fr; }
   .wc-forecast { gap: 4px; }
   .wc-day { padding: 8px 2px 10px; }
   .wc-day-cond { display: none; }
