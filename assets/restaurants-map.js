@@ -65,6 +65,15 @@
     });
   }
 
+  function hotelIcon() {
+    return L.divIcon({
+      className: "map-pin map-pin-hotel",
+      html: '<span>&#8962;</span>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+  }
+
   var CITY_CENTERS = {
     paris: [48.8566, 2.3522],
     london: [51.5074, -0.1278]
@@ -72,8 +81,9 @@
 
   async function renderMap(containerEl) {
     var markers = JSON.parse(containerEl.getAttribute("data-markers") || "[]");
+    var hotel = JSON.parse(containerEl.getAttribute("data-hotel") || "null");
     var cityKey = containerEl.id.replace("map-", "");
-    if (!markers.length) {
+    if (!markers.length && !hotel) {
       containerEl.innerHTML = '<div class="photo-empty">No restaurants to show yet.</div>';
       return;
     }
@@ -94,6 +104,17 @@
     setTimeout(function () { map.invalidateSize(); }, 0);
 
     var bounds = [];
+
+    if (hotel) {
+      var hloc = await geocode(hotel.address);
+      if (hloc) {
+        L.marker([hloc.lat, hloc.lon], { icon: hotelIcon() })
+          .addTo(map)
+          .bindPopup('<b>' + hotel.name + '</b><br>Hotel<br>' + hotel.address);
+        bounds.push([hloc.lat, hloc.lon]);
+      }
+    }
+
     for (var i = 0; i < markers.length; i++) {
       var m = markers[i];
       var loc = await geocode(m.address);

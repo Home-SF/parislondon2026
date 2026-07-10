@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Map &middot; Paris & London</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="brand" href="index.html">Paris <em>&amp;</em> London <em>2026</em></a>
+<div class="navlinks"><a class="back" href="weather.html">Weather</a><a class="back" href="phrases.html">Phrases</a><a class="back" href="restaurants-paris.html">Paris Dining</a><a class="back" href="restaurants-london.html">London Dining</a><a class="back" href="restaurants-map.html">Dining Map</a><a class="back" href="activities-paris.html">Paris Sights</a><a class="back" href="activities-london.html">London Sights</a><a class="back" href="index.html">&larr; All days</a></div>
+</div></nav>
+<header class="hero"><div class="wrap">
+<p class="eyebrow">Where we actually went</p>
+<h1>Trip Map</h1>
+<p class="sub">Upload a location export from Google or Apple and it'll show up here as your own colored trail, alongside everyone else's Check In pins from the home page.</p>
+</div></header>
+<div class="wrap">
+
+<div class="loc-howto">
+<h3>How to get your export</h3>
+<p><b>Google (works on iPhone and Android):</b> if Location History / Timeline is turned on in the Google Maps app, go to <a href="https://takeout.google.com" target="_blank" rel="noopener">takeout.google.com</a>, select only "Location History (Timeline)", and export it. You'll get a JSON file &mdash; upload that below.</p>
+<p><b>Apple:</b> Apple doesn't offer a simple built-in export of your location history the way Google does. The easiest path is to use the Google Maps app (see above, works fine on iPhone) or any GPX-exporting tracking app (many free hiking/running apps do this) &mdash; upload the resulting <code>.gpx</code> or <code>.json</code> file below.</p>
+<p class="loc-note">Only points that fall within the trip dates (Aug 10&ndash;23, 2026) are kept &mdash; the rest of your location history stays on your device and is never uploaded.</p>
+</div>
+
+<div class="track-upload-grid">
+<div class="track-upload-slot" data-person-key="michael-lee">
+<span class="track-swatch" style="background:#C0392B"></span>
+<span class="track-name">Michael Lee</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="uwen-kok">
+<span class="track-swatch" style="background:#2980B9"></span>
+<span class="track-name">Uwen Kok</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="carl-kurbat">
+<span class="track-swatch" style="background:#27AE60"></span>
+<span class="track-name">Carl Kurbat</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="amanda-lee">
+<span class="track-swatch" style="background:#8E44AD"></span>
+<span class="track-name">Amanda Lee</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="norman-lee">
+<span class="track-swatch" style="background:#D68910"></span>
+<span class="track-name">Norman Lee</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="megan-lee">
+<span class="track-swatch" style="background:#16A085"></span>
+<span class="track-name">Megan Lee</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div><div class="track-upload-slot" data-person-key="brodie">
+<span class="track-swatch" style="background:#E91E8C"></span>
+<span class="track-name">Brodie</span>
+<input type="file" accept=".gpx,.json" style="display:none">
+<button type="button" class="track-upload-btn">Upload</button>
+<span class="track-status"></span>
+</div>
+</div>
+
+<div class="map-container" id="location-map"></div>
+
+<div class="loc-legend">
+<label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="michael-lee" checked>
+<span class="loc-legend-swatch" style="background:#C0392B"></span>Michael Lee
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="uwen-kok" checked>
+<span class="loc-legend-swatch" style="background:#2980B9"></span>Uwen Kok
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="carl-kurbat" checked>
+<span class="loc-legend-swatch" style="background:#27AE60"></span>Carl Kurbat
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="amanda-lee" checked>
+<span class="loc-legend-swatch" style="background:#8E44AD"></span>Amanda Lee
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="norman-lee" checked>
+<span class="loc-legend-swatch" style="background:#D68910"></span>Norman Lee
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="megan-lee" checked>
+<span class="loc-legend-swatch" style="background:#16A085"></span>Megan Lee
+</label><label class="loc-legend-item">
+<input type="checkbox" class="loc-legend-toggle" data-person-key="brodie" checked>
+<span class="loc-legend-swatch" style="background:#E91E8C"></span>Brodie
+</label>
+</div>
+
+</div>
+<footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="index.html">Back to all days</a></div></footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-firestore-compat.min.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/location-map.js"></script>
+</body></html>
