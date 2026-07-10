@@ -466,6 +466,18 @@ a { color: inherit; }
   transition: border-color 0.15s ease;
 }
 .rlinks a:hover { border-color: var(--navy); }
+.rlinks a.rlink-michelin {
+  background: #C0392B;
+  border-color: #C0392B;
+  color: #FFF6F2;
+}
+.rlinks a.rlink-michelin:hover { background: #A5301F; border-color: #A5301F; }
+.rlinks a.rlink-infatuation {
+  background: #1D4E89;
+  border-color: #1D4E89;
+  color: #F0F5FC;
+}
+.rlinks a.rlink-infatuation:hover { background: #163C6B; border-color: #163C6B; }
 .rlink-muted {
   font-family: var(--mono);
   font-size: 0.74rem;
