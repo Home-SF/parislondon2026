@@ -5,7 +5,7 @@
    ============================================================ */
 
 (function (global) {
-  var MAX_DIMENSION = 1920;
+  var MAX_DIMENSION = 3200;
   var JPEG_QUALITY = 0.82;
   var COLLECTION = "photos";
 
