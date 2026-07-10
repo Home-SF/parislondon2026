@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>August 14 &middot; Paris & London</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="brand" href="../index.html">Paris <em>&amp;</em> London <em>2026</em></a>
+<div class="navlinks"><a class="back" href="../weather.html">Weather</a><a class="back" href="../phrases.html">Phrases</a><a class="back" href="../restaurants.html">Restaurants</a><a class="back" href="../activities-paris.html">Paris Sights</a><a class="back" href="../activities-london.html">London Sights</a><a class="back" href="../index.html">&larr; All days</a></div>
+</div></nav>
+<header class="day-hero"><div class="wrap">
+<span class="tag paris">Paris</span>
+<div class="num">Day 05 of 14</div>
+<h1>August 14</h1>
+<p class="weekday">Friday &middot; Day 4 in Paris</p>
+
+<div class="hotel-line">Staying at <b>Park Hyatt Vendôme</b></div>
+</div></header>
+<div class="wrap">
+
+<div class="timeline"><h3>Today's plan</h3><div class="event">
+  <div class="etime">10:00 AM</div>
+  <div><div class="etitle">Amanda, Norman, Megan &amp; Brodie land in Paris — Charles de Gaulle (CDG)</div><div class="enote">Flight AC 872 from Toronto</div><div class="event-addr">
+  <div><span class="addr-label">From</span> 95700 Roissy-en-France, France</div>
+  <div><span class="addr-label">To</span> 5 Rue de la Paix, 75002 Paris, France</div>
+</div><div class="event-map">
+  <iframe src="https://maps.google.com/maps?saddr=Aeroport%20Charles%20de%20Gaulle%2C%20Paris&daddr=Park%20Hyatt%20Paris-Vendome&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="event-map-cap"><span>Aeroport Charles de Gaulle, Paris &rarr; Park Hyatt Paris-Vendome</span><a href="https://www.google.com/maps/dir/?api=1&origin=Aeroport%20Charles%20de%20Gaulle%2C%20Paris&destination=Park%20Hyatt%20Paris-Vendome" target="_blank" rel="noopener">Open in Maps &rarr;</a></div>
+</div></div>
+</div>
+<div class="event">
+  <div class="etime">&mdash;</div>
+  <div><div class="etitle">Check in — Park Hyatt Vendôme</div><div class="enote">Amanda, Norman, Megan &amp; Brodie</div><div class="event-addr"><div>5 Rue de la Paix, 75002 Paris, France</div></div><div class="event-map">
+  <iframe src="https://maps.google.com/maps?q=Park%20Hyatt%20Paris-Vendome&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  <div class="event-map-cap"><span>Park Hyatt Paris-Vendome</span><a href="https://www.google.com/maps/search/?api=1&query=Park%20Hyatt%20Paris-Vendome" target="_blank" rel="noopener">Open in Maps &rarr;</a></div>
+</div></div>
+</div>
+</div>
+
+<div class="photos-section">
+  <h3>Photos from this day</h3>
+  <p class="photos-note">Shared with anyone who visits this site &mdash; photos upload to the family's shared album and appear here for everyone, sorted automatically by the date the photo was taken. Drop in photos from any day; they'll sort themselves onto the right date.</p>
+  <div class="photo-dropzone" id="dropzone-aug-14">
+    <input type="file" id="fileinput-aug-14" accept="image/*" multiple style="display:none">
+    <span class="dz-label">Drop photos here or click to add</span>
+  </div>
+  <div class="photo-status" id="status-aug-14"></div>
+  <div class="photo-gallery" id="gallery-aug-14"></div>
+</div>
+</div>
+<div class="wrap"><div class="pager"><a class="prev" href="aug-13.html"><span class="plabel">&larr; Previous</span><span class="pdate">August 13</span></a><a class="next" href="aug-15.html"><span class="plabel">Next &rarr;</span><span class="pdate">August 15</span></a></div></div>
+<footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="../index.html">Back to all days</a></div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-firestore-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-storage-compat.min.js"></script>
+<script src="../assets/firebase-config.js"></script>
+<script src="../assets/photos.js"></script>
+<script>
+(function() {
+  var dayDate = "2026-08-14";
+  var zone = document.getElementById("dropzone-aug-14");
+  var input = document.getElementById("fileinput-aug-14");
+  var status = document.getElementById("status-aug-14");
+  var gallery = document.getElementById("gallery-aug-14");
+  TripPhotos.initUploadZone(zone, input, status);
+  TripPhotos.renderDayGallery(gallery, dayDate);
+})();
+</script>
+</body></html>
