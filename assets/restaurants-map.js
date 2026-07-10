@@ -83,10 +83,14 @@
     var map = L.map(containerEl, { scrollWheelZoom: false });
     var startCenter = CITY_CENTERS[cityKey] || [48.8566, 2.3522];
     map.setView(startCenter, 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      subdomains: 'abcd',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
+    tileLayer.on('tileerror', function (err) {
+      console.error('Dining map: tile failed to load', err);
+    });
     setTimeout(function () { map.invalidateSize(); }, 0);
 
     var bounds = [];
