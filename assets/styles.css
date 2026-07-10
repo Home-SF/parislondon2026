@@ -628,9 +628,7 @@ a { color: inherit; }
   border: 1.5px dashed var(--rule-strong);
   overflow: hidden;
   background: var(--bg-raised);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 .map-loading {
   font-family: var(--mono);

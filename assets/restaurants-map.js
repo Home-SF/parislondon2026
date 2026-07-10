@@ -65,26 +65,34 @@
     });
   }
 
+  var CITY_CENTERS = {
+    paris: [48.8566, 2.3522],
+    london: [51.5074, -0.1278]
+  };
+
   async function renderMap(containerEl) {
     var markers = JSON.parse(containerEl.getAttribute("data-markers") || "[]");
+    var cityKey = containerEl.id.replace("map-", "");
     if (!markers.length) {
       containerEl.innerHTML = '<div class="photo-empty">No restaurants to show yet.</div>';
       return;
     }
-    containerEl.innerHTML = '<div class="map-loading">Placing pins&hellip;</div>';
 
+    // Leaflet takes ownership of this container's DOM from here on —
+    // never overwrite containerEl.innerHTML after this point.
     var map = L.map(containerEl, { scrollWheelZoom: false });
+    var startCenter = CITY_CENTERS[cityKey] || [48.8566, 2.3522];
+    map.setView(startCenter, 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    setTimeout(function () { map.invalidateSize(); }, 0);
 
     var bounds = [];
-    var first = true;
     for (var i = 0; i < markers.length; i++) {
       var m = markers[i];
       var loc = await geocode(m.address);
-      if (first) { containerEl.innerHTML = ""; map.invalidateSize(); first = false; }
       if (!loc) continue;
       var marker = L.marker([loc.lat, loc.lon], { icon: numberedIcon(m.num) }).addTo(map);
       marker.bindPopup('<b>' + m.num + '. ' + m.name + '</b><br>' + m.address);
@@ -92,8 +100,6 @@
     }
     if (bounds.length) {
       map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
-    } else {
-      containerEl.innerHTML = '<div class="photo-empty">Could not place any pins right now.</div>';
     }
   }
 
