@@ -4,7 +4,7 @@
    ============================================================ */
 
 (function () {
-  var PEOPLE = ["Michael Lee", "Uwen Kok", "Carl Kurbat", "Amanda Lee", "Norman Lee", "Megan Lee", "Brodie"];
+  var PEOPLE = ["Michael Lee", "Uwen Kok", "Carl Kurbat", "Amanda Lee", "Norman Lee", "Megan Lee", "Brodie Demain"];
   var LAST_PERSON_KEY = "tripCheckinPerson";
 
   var app, db;

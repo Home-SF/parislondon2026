@@ -16,7 +16,7 @@
     { key: "amanda-lee", name: "Amanda Lee", color: "#8E44AD" },
     { key: "norman-lee", name: "Norman Lee", color: "#D68910" },
     { key: "megan-lee", name: "Megan Lee", color: "#16A085" },
-    { key: "brodie", name: "Brodie", color: "#E91E8C" }
+    { key: "brodie", name: "Brodie Demain", color: "#E91E8C" }
   ];
 
   var app, db;
