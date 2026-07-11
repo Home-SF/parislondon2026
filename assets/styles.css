@@ -19,6 +19,8 @@
   --paris-soft: #FBE3DA;
   --london: #1D4E89;
   --london-soft: #DCE6F2;
+  --toronto: #1B7A5C;
+  --toronto-soft: #DCEDE3;
   --travel: #B8842E;
   --travel-soft: #F3E4C4;
 
@@ -240,6 +242,7 @@ a { color: inherit; }
 
 .city-section.paris .city-head h2 { color: var(--paris); }
 .city-section.london .city-head h2 { color: var(--london); }
+.city-section.toronto .city-head h2 { color: var(--toronto); }
 
 .day-grid {
   display: grid;
@@ -306,6 +309,7 @@ a { color: inherit; }
 }
 .city-section.paris .day-card:not(.travel) { border-left: 4px solid var(--paris); }
 .city-section.london .day-card:not(.travel) { border-left: 4px solid var(--london); }
+.city-section.toronto .day-card:not(.travel) { border-left: 4px solid var(--toronto); }
 
 /* ---------- Day page ---------- */
 
@@ -326,6 +330,7 @@ a { color: inherit; }
 }
 .tag.paris { background: var(--paris-soft); color: var(--paris); }
 .tag.london { background: var(--london-soft); color: var(--london); }
+.tag.toronto { background: var(--toronto-soft); color: var(--toronto); }
 .tag.travel { background: var(--travel-soft); color: var(--travel); }
 
 .day-hero .num {
@@ -714,30 +719,53 @@ a { color: inherit; }
   font-size: 1.05rem;
   text-transform: uppercase;
 }
-.transit-rows {
-  margin-top: 8px;
+.transit-lines {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
-.transit-row {
-  display: grid;
-  grid-template-columns: 70px 1fr 70px;
-  gap: 10px;
-  padding: 8px 0;
+.transit-line-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
   border-top: 1px solid var(--rule);
-  font-size: 0.86rem;
-  align-items: center;
 }
-.transit-line {
+.transit-line-badge {
+  flex-shrink: 0;
   font-family: var(--mono);
   font-weight: 700;
-  color: var(--navy);
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  min-width: 32px;
+  text-align: center;
+}
+.transit-dest-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.transit-dest-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.86rem;
+}
+.transit-dest {
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .transit-mins {
   font-family: var(--mono);
-  text-align: right;
-  color: var(--brass);
   font-weight: 700;
+  color: var(--brass);
+  flex-shrink: 0;
 }
 
 /* ---------- Check-in button + modal ---------- */
@@ -1576,7 +1604,7 @@ footer {
   .checkin-fab { bottom: 16px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
   .checkin-people-grid { grid-template-columns: 1fr; }
   .track-upload-grid { grid-template-columns: 1fr; }
-  .transit-row { grid-template-columns: 60px 1fr 60px; font-size: 0.8rem; }
+  .transit-line-block { flex-direction: column; gap: 6px; }
   .transit-search-row { flex-direction: column; }
 }
 
