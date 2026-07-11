@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transit &middot; Paris & London</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="brand" href="index.html">Paris <em>&amp;</em> London <em>2026</em></a>
+<div class="navlinks"><a class="back" href="weather.html">Weather</a><a class="back" href="phrases.html">Phrases</a><a class="back" href="restaurants-paris.html">Paris Dining</a><a class="back" href="restaurants-london.html">London Dining</a><a class="back" href="restaurants-map.html">Dining Map</a><a class="back" href="activities-paris.html">Paris Sights</a><a class="back" href="activities-london.html">London Sights</a><a class="back" href="location-map.html">Trip Map</a><a class="back" href="index.html">&larr; All days</a></div>
+</div></nav>
+<header class="hero"><div class="wrap">
+<p class="eyebrow">Getting around</p>
+<h1>Transit</h1>
+<p class="sub">Live next-departure times for the Tube and the Métro/RER. Tap a station near where we're staying, or search for any other one.</p>
+</div></header>
+<div class="wrap">
+<section class="transit-panel-section">
+<h2>Paris Métro / RER</h2>
+<p class="transit-hotel-note">Quick picks are near the Park Hyatt Vendôme.</p>
+<div class="transit-panel" data-city="paris">
+<div class="transit-quick-row"><button type="button" class="transit-quick-btn">Opéra</button><button type="button" class="transit-quick-btn">Madeleine</button><button type="button" class="transit-quick-btn">Pyramides</button><button type="button" class="transit-quick-btn">Louvre - Rivoli</button><button type="button" class="transit-quick-btn">Palais Royal</button><button type="button" class="transit-quick-btn">Concorde</button></div>
+<div class="transit-search-row">
+<input type="text" class="transit-input" placeholder="Or type any station name&hellip;">
+<button type="button" class="transit-search-btn">Search</button>
+</div>
+<div class="transit-result"></div>
+</div>
+</section>
+<section class="transit-panel-section">
+<h2>London Underground</h2>
+<p class="transit-hotel-note">Quick picks are near the Nobu Hotel - Portman Square.</p>
+<div class="transit-panel" data-city="london">
+<div class="transit-quick-row"><button type="button" class="transit-quick-btn">Marble Arch</button><button type="button" class="transit-quick-btn">Bond Street</button><button type="button" class="transit-quick-btn">Westminster</button><button type="button" class="transit-quick-btn">Piccadilly Circus</button><button type="button" class="transit-quick-btn">Covent Garden</button></div>
+<div class="transit-search-row">
+<input type="text" class="transit-input" placeholder="Or type any station name&hellip;">
+<button type="button" class="transit-search-btn">Search</button>
+</div>
+<div class="transit-result"></div>
+</div>
+</section>
+</div>
+<footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="index.html">Back to all days</a></div></footer>
+<script src="assets/transit-config.js"></script>
+<script src="assets/transit.js"></script>
+</body></html>
