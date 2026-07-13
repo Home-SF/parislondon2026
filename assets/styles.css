@@ -638,6 +638,92 @@ a { color: inherit; }
   pointer-events: none;
 }
 
+/* ---------- Meal Plan page ---------- */
+
+.meal-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.meal-summary-item {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 100px;
+  padding: 8px 16px;
+  background: var(--bg-raised);
+}
+.meal-summary-item b {
+  color: var(--paris);
+  font-size: 1rem;
+}
+
+.meal-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 40px;
+}
+.meal-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 8px;
+  background: var(--bg-raised);
+}
+.meal-row.paris { border-left: 4px solid var(--paris); }
+.meal-row.london { border-left: 4px solid var(--london); }
+.meal-row.toronto { border-left: 4px solid var(--toronto); }
+.meal-row.travel { border-left: 4px solid var(--travel); background: var(--travel-soft); }
+
+.meal-date {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.meal-dd {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.meal-city-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  letter-spacing: 0.03em;
+}
+.meal-travel-badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  background: var(--brass);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+.meal-cb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.meal-cb input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--paris);
+}
+
 /* ---------- Transit page ---------- */
 
 .transit-panel-section {
@@ -1057,6 +1143,7 @@ a { color: inherit; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.35);
 }
 .map-section#london .map-pin { background: var(--london); }
+.map-section#toronto .map-pin { background: var(--toronto); }
 
 .map-pin-hotel {
   background: var(--brass) !important;
@@ -1606,6 +1693,7 @@ footer {
   .track-upload-grid { grid-template-columns: 1fr; }
   .transit-line-block { flex-direction: column; gap: 6px; }
   .transit-search-row { flex-direction: column; }
+  .meal-row { grid-template-columns: 1fr; gap: 8px; }
 }
 
 @media (max-width: 380px) {
