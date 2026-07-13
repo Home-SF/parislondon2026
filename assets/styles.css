@@ -640,6 +640,26 @@ a { color: inherit; }
 
 /* ---------- Meal Plan page ---------- */
 
+.meal-plan-section {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 2px dashed var(--rule-strong);
+}
+.meal-plan-section h3 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+.meal-plan-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin: 0 0 4px;
+}
+
 .meal-summary {
   display: flex;
   flex-wrap: wrap;
