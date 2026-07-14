@@ -339,7 +339,21 @@ a { color: inherit; }
   font-size: 0.85rem;
   margin-bottom: 6px;
   letter-spacing: 0.03em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
+
+.sunset-time {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--brass);
+  border: 1px dashed var(--rule-strong);
+  border-radius: 100px;
+  padding: 2px 10px;
+}
+.sunset-time:empty { display: none; }
 
 .day-hero h1 {
   font-family: var(--display);
