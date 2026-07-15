@@ -518,6 +518,28 @@ a { color: inherit; }
 }
 .track-live-link:hover { background: #175F30; }
 
+.event-graphic {
+  margin-top: 12px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  padding: 16px 10px 8px;
+  background: var(--bg-raised);
+}
+.event-graphic svg { width: 100%; height: auto; display: block; }
+.ev-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  fill: var(--ink-soft);
+}
+.ev-label-hi { fill: var(--paris); font-weight: 700; }
+.ev-label-sub {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: var(--ink-faint);
+  font-style: italic;
+}
+
 .event-addr {
   margin-top: 8px;
   font-family: var(--mono);
