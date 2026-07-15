@@ -518,6 +518,36 @@ a { color: inherit; }
 }
 .track-live-link:hover { background: #175F30; }
 
+.options-wrap {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.option-row {
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: var(--bg-raised);
+}
+.option-name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.option-desc {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.option-walk {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--brass);
+  margin-top: 6px;
+}
+
 .event-graphic {
   margin-top: 12px;
   border: 1.5px dashed var(--rule-strong);
