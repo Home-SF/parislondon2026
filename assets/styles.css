@@ -518,6 +518,21 @@ a { color: inherit; }
 }
 .track-live-link:hover { background: #175F30; }
 
+.site-link-btn {
+  display: inline-block;
+  margin-top: 4px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: var(--navy);
+  padding: 8px 16px;
+  border-radius: 100px;
+  transition: background 0.15s ease;
+}
+.site-link-btn:hover { background: #163C6B; }
+
 .vendors-wrap {
   margin-top: 12px;
   padding: 12px 14px;
