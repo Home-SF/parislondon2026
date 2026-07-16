@@ -532,6 +532,7 @@ a { color: inherit; }
   transition: background 0.15s ease;
 }
 .site-link-btn:hover { background: #163C6B; }
+.site-link-btn.extra-btn { display: block; width: fit-content; margin-top: 10px; }
 
 .vendors-wrap {
   margin-top: 12px;
@@ -746,6 +747,164 @@ a { color: inherit; }
 .pager a.disabled {
   opacity: 0.35;
   pointer-events: none;
+}
+
+/* ---------- Bird watching route page ---------- */
+
+.bird-route-diagram {
+  margin: 20px 0 40px;
+  padding: 22px 24px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.bird-route-step {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  padding: 8px 12px;
+}
+.bird-route-arrow {
+  color: var(--brass);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.bird-stops {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bird-stop {
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  padding: 18px 20px;
+  background: var(--bg-raised);
+  margin-top: 24px;
+}
+.bird-stop-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.bird-stop-num {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.bird-stars {
+  color: var(--brass);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+.bird-stop h3 {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+.bird-stop-meta {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--paris);
+  margin-bottom: 10px;
+}
+.bird-stop-p {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+.bird-stop-cite {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  border-left: 2px solid var(--rule-strong);
+  padding-left: 12px;
+}
+.bird-stop-list {
+  margin: 0 0 4px;
+  padding-left: 20px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.bird-stop-good-for {
+  margin-top: -14px;
+  margin-bottom: 24px;
+  padding: 14px 20px;
+  border: 1.5px dashed var(--rule-strong);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background: var(--travel-soft);
+}
+.bird-stop-good-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+
+.bird-species-section {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 2px dashed var(--rule-strong);
+}
+.bird-species-section h2 {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.bird-species-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.bird-species-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.bird-best-time {
+  margin-top: 40px;
+  padding: 24px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  margin-bottom: 40px;
+}
+.bird-best-time h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.bird-best-time-hero {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--paris);
+  margin-bottom: 14px;
 }
 
 /* ---------- Meal Plan page ---------- */
@@ -1004,6 +1163,43 @@ a { color: inherit; }
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .checkin-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(36, 31, 27, 0.3); }
+
+.nearby-fab {
+  position: fixed;
+  bottom: 78px;
+  right: 22px;
+  z-index: 500;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 20px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(36, 31, 27, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.nearby-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(36, 31, 27, 0.3); }
+
+.nearby-status {
+  position: fixed;
+  bottom: 138px;
+  right: 22px;
+  z-index: 500;
+  max-width: 260px;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: right;
+  line-height: 1.4;
+}
+.nearby-status:empty { display: none; }
 
 .checkin-overlay {
   position: fixed;
@@ -1819,11 +2015,15 @@ footer {
   .photo-cell img { height: 100px; }
   .photo-dropzone { padding: 20px 12px; }
   .checkin-fab { bottom: 16px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
+  .nearby-fab { bottom: 66px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
+  .nearby-status { bottom: 118px; right: 16px; max-width: 220px; }
   .checkin-people-grid { grid-template-columns: 1fr; }
   .track-upload-grid { grid-template-columns: 1fr; }
   .transit-line-block { flex-direction: column; gap: 6px; }
   .transit-search-row { flex-direction: column; }
   .meal-row { grid-template-columns: 1fr; gap: 8px; }
+  .bird-species-cols { grid-template-columns: 1fr; gap: 16px; }
+  .bird-best-time-hero { font-size: 1.9rem; }
 }
 
 @media (max-width: 380px) {
