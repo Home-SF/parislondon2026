@@ -518,6 +518,35 @@ a { color: inherit; }
 }
 .track-live-link:hover { background: #175F30; }
 
+.vendors-wrap {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 8px;
+  background: var(--bg-raised);
+}
+.vendors-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.vendor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.vendor-tag {
+  font-size: 0.82rem;
+  background: var(--bg);
+  border: 1px solid var(--rule-strong);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
 .options-wrap {
   margin-top: 12px;
   display: flex;
