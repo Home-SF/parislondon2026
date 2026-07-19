@@ -33,7 +33,7 @@ const TEST_RECIPIENTS = [
   "michael.cy.lee@gmail.com",
   "carlk1000@gmail.com",
   "nalee@vianet.ca",
-  "uwenkok@yahoocom"
+  "uwenkok@yahoo.com"
 ];
 
 function escapeHtml(str) {
