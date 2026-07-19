@@ -39,7 +39,7 @@ It'll open a browser window to sign in, then you're done with this step.
 
 ### 4. Initialize Functions in your project
 This one **does** matter — you need to be inside your local clone of the
-`paris-london-2026` repo (the same folder that has `index.html`, `assets/`,
+`parislondon2026` repo (the same folder that has `index.html`, `assets/`,
 `days/`, etc. in it — the one you `git clone`'d earlier). `cd` into that
 folder first, then run:
 ```
@@ -63,7 +63,7 @@ Paste your Resend key when prompted.
 ### 6. Edit two lines in `functions/index.js`
 Near the top:
 ```js
-const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/paris-london-2026/itinerary-feed.json";
+const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <onboarding@resend.dev>";
 ```
 - Swap in your actual GitHub Pages URL for the first line.

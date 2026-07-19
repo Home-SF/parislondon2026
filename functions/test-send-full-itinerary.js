@@ -26,7 +26,7 @@
 const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <onboarding@resend.dev>";
 
-// Fill these in with the 5 addresses you have — one string per person.
+// Fill these in with the 6 addresses you have — one string per person.
 const TEST_RECIPIENTS = [
   "meganmlee10@gmail.com",
   "bdemain9@gmail.com",
