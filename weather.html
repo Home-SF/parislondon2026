@@ -14,10 +14,22 @@
 <header class="hero"><div class="wrap">
 <p class="eyebrow">Live conditions &amp; forecast</p>
 <h1>Weather</h1>
-<p class="sub">Current conditions plus a 5-day forecast with highs and lows for both cities, pulled live each time this page loads.</p>
+<p class="sub">Current conditions plus a 5-day forecast with highs and lows for every city and day-trip stop on the agenda, pulled live each time this page loads.</p>
 </div></header>
 <div class="wrap">
 <div class="weather-grid">
+<div class="weather-card toronto">
+<div class="wc-head">
+  <h2>Toronto</h2>
+  <span class="wc-dates">Aug 7 – 10</span>
+</div>
+<div class="wc-current" id="wx-toronto-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
+<div class="wc-forecast" id="wx-toronto-forecast" data-lat="43.6532" data-lon="-79.3832"></div>
+<div class="wc-links">
+  <a href="https://wttr.in/Toronto" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
+  <a href="https://www.google.com/search?q=weather+Toronto" target="_blank" rel="noopener">Google weather &rarr;</a>
+</div>
+</div>
 <div class="weather-card paris">
 <div class="wc-head">
   <h2>Paris</h2>
@@ -28,6 +40,30 @@
 <div class="wc-links">
   <a href="https://wttr.in/Paris" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
   <a href="https://www.google.com/search?q=weather+Paris" target="_blank" rel="noopener">Google weather &rarr;</a>
+</div>
+</div>
+<div class="weather-card travel">
+<div class="wc-head">
+  <h2>Versailles</h2>
+  <span class="wc-dates">Aug 15 day trip</span>
+</div>
+<div class="wc-current" id="wx-versailles-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
+<div class="wc-forecast" id="wx-versailles-forecast" data-lat="48.8049" data-lon="2.1204"></div>
+<div class="wc-links">
+  <a href="https://wttr.in/Versailles France" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
+  <a href="https://www.google.com/search?q=weather+Versailles France" target="_blank" rel="noopener">Google weather &rarr;</a>
+</div>
+</div>
+<div class="weather-card travel">
+<div class="wc-head">
+  <h2>Giverny</h2>
+  <span class="wc-dates">Aug 15 day trip</span>
+</div>
+<div class="wc-current" id="wx-giverny-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
+<div class="wc-forecast" id="wx-giverny-forecast" data-lat="49.0757" data-lon="1.5342"></div>
+<div class="wc-links">
+  <a href="https://wttr.in/Giverny France" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
+  <a href="https://www.google.com/search?q=weather+Giverny France" target="_blank" rel="noopener">Google weather &rarr;</a>
 </div>
 </div>
 <div class="weather-card london">
@@ -110,7 +146,10 @@
       fEl.innerHTML = "";
     });
   }
+  loadCity("wx-toronto");
   loadCity("wx-paris");
+  loadCity("wx-versailles");
+  loadCity("wx-giverny");
   loadCity("wx-london");
 })();
 </script>

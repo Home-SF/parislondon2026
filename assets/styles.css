@@ -1671,6 +1671,8 @@ a { color: inherit; }
 }
 .weather-card.paris { border-top: 4px solid var(--paris); }
 .weather-card.london { border-top: 4px solid var(--london); }
+.weather-card.toronto { border-top: 4px solid var(--toronto); }
+.weather-card.travel { border-top: 4px solid var(--brass); }
 
 .wc-head {
   display: flex;
