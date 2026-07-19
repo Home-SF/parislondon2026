@@ -23,7 +23,7 @@
  * and has no effect on the real scheduled function in index.js.
  */
 
-const ITINERARY_FEED_URL = "https://home-sf.github.io/paris-london-2026/itinerary-feed.json";
+const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <onboarding@resend.dev>";
 
 // Fill these in with the 5 addresses you have — one string per person.
