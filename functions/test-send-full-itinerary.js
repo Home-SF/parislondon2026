@@ -23,17 +23,16 @@
  * and has no effect on the real scheduled function in index.js.
  */
 
-const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
+const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>";
 
-// Fill these in with the 6 addresses you have — one string per person.
+// Fill these in with the 5 addresses you have — one string per person.
 const TEST_RECIPIENTS = [
-  "meganmlee10@gmail.com",
-  "bdemain9@gmail.com",
-  "michael.cy.lee@gmail.com",
-  "carlk1000@gmail.com",
-  "nalee@vianet.ca",
-  "uwenkok@yahoo.com"
+  "example1@email.com",
+  "example2@email.com",
+  "example3@email.com",
+  "example4@email.com",
+  "example5@email.com"
 ];
 
 function escapeHtml(str) {

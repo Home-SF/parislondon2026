@@ -64,13 +64,15 @@ Paste your Resend key when prompted.
 Near the top:
 ```js
 const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
-const FROM_EMAIL = "Trip Agenda <onboarding@resend.dev>";
+const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>";
 ```
-- Swap in your actual GitHub Pages URL for the first line.
-- The `onboarding@resend.dev` sender address works out of the box for
-  testing/personal use with no extra setup. If you later want the email to
-  come from your own address (e.g. `trip@yourdomain.com`), that requires
-  verifying a domain in Resend — optional, skip it for now.
+- Swap in your actual GitHub Pages username for the first line.
+- The sender address already uses `luckycommons.com` — this **will not work
+  until that domain is verified in Resend** (resend.com/domains → add the
+  domain → add the DNS records Resend gives you at your registrar → wait for
+  verification). Sending will fail with a 403 error until that's done. Until
+  then, testing only works to your own Resend account email address
+  (Resend's sandbox restriction).
 
 ### 7. Deploy
 (Same repo folder, still.) This is the one command that differs from the

@@ -15,7 +15,7 @@
         {
           "time": "4:40 PM",
           "title": "Depart San Francisco — Flight AC 744 to Toronto (YYZ)",
-          "note": "Seats 3C / 3D / 3F · overnight flight, lands Aug 8",
+          "note": "Seats 3C / 3D / 3F · overnight flight, lands Aug 8 · Duration: ~4h55m",
           "placeholder": false
         }
       ]
@@ -71,7 +71,7 @@
         {
           "time": "8:30 PM",
           "title": "Depart Toronto — Flight AC 872 to Paris (CDG)",
-          "note": "Seats 13K / 13G / 13H · overnight flight, lands Aug 11",
+          "note": "Seats 13K / 13G / 13H · overnight flight, lands Aug 11 · Duration: ~7h30m",
           "placeholder": false
         }
       ]
@@ -152,7 +152,7 @@
         {
           "time": "8:30 PM",
           "title": "Amanda, Norman, Megan & Brodie Demain depart Toronto — Flight AC 872 to Paris (CDG)",
-          "note": "Seats 06K / 07K / 09K / 10K · Joining the group in Paris · overnight flight, lands Aug 14",
+          "note": "Seats 06K / 07K / 09K / 10K · Joining the group in Paris · overnight flight, lands Aug 14 · Duration: ~7h30m",
           "placeholder": false
         }
       ]
@@ -391,7 +391,7 @@
         {
           "time": "12:05 PM · Arrives 3:15 PM",
           "title": "Amanda, Norman, Megan & Brodie Demain depart London — Flight AC 855 to Toronto (YYZ)",
-          "note": "Seats 09G / 09D / 09A / 09K · Heathrow Terminal 2 to Pearson Terminal 1",
+          "note": "Seats 09G / 09D / 09A / 09K · Heathrow Terminal 2 to Pearson Terminal 1 · Duration: ~8h10m",
           "placeholder": false
         },
         {
@@ -470,7 +470,7 @@
       "email_timezone": "Europe/London",
       "events": [
         {
-          "time": "",
+          "time": "Depart: 10:15 AM · Arrive: 1:50 PM · Duration: ~11h35m",
           "title": "Flight DL 5965 — London (LHR) to San Francisco (SFO)",
           "note": "Seats 5K / 5G / 5D",
           "placeholder": false
