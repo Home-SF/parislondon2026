@@ -37,7 +37,7 @@ const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 
 // ---- Configure these two before deploying ----
 const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
-const FROM_EMAIL = "Trip Agenda <onboarding@resend.dev>"; // swap for a verified domain sender once you have one
+const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>"; // won't work until luckycommons.com is verified in Resend
 // -----------------------------------------------
 
 function currentLocalHourAndDate(timeZone) {
