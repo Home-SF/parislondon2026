@@ -372,9 +372,21 @@
       "email_timezone": "Europe/London",
       "events": [
         {
-          "time": "10:00 AM",
+          "time": "9:30 AM",
           "title": "Kensington Gardens — Peter Pan Statue",
           "note": "Royal park adjoining Hyde Park — home to the Peter Pan statue, the Italian Gardens, and Kensington Palace. Transit alternative: Marble Arch → Lancaster Gate (Central line, 1 stop), then a short walk through the park to the statue — see the second map below.",
+          "placeholder": false
+        },
+        {
+          "time": "10:45 AM",
+          "title": "Harrods Shopping",
+          "note": "Knightsbridge department store",
+          "placeholder": false
+        },
+        {
+          "time": "12:45 PM",
+          "title": "Lunch — Vivat Bacchus London Bridge",
+          "note": "Party of 7 · £20/person cancellation penalty — must cancel 48 hrs in advance",
           "placeholder": false
         },
         {
