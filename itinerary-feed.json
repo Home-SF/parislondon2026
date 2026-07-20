@@ -312,6 +312,12 @@
           "title": "Check in — Nobu Hotel - Portman Square",
           "note": "",
           "placeholder": false
+        },
+        {
+          "time": "7:30 PM",
+          "title": "Dinner — The Grazing Goat",
+          "note": "Party of 7 · £20/person cancellation penalty — must cancel 24 hrs in advance",
+          "placeholder": false
         }
       ]
     },
@@ -328,6 +334,12 @@
           "time": "11:00 AM",
           "title": "Borough Market",
           "note": "90-minute visit",
+          "placeholder": false
+        },
+        {
+          "time": "12:00 PM – 1:00 PM",
+          "title": "Lunch — fish! Restaurant",
+          "note": "Party of 7 · Sit-down seafood restaurant within Borough Market itself — est. 1999",
           "placeholder": false
         },
         {
