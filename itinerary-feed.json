@@ -315,8 +315,8 @@
         },
         {
           "time": "7:30 PM",
-          "title": "Dinner — The Grazing Goat",
-          "note": "Party of 7 · £20/person cancellation penalty — must cancel 24 hrs in advance",
+          "title": "Dinner — The Seashell of Lisson Grove",
+          "note": "Party of 7 · 24 hours notice to cancel, no penalty",
           "placeholder": false
         }
       ]
@@ -337,9 +337,9 @@
           "placeholder": false
         },
         {
-          "time": "12:00 PM – 1:00 PM",
-          "title": "Lunch — fish! Restaurant",
-          "note": "Party of 7 · Sit-down seafood restaurant within Borough Market itself — est. 1999 · Must cancel 2 days in advance",
+          "time": "12:15 PM",
+          "title": "Lunch — Barrowboy & Banker",
+          "note": "Party of 7 · No cancellation policy, but table only held for 15 minutes",
           "placeholder": false
         },
         {
