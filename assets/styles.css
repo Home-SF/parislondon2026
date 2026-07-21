@@ -1930,6 +1930,19 @@ a { color: inherit; }
   color: var(--ink-soft);
   margin-bottom: 4px;
 }
+.rest-neighborhood {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--brass);
+  background: var(--travel-soft);
+  border: 1px solid var(--rule-strong);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
 .rest-hours {
   font-size: 0.86rem;
   color: var(--ink-soft);
