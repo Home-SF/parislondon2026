@@ -138,6 +138,7 @@
         { "time": "12:00 PM", "title": "Lunch — Le Bon Georges", "note": "€525 cancellation penalty — must cancel by 4:00 AM on Aug 16", "placeholder": false },
         { "time": "Afternoon", "title": "Afternoon — pick one", "note": "Options after lunch, before tonight's Seine cruise", "placeholder": true },
         { "time": "4:30 PM", "title": "Sainte-Chapelle & La Conciergerie", "note": "Tickets still to be purchased", "placeholder": true },
+        { "time": "7:00 PM", "title": "Dinner — De Vie", "note": "90-minute reservation · €60/person cancellation penalty — must cancel 48 hrs in advance", "placeholder": false },
         { "time": "9:45 PM", "title": "Seine Cruise — Vedettes du Pont Neuf", "note": "7 tickets · Party of 7 · 1-hour cruise", "placeholder": false }
       ]
     },
