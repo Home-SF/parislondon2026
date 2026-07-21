@@ -12,12 +12,7 @@
       "hotel": "",
       "email_timezone": "America/Toronto",
       "events": [
-        {
-          "time": "4:40 PM",
-          "title": "Depart San Francisco — Flight AC 744 to Toronto (YYZ)",
-          "note": "Seats 3C / 3D / 3F · overnight flight, lands Aug 8 · Duration: ~4h55m",
-          "placeholder": false
-        }
+        { "time": "4:40 PM", "title": "Depart San Francisco — Flight AC 744 to Toronto (YYZ)", "note": "Seats 3C / 3D / 3F · overnight flight, lands Aug 8 · Duration: ~4h55m", "placeholder": false }
       ]
     },
     {
@@ -29,18 +24,8 @@
       "hotel": "The Residences at 110 Bloor Street West",
       "email_timezone": "America/Toronto",
       "events": [
-        {
-          "time": "12:35 AM",
-          "title": "Land in Toronto — Pearson (YYZ)",
-          "note": "Flight AC 744 from San Francisco",
-          "placeholder": false
-        },
-        {
-          "time": "",
-          "title": "Check in — The Residences at 110 Bloor Street West",
-          "note": "",
-          "placeholder": false
-        }
+        { "time": "12:35 AM", "title": "Land in Toronto — Pearson (YYZ)", "note": "Flight AC 744 from San Francisco", "placeholder": false },
+        { "time": "", "title": "Check in — The Residences at 110 Bloor Street West", "note": "", "placeholder": false }
       ]
     },
     {
@@ -62,18 +47,8 @@
       "hotel": "",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "TBD",
-          "title": "The Residences at 110 Bloor Street West to Toronto Pearson (YYZ)",
-          "note": "Taxi to the airport — exact time depends on check-in timing",
-          "placeholder": true
-        },
-        {
-          "time": "8:30 PM",
-          "title": "Depart Toronto — Flight AC 872 to Paris (CDG)",
-          "note": "Seats 13K / 13G / 13H · overnight flight, lands Aug 11 · Duration: ~7h30m",
-          "placeholder": false
-        }
+        { "time": "TBD", "title": "The Residences at 110 Bloor Street West to Toronto Pearson (YYZ)", "note": "Taxi to the airport — exact time depends on check-in timing", "placeholder": true },
+        { "time": "8:30 PM", "title": "Depart Toronto — Flight AC 872 to Paris (CDG)", "note": "Seats 13K / 13G / 13H · overnight flight, lands Aug 11 · Duration: ~7h30m", "placeholder": false }
       ]
     },
     {
@@ -85,42 +60,12 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "10:00 AM",
-          "title": "Land in Paris — Charles de Gaulle (CDG)",
-          "note": "Flight AC 872 from Toronto · Flat-rate taxi CDG → Park Hyatt Vendôme is €56",
-          "placeholder": false
-        },
-        {
-          "time": "",
-          "title": "Check in — Park Hyatt Vendôme",
-          "note": "",
-          "placeholder": false
-        },
-        {
-          "time": "1:45 PM",
-          "title": "Lunch — Le Petit Vendôme",
-          "note": "€15/person cancellation penalty — must cancel 1 hour before reservation",
-          "placeholder": false
-        },
-        {
-          "time": "3:30 PM",
-          "title": "Palais Garnier",
-          "note": "2-hour visit",
-          "placeholder": false
-        },
-        {
-          "time": "7:30 PM",
-          "title": "Dinner — Au Pied de Cochon",
-          "note": "Party of 3 · No cancellation policy",
-          "placeholder": false
-        },
-        {
-          "time": "8:30 PM – 9:30 PM",
-          "title": "Organ Recital: Yves Castagnet — Cathédrale Notre-Dame de Paris",
-          "note": "Program: Louis Vierne (1870–1937), Symphonie n° 1 op. 14 en ré mineur · Marcel Dupré (1886–1971), Evocation: poème symphonique pour orgue op. 37 · Phone: 01 44 41 49 99",
-          "placeholder": false
-        }
+        { "time": "10:00 AM", "title": "Land in Paris — Charles de Gaulle (CDG)", "note": "Flight AC 872 from Toronto · Flat-rate taxi CDG → Park Hyatt Vendôme is €56", "placeholder": false },
+        { "time": "", "title": "Check in — Park Hyatt Vendôme", "note": "", "placeholder": false },
+        { "time": "1:45 PM", "title": "Lunch — Le Petit Vendôme", "note": "€15/person cancellation penalty — must cancel 1 hour before reservation", "placeholder": false },
+        { "time": "3:30 PM", "title": "Palais Garnier", "note": "2-hour visit", "placeholder": false },
+        { "time": "7:30 PM", "title": "Dinner — Au Pied de Cochon", "note": "Party of 3 · No cancellation policy", "placeholder": false },
+        { "time": "8:30 PM – 9:30 PM", "title": "Organ Recital: Yves Castagnet — Cathédrale Notre-Dame de Paris", "note": "Program: Louis Vierne (1870–1937), Symphonie n° 1 op. 14 en ré mineur · Marcel Dupré (1886–1971), Evocation: poème symphonique pour orgue op. 37 · Phone: 01 44 41 49 99", "placeholder": false }
       ]
     },
     {
@@ -132,12 +77,7 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "9:00 PM",
-          "title": "Jam Session de Maxence Leroy — Le Baiser Salé",
-          "note": "Maxence Leroy Ben · Entrance guaranteed with tickets before 8:45 PM",
-          "placeholder": false
-        }
+        { "time": "9:00 PM", "title": "Jam Session de Maxence Leroy — Le Baiser Salé", "note": "Maxence Leroy Ben · Entrance guaranteed with tickets before 8:45 PM", "placeholder": false }
       ]
     },
     {
@@ -149,18 +89,8 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "9:00 AM",
-          "title": "Musée d'Orsay",
-          "note": "1.5-hour visit · Entrance 2 — Forecourt (Members Entrance)",
-          "placeholder": false
-        },
-        {
-          "time": "8:30 PM",
-          "title": "Amanda, Norman, Megan & Brodie Demain depart Toronto — Flight AC 872 to Paris (CDG)",
-          "note": "Seats 06K / 07K / 09K / 10K · Joining the group in Paris · overnight flight, lands Aug 14 · Duration: ~7h30m",
-          "placeholder": false
-        }
+        { "time": "9:00 AM", "title": "Musée d'Orsay", "note": "1.5-hour visit · Entrance 2 — Forecourt (Members Entrance)", "placeholder": false },
+        { "time": "8:30 PM", "title": "Amanda, Norman, Megan & Brodie Demain depart Toronto — Flight AC 872 to Paris (CDG)", "note": "Seats 06K / 07K / 09K / 10K · Joining the group in Paris · overnight flight, lands Aug 14 · Duration: ~7h30m", "placeholder": false }
       ]
     },
     {
@@ -172,24 +102,9 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "10:00 AM",
-          "title": "Amanda, Norman, Megan & Brodie Demain land in Paris — Charles de Gaulle (CDG)",
-          "note": "Flight AC 872 from Toronto",
-          "placeholder": false
-        },
-        {
-          "time": "",
-          "title": "Check in — Park Hyatt Vendôme",
-          "note": "Amanda, Norman, Megan & Brodie Demain",
-          "placeholder": false
-        },
-        {
-          "time": "6:30 PM",
-          "title": "Dinner — Bittikesu (Counter Experience)",
-          "note": "Party of 7 · Cancel by Aug 11, 6:30 PM (3 days ahead) to avoid a cancellation fee",
-          "placeholder": false
-        }
+        { "time": "10:00 AM", "title": "Amanda, Norman, Megan & Brodie Demain land in Paris — Charles de Gaulle (CDG)", "note": "Flight AC 872 from Toronto", "placeholder": false },
+        { "time": "", "title": "Check in — Park Hyatt Vendôme", "note": "Amanda, Norman, Megan & Brodie Demain", "placeholder": false },
+        { "time": "6:30 PM", "title": "Dinner — Bittikesu (Counter Experience)", "note": "Party of 7 · Cancel by Aug 11, 6:30 PM (3 days ahead) to avoid a cancellation fee", "placeholder": false }
       ]
     },
     {
@@ -201,42 +116,13 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "12:01 AM",
-          "title": "Book Notre Dame Cathedral tickets",
-          "note": "Tickets release at midnight, 2 days before the visit — grab them fast",
-          "placeholder": true
-        },
-        {
-          "time": "8:00 AM",
-          "title": "Pick up rental car — Budget, Full Size Van",
-          "note": "Hall 3, Pl Henry Frenay, Niv Min. 1, Parking Méditerranée · Confirmation #49325815US0",
-          "placeholder": false
-        },
-        {
-          "time": "Morning",
-          "title": "Monet's House and Gardens — Giverny",
-          "note": "",
-          "placeholder": false
-        },
-        {
-          "time": "2:30 PM – 6:00 PM",
-          "title": "Palace of Versailles — \"Light of Liberty\" VR Experience + Palace (skip-the-line)",
-          "note": "3.5-hour visit · Hours: Palace 9:00am–6:30pm · Estate of Trianon 12:00pm–6:30pm · Gardens 7:00am–8:30pm · Park 7:00am–8:30pm · Palace & Trianon closed Mondays and Dec 25, Jan 1, May 1 · Includes \"Light of Liberty\" VR experience (15 min, 250th anniv. of American Independence) + skip-the-line Palace, Estate of Trianon, Gardens, temporary exhibitions · 2 audio guides rented",
-          "placeholder": false
-        },
-        {
-          "time": "10:15 PM",
-          "title": "Drop off rental car — Budget",
-          "note": "Hall 3, Pl Henry Frenay, Niv Min. 1, Parking Méditerranée · Confirmation #49325815US0",
-          "placeholder": false
-        },
-        {
-          "time": "",
-          "title": "Return to hotel — Park Hyatt Vendôme",
-          "note": "",
-          "placeholder": false
-        }
+        { "time": "12:01 AM", "title": "Book Notre Dame Cathedral tickets", "note": "Tickets release at midnight, 2 days before the visit — grab them fast", "placeholder": true },
+        { "time": "8:00 AM", "title": "Pick up rental car — Budget, Full Size Van", "note": "Hall 3, Pl Henry Frenay, Niv Min. 1, Parking Méditerranée · Confirmation #49325815US0", "placeholder": false },
+        { "time": "10:30 AM", "title": "Giverny Medieval Quarter — Walk", "note": "Ancien Hôtel Baudy (where Cézanne, Renoir and Rodin worked), plus small boutiques, art galleries, and bakeries like Coin du Pain'tre", "placeholder": false },
+        { "time": "11:30 AM", "title": "Claude Monet's House and Gardens", "note": "90-minute visit · Free parking available across from the entrance, or an 8-minute walk from Parking Verger (see map) · Tickets already purchased — no changes or cancellations", "placeholder": false },
+        { "time": "2:30 PM – 6:00 PM", "title": "Palace of Versailles — \"Light of Liberty\" VR Experience + Palace (skip-the-line)", "note": "3.5-hour visit · Hours: Palace 9:00am–6:30pm · Estate of Trianon 12:00pm–6:30pm · Gardens 7:00am–8:30pm · Park 7:00am–8:30pm · Palace & Trianon closed Mondays and Dec 25, Jan 1, May 1 · Includes \"Light of Liberty\" VR experience (15 min, 250th anniv. of American Independence) + skip-the-line Palace, Estate of Trianon, Gardens, temporary exhibitions · 2 audio guides rented · 2 electric vehicles requested for 5:00 PM, 1 hour each", "placeholder": false },
+        { "time": "10:15 PM", "title": "Drop off rental car — Budget", "note": "Hall 3, Pl Henry Frenay, Niv Min. 1, Parking Méditerranée · Confirmation #49325815US0", "placeholder": false },
+        { "time": "", "title": "Return to hotel — Park Hyatt Vendôme", "note": "", "placeholder": false }
       ]
     },
     {
@@ -248,36 +134,11 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
-        {
-          "time": "9:30 AM",
-          "title": "Marché Bastille",
-          "note": "Open-air market — runs Thursday & Sunday mornings",
-          "placeholder": false
-        },
-        {
-          "time": "12:00 PM",
-          "title": "Lunch — Le Bon Georges",
-          "note": "€525 cancellation penalty — must cancel by 4:00 AM on Aug 16",
-          "placeholder": false
-        },
-        {
-          "time": "Afternoon",
-          "title": "Afternoon — pick one",
-          "note": "Options after lunch, before tonight's Seine cruise",
-          "placeholder": true
-        },
-        {
-          "time": "4:30 PM",
-          "title": "Sainte-Chapelle & La Conciergerie",
-          "note": "Tickets still to be purchased",
-          "placeholder": true
-        },
-        {
-          "time": "9:45 PM",
-          "title": "Seine Cruise — Vedettes du Pont Neuf",
-          "note": "7 tickets · Party of 7 · 1-hour cruise",
-          "placeholder": false
-        }
+        { "time": "9:30 AM", "title": "Marché Bastille", "note": "Open-air market — runs Thursday & Sunday mornings", "placeholder": false },
+        { "time": "12:00 PM", "title": "Lunch — Le Bon Georges", "note": "€525 cancellation penalty — must cancel by 4:00 AM on Aug 16", "placeholder": false },
+        { "time": "Afternoon", "title": "Afternoon — pick one", "note": "Options after lunch, before tonight's Seine cruise", "placeholder": true },
+        { "time": "4:30 PM", "title": "Sainte-Chapelle & La Conciergerie", "note": "Tickets still to be purchased", "placeholder": true },
+        { "time": "9:45 PM", "title": "Seine Cruise — Vedettes du Pont Neuf", "note": "7 tickets · Party of 7 · 1-hour cruise", "placeholder": false }
       ]
     },
     {
@@ -289,42 +150,12 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "9:30 AM",
-          "title": "Visit Notre Dame Cathedral",
-          "note": "Free entry to the nave",
-          "placeholder": false
-        },
-        {
-          "time": "TBD",
-          "title": "Park Hyatt Vendôme to Gare du Nord",
-          "note": "Taxi to the station — exact time depends on the train we book",
-          "placeholder": true
-        },
-        {
-          "time": "Depart: 3:02 PM · Arrive: 4:30 PM",
-          "title": "Eurostar ES 9039 — Paris to London",
-          "note": "Whole group of 7 traveling together · Depart Gare du Nord · Arrive St Pancras International · Journey time ~2h28m (Paris is 1 hour ahead of London in August)",
-          "placeholder": false
-        },
-        {
-          "time": "TBD",
-          "title": "St Pancras to Nobu Hotel - Portman Square",
-          "note": "Taxi to the hotel on arrival into London",
-          "placeholder": true
-        },
-        {
-          "time": "",
-          "title": "Check in — Nobu Hotel - Portman Square",
-          "note": "",
-          "placeholder": false
-        },
-        {
-          "time": "7:30 PM",
-          "title": "Dinner — The Seashell of Lisson Grove",
-          "note": "Party of 7 · 24 hours notice to cancel, no penalty",
-          "placeholder": false
-        }
+        { "time": "9:30 AM", "title": "Visit Notre Dame Cathedral", "note": "Free entry to the nave", "placeholder": false },
+        { "time": "TBD", "title": "Park Hyatt Vendôme to Gare du Nord", "note": "Taxi to the station — exact time depends on the train we book", "placeholder": true },
+        { "time": "Depart: 3:02 PM · Arrive: 4:30 PM", "title": "Eurostar ES 9039 — Paris to London", "note": "Whole group of 7 traveling together · Depart Gare du Nord · Arrive St Pancras International · Journey time ~2h28m (Paris is 1 hour ahead of London in August)", "placeholder": false },
+        { "time": "TBD", "title": "St Pancras to Nobu Hotel - Portman Square", "note": "Taxi to the hotel on arrival into London", "placeholder": true },
+        { "time": "", "title": "Check in — Nobu Hotel - Portman Square", "note": "", "placeholder": false },
+        { "time": "7:30 PM", "title": "Dinner — The Seashell of Lisson Grove", "note": "Party of 7 · 24 hours notice to cancel, no penalty", "placeholder": false }
       ]
     },
     {
@@ -336,36 +167,11 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "11:00 AM",
-          "title": "Borough Market",
-          "note": "90-minute visit",
-          "placeholder": false
-        },
-        {
-          "time": "12:15 PM",
-          "title": "Lunch — Barrowboy & Banker",
-          "note": "Party of 7 · No cancellation policy, but table only held for 15 minutes",
-          "placeholder": false
-        },
-        {
-          "time": "2:15 PM – 4:15 PM",
-          "title": "Buckingham Palace — Self-Guided Tour",
-          "note": "State Rooms summer opening — book timed-entry tickets in advance",
-          "placeholder": false
-        },
-        {
-          "time": "5:30 PM",
-          "title": "Pre-theatre dinner — Ambassador Clubhouse",
-          "note": "Party of 7 · Cancel by Aug 17, 5:30 PM (24 hrs ahead) to avoid a cancellation fee",
-          "placeholder": false
-        },
-        {
-          "time": "Evening",
-          "title": "Les Misérables — Sondheim Theatre",
-          "note": "Row L, seats 18–24",
-          "placeholder": false
-        }
+        { "time": "11:00 AM", "title": "Borough Market", "note": "90-minute visit", "placeholder": false },
+        { "time": "12:15 PM", "title": "Lunch — Barrowboy & Banker", "note": "Party of 7 · No cancellation policy, but table only held for 15 minutes", "placeholder": false },
+        { "time": "2:15 PM – 4:15 PM", "title": "Buckingham Palace — Self-Guided Tour", "note": "State Rooms summer opening — book timed-entry tickets in advance", "placeholder": false },
+        { "time": "5:30 PM", "title": "Pre-theatre dinner — Ambassador Clubhouse", "note": "Party of 7 · Cancel by Aug 17, 5:30 PM (24 hrs ahead) to avoid a cancellation fee", "placeholder": false },
+        { "time": "Evening", "title": "Les Misérables — Sondheim Theatre", "note": "Row L, seats 18–24", "placeholder": false }
       ]
     },
     {
@@ -377,36 +183,11 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "9:30 AM",
-          "title": "Kensington Gardens — Peter Pan Statue",
-          "note": "Royal park adjoining Hyde Park — home to the Peter Pan statue, the Italian Gardens, and Kensington Palace. Transit alternative: Marble Arch → Lancaster Gate (Central line, 1 stop), then a short walk through the park to the statue — see the second map below.",
-          "placeholder": false
-        },
-        {
-          "time": "10:45 AM",
-          "title": "Harrods Shopping",
-          "note": "Knightsbridge department store",
-          "placeholder": false
-        },
-        {
-          "time": "12:45 PM",
-          "title": "Lunch — Vivat Bacchus London Bridge",
-          "note": "Party of 7 · £20/person cancellation penalty — must cancel 48 hrs in advance",
-          "placeholder": false
-        },
-        {
-          "time": "2:00 PM – 5:00 PM",
-          "title": "Shopping",
-          "note": "No destination yet",
-          "placeholder": true
-        },
-        {
-          "time": "6:45 PM",
-          "title": "Dinner — St. John Smithfield",
-          "note": "Party of 7 · Cancel by Aug 18, 6:45 PM (24 hrs ahead) to avoid a cancellation fee",
-          "placeholder": false
-        }
+        { "time": "9:30 AM", "title": "Kensington Gardens — Peter Pan Statue", "note": "Royal park adjoining Hyde Park — home to the Peter Pan statue, the Italian Gardens, and Kensington Palace. Transit alternative: Marble Arch → Lancaster Gate (Central line, 1 stop), then a short walk through the park to the statue — see the second map below.", "placeholder": false },
+        { "time": "10:45 AM", "title": "Harrods Shopping", "note": "Knightsbridge department store", "placeholder": false },
+        { "time": "12:45 PM", "title": "Lunch — Vivat Bacchus London Bridge", "note": "Party of 7 · £20/person cancellation penalty — must cancel 48 hrs in advance", "placeholder": false },
+        { "time": "2:00 PM – 5:00 PM", "title": "Shopping", "note": "No destination yet", "placeholder": true },
+        { "time": "6:45 PM", "title": "Dinner — St. John Smithfield", "note": "Party of 7 · Cancel by Aug 18, 6:45 PM (24 hrs ahead) to avoid a cancellation fee", "placeholder": false }
       ]
     },
     {
@@ -418,36 +199,11 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "12:05 PM · Arrives 3:15 PM",
-          "title": "Amanda, Norman, Megan & Brodie Demain depart London — Flight AC 855 to Toronto (YYZ)",
-          "note": "Seats 09G / 09D / 09A / 09K · Heathrow Terminal 2 to Pearson Terminal 1 · Duration: ~8h10m",
-          "placeholder": false
-        },
-        {
-          "time": "2:30 PM",
-          "title": "Afternoon High Tea — Mirror Room at Rosewood London",
-          "note": "2-hour seating · Party of 3 (Michael, Uwen, Carl — Amanda, Norman, Megan & Brodie Demain depart earlier today) · £25/person cancellation penalty — must cancel 24 hrs in advance",
-          "placeholder": false
-        },
-        {
-          "time": "4:45 PM",
-          "title": "National Gallery",
-          "note": "Ticketed entry — closes at 7:00 PM ⚠️ Leave in time to reach Royal Albert Hall for 7:00 PM",
-          "placeholder": false
-        },
-        {
-          "time": "7:00 PM – c9:15 PM",
-          "title": "BBC Proms: Miles Davis Centenary — Royal Albert Hall",
-          "note": "Grand Tier seats 1, 2, 3 · Entrance at Door 9. Programme: new arrangements of excerpts from 'Miles Ahead', 'Porgy and Bess', 'Sketches of Spain' and 'Quiet Nights' · Ambrose Akinmusire (trumpet), Sam Harris (piano), Harish Raghavan (bass), Justin Brown (drums) · BBC Concert Orchestra / Miho Hazama",
-          "placeholder": false
-        },
-        {
-          "time": "9:30 PM",
-          "title": "Dinner — Fairuz",
-          "note": "Party of 3 · £30/person cancellation penalty — must cancel 24 hrs in advance",
-          "placeholder": false
-        }
+        { "time": "12:05 PM · Arrives 3:15 PM", "title": "Amanda, Norman, Megan & Brodie Demain depart London — Flight AC 855 to Toronto (YYZ)", "note": "Seats 09G / 09D / 09A / 09K · Heathrow Terminal 2 to Pearson Terminal 1 · Duration: ~8h10m", "placeholder": false },
+        { "time": "2:30 PM", "title": "Afternoon High Tea — Mirror Room at Rosewood London", "note": "2-hour seating · Party of 3 (Michael, Uwen, Carl — Amanda, Norman, Megan & Brodie Demain depart earlier today) · £25/person cancellation penalty — must cancel 24 hrs in advance", "placeholder": false },
+        { "time": "4:45 PM", "title": "National Gallery", "note": "Ticketed entry — closes at 7:00 PM ⚠️ Leave in time to reach Royal Albert Hall for 7:00 PM", "placeholder": false },
+        { "time": "7:00 PM – c9:15 PM", "title": "BBC Proms: Miles Davis Centenary — Royal Albert Hall", "note": "Grand Tier seats 1, 2, 3 · Entrance at Door 9. Programme: new arrangements of excerpts from 'Miles Ahead', 'Porgy and Bess', 'Sketches of Spain' and 'Quiet Nights' · Ambrose Akinmusire (trumpet), Sam Harris (piano), Harish Raghavan (bass), Justin Brown (drums) · BBC Concert Orchestra / Miho Hazama", "placeholder": false },
+        { "time": "9:30 PM", "title": "Dinner — Fairuz", "note": "Party of 3 · £30/person cancellation penalty — must cancel 24 hrs in advance", "placeholder": false }
       ]
     },
     {
@@ -459,18 +215,8 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "8:00 AM",
-          "title": "Walk — St. James's Park (Guards Memorial to Buckingham Palace)",
-          "note": "Route: start at the Guards Memorial · head into the park and pick up the lake's north bank path (better morning light, closer to the water than the Mall-side path) · pause at the Blue Bridge — the single best vantage point on the lake, with views both ways · continue west along the north bank toward Duck Island at the lake's west end, the park's main bird sanctuary and the best spot for pelicans, herons, and the resident waterfowl · exit the park at the west end and walk up to Buckingham Palace. Early morning (park opens 5am) means fewer crowds and more active birds — look for the famous pelicans, plus herons, cormorants, coots, moorhens, and tufted ducks along the way.",
-          "placeholder": false
-        },
-        {
-          "time": "12:15 PM",
-          "title": "Lunch — Berenjak (Soho)",
-          "note": "Party of 3 · Confirmation #AJDKLT4LTWSZ · Cancel by Aug 20, 12:15 PM (24 hrs ahead) to avoid a cancellation fee",
-          "placeholder": false
-        }
+        { "time": "8:00 AM", "title": "Walk — St. James's Park (Guards Memorial to Buckingham Palace)", "note": "Route: start at the Guards Memorial · head into the park and pick up the lake's north bank path (better morning light, closer to the water than the Mall-side path) · pause at the Blue Bridge — the single best vantage point on the lake, with views both ways · continue west along the north bank toward Duck Island at the lake's west end, the park's main bird sanctuary and the best spot for pelicans, herons, and the resident waterfowl · exit the park at the west end and walk up to Buckingham Palace. Early morning (park opens 5am) means fewer crowds and more active birds — look for the famous pelicans, plus herons, cormorants, coots, moorhens, and tufted ducks along the way.", "placeholder": false },
+        { "time": "12:15 PM", "title": "Lunch — Berenjak (Soho)", "note": "Party of 3 · Confirmation #AJDKLT4LTWSZ · Cancel by Aug 20, 12:15 PM (24 hrs ahead) to avoid a cancellation fee", "placeholder": false }
       ]
     },
     {
@@ -482,12 +228,7 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "12:30 PM",
-          "title": "Lunch — Donabe (formerly Hannah)",
-          "note": "Party of 3 · Reservation made via Tock · £20/person cancellation penalty — must cancel 1 day in advance",
-          "placeholder": false
-        }
+        { "time": "12:30 PM", "title": "Lunch — Donabe (formerly Hannah)", "note": "Party of 3 · Reservation made via Tock · £20/person cancellation penalty — must cancel 1 day in advance", "placeholder": false }
       ]
     },
     {
@@ -499,12 +240,7 @@
       "hotel": "",
       "email_timezone": "Europe/London",
       "events": [
-        {
-          "time": "Depart: 10:15 AM · Arrive: 1:50 PM · Duration: ~11h35m",
-          "title": "Flight DL 5965 — London (LHR) to San Francisco (SFO)",
-          "note": "Seats 5K / 5G / 5D",
-          "placeholder": false
-        }
+        { "time": "Depart: 10:15 AM · Arrive: 1:50 PM · Duration: ~11h35m", "title": "Flight DL 5965 — London (LHR) to San Francisco (SFO)", "note": "Seats 5K / 5G / 5D", "placeholder": false }
       ]
     }
   ]
