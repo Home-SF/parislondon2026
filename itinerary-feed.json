@@ -91,6 +91,7 @@
       "events": [
         { "time": "9:00 AM", "title": "Musée d'Orsay", "note": "1.5-hour visit · Entrance 2 — Forecourt (Members Entrance)", "placeholder": false },
         { "time": "11:30 AM", "title": "Musée de l'Orangerie — Water Lilies by Monet", "note": "45-minute visit · No reserved time needed for members", "placeholder": false },
+        { "time": "1:30 PM", "title": "Lunch — Café Courtial, la Crêpe", "note": "1-hour reservation · Reservation code a9FUab", "placeholder": false },
         { "time": "8:30 PM", "title": "Amanda, Norman, Megan & Brodie Demain depart Toronto — Flight AC 872 to Paris (CDG)", "note": "Seats 06K / 07K / 09K / 10K · Joining the group in Paris · overnight flight, lands Aug 14 · Duration: ~7h30m", "placeholder": false }
       ]
     },
