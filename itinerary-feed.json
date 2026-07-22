@@ -77,6 +77,7 @@
       "hotel": "Park Hyatt Vendôme",
       "email_timezone": "Europe/Paris",
       "events": [
+        { "time": "7:00 PM", "title": "Dinner — Tekés", "note": "90-minute reservation · No cancellation policy", "placeholder": false },
         { "time": "9:00 PM", "title": "Jam Session de Maxence Leroy — Le Baiser Salé", "note": "Maxence Leroy Ben · Entrance guaranteed with tickets before 8:45 PM", "placeholder": false }
       ]
     },
