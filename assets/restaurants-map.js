@@ -1,8 +1,7 @@
 /* ============================================================
-   Dining Map — geocodes each restaurant address (via the free
-   OpenStreetMap Nominatim service, cached in localStorage so
-   each address is only ever looked up once per browser) and
-   plots numbered markers on a Leaflet/OpenStreetMap map.
+   Dining Map — uses pre-embedded lat/lon from data-markers
+   for instant rendering. Falls back to Nominatim geocoding
+   (cached in localStorage) only for markers without coords.
    ============================================================ */
 
 (function () {
@@ -30,10 +29,9 @@
     if (cache[address]) {
       return Promise.resolve(cache[address]);
     }
-    // Chain requests so we never fire more than ~1/second, per Nominatim's usage policy.
     var result = queue.then(function () {
       return fetch(NOMINATIM_URL + encodeURIComponent(address), {
-        headers: { "Accept": "application/json" }
+        headers: { "Accept": "application/json", "User-Agent": "parislondon2026-trip-site/1.0" }
       })
         .then(function (r) { return r.json(); })
         .then(function (data) {
@@ -54,6 +52,14 @@
     });
     queue = result;
     return result;
+  }
+
+  function resolveLocation(obj) {
+    // Use embedded coords instantly; fall back to geocoding only if absent
+    if (obj.lat != null && obj.lon != null) {
+      return Promise.resolve({ lat: obj.lat, lon: obj.lon });
+    }
+    return geocode(obj.address);
   }
 
   function numberedIcon(num) {
@@ -89,25 +95,20 @@
       return;
     }
 
-    // Leaflet takes ownership of this container's DOM from here on —
-    // never overwrite containerEl.innerHTML after this point.
     var map = L.map(containerEl, { scrollWheelZoom: false });
     var startCenter = CITY_CENTERS[cityKey] || [48.8566, 2.3522];
     map.setView(startCenter, 12);
-    var tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19,
       subdomains: 'abcd',
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
-    tileLayer.on('tileerror', function (err) {
-      console.error('Dining map: tile failed to load', err);
-    });
     setTimeout(function () { map.invalidateSize(); }, 0);
 
     var bounds = [];
 
     if (hotel) {
-      var hloc = await geocode(hotel.address);
+      var hloc = await resolveLocation(hotel);
       if (hloc) {
         L.marker([hloc.lat, hloc.lon], { icon: hotelIcon() })
           .addTo(map)
@@ -118,10 +119,11 @@
 
     for (var i = 0; i < markers.length; i++) {
       var m = markers[i];
-      var loc = await geocode(m.address);
+      var loc = await resolveLocation(m);
       if (!loc) continue;
-      var marker = L.marker([loc.lat, loc.lon], { icon: numberedIcon(m.num) }).addTo(map);
-      marker.bindPopup('<b>' + m.num + '. ' + m.name + '</b><br>' + m.address);
+      L.marker([loc.lat, loc.lon], { icon: numberedIcon(m.num) })
+        .addTo(map)
+        .bindPopup('<b>' + m.num + '. ' + m.name + '</b><br>' + m.address);
       bounds.push([loc.lat, loc.lon]);
     }
     if (bounds.length) {
