@@ -1796,6 +1796,22 @@ a { color: inherit; }
 .act-list.paris .act-card { border-left: 4px solid var(--paris); }
 .act-list.london .act-card { border-left: 4px solid var(--london); }
 
+.act-status {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+.act-status.planned {
+  background: #BFCE9E;
+  color: #34461F;
+}
+
+
 .act-card h3 {
   font-family: var(--display);
   font-size: 1.3rem;
