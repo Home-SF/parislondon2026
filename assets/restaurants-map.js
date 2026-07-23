@@ -87,9 +87,10 @@
   };
 
   async function renderMap(containerEl) {
-    var markers = JSON.parse(containerEl.getAttribute("data-markers") || "[]");
-    var hotel = JSON.parse(containerEl.getAttribute("data-hotel") || "null");
     var cityKey = containerEl.id.replace("map-", "");
+    var cityData = (window._mapData || {})[cityKey];
+    var markers = cityData ? cityData.markers : [];
+    var hotel = cityData ? cityData.hotel : null;
     if (!markers.length && !hotel) {
       containerEl.innerHTML = '<div class="photo-empty">No restaurants to show yet.</div>';
       return;
