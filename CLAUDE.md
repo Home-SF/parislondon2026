@@ -230,6 +230,89 @@ git commit -m "Description"
 
 ---
 
+## Standing Rules
+
+### SCHEDULING & CALENDAR
+
+**S1 — Google Calendar sync**  
+Whenever an event is added to a day page, also add it as a Google Calendar event for **lee.kok.kurbat@gmail.com** with the same name, time (local), location, duration, and notes.
+
+**S2 — Chronological ordering**  
+Always order items on day pages chronologically by time. When inserting a new event, place it in time order, not just at the end.
+
+**S3 — Sunset time**  
+Add the local sunset time to every day page.
+
+**S4 — Public holiday annotation**  
+Annotate the top of each day page with a note if there is a public holiday at that location on that date.
+
+**S5 — Party size (parislondon2026 specific)**  
+| Date/time window (local) | Party size |
+|--------------------------|------------|
+| Aug 14 6:00 PM Paris time → Aug 19 11:59 PM London time | **7 people** |
+| All other parislondon2026 events | **3 people** |
+
+Use the correct count in calendar events, reservation notes, and any count-dependent content.
+
+**S6 — WhatsApp update on new events**  
+Each time a new event or reservation is added, produce a WhatsApp-style plain-text summary that can be copy-pasted to notify others. Include: what was added, date/time, location, and any key details (reservation time, party size, etc.).
+
+---
+
+### MAPS & NAVIGATION
+
+**M1 — Agenda route maps on day pages**  
+Each day page should have a map showing the best route (by metro or on foot) for back-to-back events in that day's agenda. Add or update the map whenever events are added or reordered. Example: Day 2 in Paris → show metro route connecting successive stops.
+
+**M2 — Hotel pin on dining maps**  
+The dining/restaurant map (`restaurants-map.html`) must include a separate colored pin (distinct from restaurant pins) for the location of where we are staying. Update whenever hotel is confirmed or changes.  
+Paris hotel: Park Hyatt Vendôme, 5 Rue de la Paix, 75002  
+London hotel: Nobu Hotel Portman Square, 22 Portman Square, London W1H 7BG
+
+**M3 — Metro stations for events**  
+When adding a new event or reservation, automatically identify the nearest metro/tube station(s) and add them to the metro scheduling feature on the relevant day page.
+
+---
+
+### RESTAURANTS & DINING
+
+**R1 — Restaurant classification**  
+For every new restaurant, verify it belongs on the correct city page based on its actual location. Retrieve: confirmed address, operating hours, menu link, reservation link.
+
+**R2 — Required rlinks**  
+Every restaurant card must include (where available): Website, Menu (if distinct URL), Reserve, Michelin (with rating: 1 Star / Bib Gourmand / Green Star), Infatuation review. See rlinks section for format.
+
+**R3 — Reservation color coding**  
+Restaurants with confirmed reservations use `class="rest-card reserved"` with a distinct background. Unreserved use `class="rest-card not-reserved"`. Never mix these up.
+
+**R4 — Meal tracker at top of dining pages**  
+Each city dining page must have a tracker at the top listing every day's breakfast, lunch, and dinner with checkboxes. Check off days with a confirmed meal plan. Mark travel days. Update the tracker each time a new reservation is added.
+
+---
+
+### WEATHER
+
+**W1 — Weather panel per city**  
+Automatically add (or update) a weather panel for each city where an event is added. This applies to all sites and all new cities as they are added to the itinerary.
+
+---
+
+### SITE FEATURES & CROSS-SITE RULES
+
+**F1 — Mobile-first design**  
+Test and design all pages for mobile friendliness. Any new feature must work on small screens. When in doubt, check at 375px width.
+
+**F2 — Feature replication across all sites**  
+When adding a non-location-specific feature (UI, functionality, layout, tooling) to any one site, replicate it automatically across all other active trip sites built from this template (currently: parislondon2026, asia2026). Do not wait to be asked.
+
+**F3 — New site CLAUDE.md bootstrap**  
+Each time a new trip site is created, copy the then-current CLAUDE.md into the new repo as its starting CLAUDE.md. Update only the site-specific sections (trip dates, cities, party size, hotels). All universal rules carry forward unchanged.
+
+**F4 — Universal rules apply to all future sites**  
+All rules in this Standing Rules section that are not explicitly marked as site-specific apply to every future trip site using this template.
+
+---
+
 ## Common Mistakes to Avoid
 
 1. **Wrong addresses**: Always verify addresses via web search — do not rely on memory or training data. Several addresses were wrong in the initial KML pass (ANONA, Géosmine, Argile were all incorrect).
