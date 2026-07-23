@@ -311,6 +311,17 @@ Each time a new trip site is created, copy the then-current CLAUDE.md into the n
 **F4 — Universal rules apply to all future sites**  
 All rules in this Standing Rules section that are not explicitly marked as site-specific apply to every future trip site using this template.
 
+**F5 — Activity planned status synced to agenda**  
+Whenever a sight or activity is added to a day-page agenda, mark the corresponding card on the activities page as planned by changing `class="act-card"` to `class="act-card act-planned"`. If the activity does not yet exist on the activities page, add it first, then mark it planned. Whenever an agenda item is removed, revert its card back to `class="act-card"` (no green). This keeps the activities page as a live checklist of what is actually on the itinerary.
+
+CSS implementation (in `assets/styles.css`):
+```css
+.act-card.act-planned {
+  background: #E7EDD8;
+  border-color: #BFCE9E;
+}
+```
+
 ---
 
 ## Common Mistakes to Avoid
