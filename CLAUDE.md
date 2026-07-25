@@ -323,6 +323,24 @@ CSS implementation (in `assets/styles.css`):
 }
 ```
 
+
+**F6 — "What's Nearby?" floating button**
+Every trip site's `index.html` must include a floating "What's Nearby?" button that:
+1. Gets the visitor's GPS location via the browser Geolocation API
+2. Reverse-geocodes it using Nominatim (keyless, no API key needed)
+3. Builds a natural-language question and copies it to the clipboard
+4. Opens claude.ai in a new tab so the user can paste and ask
+
+**Implementation:**
+- Copy `assets/nearby.js` from parislondon2026 (no edits needed — it's generic)
+- Add to `assets/styles.css` (copy the `.nearby-fab` and `.nearby-status` blocks, including mobile overrides)
+- Add to `index.html` just before the `checkin-fab` button:
+  ```html
+  <div id="nearby-status" class="nearby-status"></div>
+  <button type="button" id="nearby-fab" class="nearby-fab">&#128506; What's Nearby?</button>
+  ```
+- Add `<script src="assets/nearby.js"></script>` before `</body>`
+
 ---
 
 ## Common Mistakes to Avoid
