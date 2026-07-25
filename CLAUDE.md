@@ -22,7 +22,7 @@ Hotels: Park Hyatt Vendôme (5 Rue de la Paix, 75002 Paris) · Nobu Hotel Portma
 - Paris activities: **28 entries** (23 original + 5 added from KML)
 - London activities: **21 entries** (20 original + 1 added from KML)
 
-Next Paris restaurant: **rest-77**  
+Next Paris restaurant: **rest-79**  
 Next London restaurant: **rest-62**  
 Next Toronto restaurant: **rest-5**
 
