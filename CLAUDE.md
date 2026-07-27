@@ -231,6 +231,28 @@ git commit -m "Description"
 
 ---
 
+---
+
+## ✅ Session Start Protocol
+
+**Before making any changes, read this file** (`CLAUDE.md`) in full so all standing rules are active for the session.
+
+---
+
+## ✅ Event Addition Checklist
+
+Run through this list completely every time a new event is added to a day page. No step is optional.
+
+1. **Chronological order** — insert the event in time order, not at the end (S2)
+2. **Party size** — use 7 for Aug 14 6:00 PM Paris → Aug 19 11:59 PM London; use 3 for all other parislondon2026 events (S5)
+3. **Nearest metro/tube station** — include in the event's `enote` (M3)
+4. **Google Calendar** — create event on lee.kok.kurbat@gmail.com with local time, location, duration, and notes (S1)
+5. **WhatsApp summary** — produce plain-text copy-paste summary: event name, date/time, location, key details, party size (S6)
+6. **Activity/sight?** → check activities page; add card if missing, then set `class="act-card act-planned"` (F5)
+7. **Restaurant/meal?** → add/update restaurant card with correct reserved status color (R3); tick the meal tracker checkbox (R4)
+
+---
+
 ## Standing Rules
 
 ### SCHEDULING & CALENDAR
