@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Gallery Highlights Guide — Paris &amp; London 2026</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .guide-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0f4c8a 60%, #1e3a5f 100%);
+    color: #f0f4ff;
+    padding: 32px 20px 24px;
+    text-align: center;
+    border-bottom: 3px solid #60a5fa;
+  }
+  .guide-header h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: .04em; }
+  .guide-header .sub { font-size: 13px; color: #93c5fd; margin: 0; }
+
+  .arrival-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .arrival-box h3 { margin: 0 0 10px; font-size: 15px; color: #1e3a8a; }
+
+  .highlight {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin: 24px 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .highlight-head {
+    background: #1e3a5f;
+    color: #f0f4ff;
+    padding: 14px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .highlight-num {
+    font-size: 22px;
+    font-weight: bold;
+    color: #60a5fa;
+    min-width: 32px;
+  }
+  .highlight-head h2 { margin: 0; font-size: 17px; }
+  .highlight-head .location { font-size: 11px; color: #93c5fd; margin-top: 2px; }
+
+  .highlight-body { padding: 16px 18px; }
+
+  .descriptor {
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+  }
+
+  .directions-label {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #1d4ed8;
+    margin-bottom: 6px;
+  }
+  .directions { font-size: 13px; line-height: 1.7; margin-bottom: 14px; }
+
+  .factoid {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #166534;
+    line-height: 1.6;
+  }
+  .factoid strong { display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #15803d; }
+
+  .step { margin: 4px 0; display: flex; gap: 8px; font-size: 13px; line-height: 1.6; }
+  .step-num { background: #1d4ed8; color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+
+  .wing-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .sainsbury { background: #fef3c7; color: #78350f; }
+  .west { background: #fce7f3; color: #831843; }
+  .north { background: #d1fae5; color: #064e3b; }
+  .east { background: #ede9fe; color: #4c1d95; }
+
+  .walk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #666;
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .tip-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: #1e40af;
+  }
+  .tip-box h3 { margin: 0 0 8px; font-size: 14px; }
+
+  .warn-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid #f59e0b;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #92400e;
+    margin: 16px 0;
+  }
+
+  footer { background: #f9f9f9; border-top: 1px solid #e5e7eb; padding: 16px 20px; text-align: center; font-size: 12px; color: #888; margin-top: 32px; }
+  .back-link { display: inline-block; margin: 20px 0 0; font-size: 13px; color: #1d4ed8; text-decoration: none; }
+  .back-link:before { content: "← "; }
+</style>
+</head>
+<body>
+
+<div class="guide-header">
+  <h1>🖼 National Gallery — Highlights Guide</h1>
+  <p class="sub">Thursday Aug 20 &nbsp;·&nbsp; 4:45 PM &nbsp;·&nbsp; Party of 3</p>
+</div>
+
+<div class="wrap">
+
+<a class="back-link" href="days/aug-20.html">Back to Aug 20</a>
+
+<div class="arrival-box">
+  <h3>📍 Arrival &amp; Orientation</h3>
+  <p style="margin:0 0 8px">Enter from <strong>Trafalgar Square</strong> via the main portico entrance on the north side. You will arrive in the <strong>Central Vestibule</strong>, from which all four wings are accessible.</p>
+  <p style="margin:0 0 8px"><strong>Admission is free.</strong> Grab a free floor plan at the information desk — room numbers are printed on the map and marked above each doorway.</p>
+  <p style="margin:0 0 8px"><strong>⚠️ Closing time:</strong> The gallery closes at <strong>6:00 PM on Thursdays</strong> (open until 9 PM on Fridays only). You have approximately <strong>1 hour 15 minutes</strong>. The route below is prioritised accordingly — see the Priority 5 box at the top.</p>
+  <p style="margin:0"><strong>Nearest station:</strong> Charing Cross (5 min walk) or Leicester Square (5 min walk).</p>
+</div>
+
+<div class="warn-box">
+  ⏱ <strong>Time note:</strong> With 1h15min, focus on stops 1–5 at minimum (Sainsbury Wing + West Wing). Stops 6–10 are the North and East Wings — attempt them if you have energy and time after the first five.
+</div>
+
+<div class="tip-box">
+  <h3>🗺 Today's Route at a Glance</h3>
+  Main entrance → bear left into <strong>Sainsbury Wing</strong> → <strong>1. Arnolfini Portrait</strong> → <strong>2. Virgin of the Rocks</strong> → <strong>3. Venus and Mars</strong> → cross into <strong>West Wing</strong> → <strong>4. The Entombment (Michelangelo)</strong> → <strong>5. Pope Julius II (Raphael)</strong> → cross to <strong>North Wing</strong> → <strong>6. The Rokeby Venus</strong> → <strong>7. Rembrandt Self Portrait</strong> → cross to <strong>East Wing</strong> → <strong>8. The Fighting Temeraire</strong> → <strong>9. Bathers at Asnières</strong> → <strong>10. Sunflowers</strong>
+</div>
+
+<!-- 1. ARNOLFINI -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">1</div>
+    <div>
+      <h2>Jan van Eyck — The Arnolfini Portrait</h2>
+      <div class="location">Room 56 &nbsp;<span class="wing-badge sainsbury">Sainsbury Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Jan van Eyck · 1434 · Oil on oak panel · 82.2 × 60 cm · Early Netherlandish painting</p>
+    <div class="directions-label">From Main Entrance</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~4 min</div>
+      <div class="step"><span class="step-num">1</span><span>From the Central Vestibule, turn <strong>left (west)</strong> and walk through to the <strong>Sainsbury Wing</strong> — a 1991 addition accessible via a connecting corridor.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Ascend the stairs to the upper level and navigate to <strong>Room 56</strong>. The Arnolfini Portrait is a relatively small panel painting — look for a crowd gathered around a modest frame.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Look at the convex mirror on the back wall — it reflects the entire room, including two figures in the doorway, one of whom is believed to be Van Eyck himself. Above the mirror, he inscribed in elaborate gothic script: "Johannes de Eyck fuit hic" — "Jan van Eyck was here" — one of the earliest artist signatures in Western art. The painting was bought by the National Gallery in 1842 for £600 from a financially distressed British army officer.
+    </div>
+  </div>
+</div>
+
+<!-- 2. VIRGIN OF THE ROCKS -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">2</div>
+    <div>
+      <h2>Leonardo da Vinci — The Virgin of the Rocks</h2>
+      <div class="location">Room 66 &nbsp;<span class="wing-badge sainsbury">Sainsbury Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Leonardo da Vinci · c. 1491–1508 · Oil on poplar panel · 189.5 × 120 cm</p>
+    <div class="directions-label">Directions from Room 56</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~2 min — same wing</div>
+      <div class="step"><span class="step-num">1</span><span>Continue through the Sainsbury Wing to <strong>Room 66</strong>. The painting occupies a prominent position on one of the main walls.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      This is the <em>second</em> version of this composition Leonardo painted. The first (c.1483–85) is in the Louvre — which means if you were paying attention in Paris, you've now seen both. The Milanese confraternity who commissioned the original rejected it for reasons still debated; Leonardo then produced this version over roughly 15 years with workshop assistance. The two differ subtly: this version adds halos and a pointing angel, and the lighting is slightly different. Scholars still argue which Leonardo preferred.
+    </div>
+  </div>
+</div>
+
+<!-- 3. BOTTICELLI -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">3</div>
+    <div>
+      <h2>Sandro Botticelli — Venus and Mars</h2>
+      <div class="location">Room 58 &nbsp;<span class="wing-badge sainsbury">Sainsbury Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Sandro Botticelli · c. 1483–85 · Tempera and oil on poplar panel · 69.2 × 173.4 cm</p>
+    <div class="directions-label">Directions from Room 66</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~2 min — same wing</div>
+      <div class="step"><span class="step-num">1</span><span>Navigate back through the Sainsbury Wing to <strong>Room 58</strong>. The painting is unusually wide and horizontal — painted for a piece of furniture, likely a spalliera (headboard or chest panel).</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      The wasps nesting in Mars's armour and buzzing around his head are almost certainly a punning reference to the Vespucci family — vespucci means "little wasps" in Italian — who are believed to have commissioned the painting as a wedding gift. The allegory is pointed: Venus (Love) watches alert and composed while Mars (War) sleeps, exhausted and defeated. One of the baby satyrs blows into a conch shell directly in Mars's ear and he doesn't stir. Love wins.
+    </div>
+  </div>
+</div>
+
+<!-- 4. MICHELANGELO -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">4</div>
+    <div>
+      <h2>Michelangelo — The Entombment</h2>
+      <div class="location">Room 8 &nbsp;<span class="wing-badge west">West Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Michelangelo Buonarroti · c. 1500–01 · Oil and tempera on wood · 161.7 × 149.9 cm · Unfinished</p>
+    <div class="directions-label">Directions from Room 58</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~4 min — cross into West Wing</div>
+      <div class="step"><span class="step-num">1</span><span>Exit the Sainsbury Wing and cross into the <strong>West Wing</strong> of the main building, heading for <strong>Room 8</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>The Entombment is a relatively intimate panel — note the visibly unfinished lower-right figure, barely sketched in.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      This is one of only four surviving panel paintings by Michelangelo — primarily a sculptor and fresco painter, he worked in this medium rarely. The figure at lower right was never completed and the identity of the commissioner remains unknown. The painting was acquired by the National Gallery in 1868 for £2,000, at the time attributed to a minor student. The Michelangelo attribution was only confirmed after purchase — the Gallery had accidentally bought a Michelangelo for the price of a studio piece.
+    </div>
+  </div>
+</div>
+
+<!-- 5. RAPHAEL -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">5</div>
+    <div>
+      <h2>Raphael — Pope Julius II</h2>
+      <div class="location">Room 8 &nbsp;<span class="wing-badge west">West Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Raphael · 1511–12 · Oil on poplar · 108.7 × 81 cm · Portrait of the warrior pope</p>
+    <div class="directions-label">Directions from The Entombment</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 0 steps — same room</div>
+      <div class="step"><span class="step-num">1</span><span>Look around Room 8. The Pope Julius II portrait hangs in the same gallery — an intimate, psychologically charged depiction of an old man lost in thought.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      When this portrait was publicly displayed in Rome in 1513, witnesses reported that viewers "trembled as if it were the living man." Raphael essentially invented the modern psychological portrait with this work — capturing not just the sitter's appearance but an inner state (Julius appears tired, reflective, perhaps melancholy near the end of his turbulent reign). There are three versions of this portrait; this is considered the prime autograph version. Julius was Michelangelo's patron for the Sistine Chapel — he and Raphael overlapped in Rome at the same moment.
+    </div>
+  </div>
+</div>
+
+<!-- 6. ROKEBY VENUS -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">6</div>
+    <div>
+      <h2>Diego Velázquez — The Rokeby Venus</h2>
+      <div class="location">Room 30 &nbsp;<span class="wing-badge north">North Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Diego Velázquez · c. 1647–51 · Oil on canvas · 122.5 × 177 cm · The only surviving nude by Velázquez</p>
+    <div class="directions-label">Directions from Room 8</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~5 min — cross to North Wing</div>
+      <div class="step"><span class="step-num">1</span><span>Exit the West Wing and cross through the Central Vestibule into the <strong>North Wing</strong>, navigating to <strong>Room 30</strong>.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      This is the only surviving nude by Velázquez — and one of the very few female nudes in all of Spanish Golden Age painting, at a time when the Inquisition actively policed such imagery. It survived by being listed discreetly in private inventories. In March 1914, suffragette Mary Richardson walked into the National Gallery and slashed the painting seven times with a meat cleaver, declaring she was "destroying the most beautiful woman in mythological history as a protest against the government for destroying Mrs. Pankhurst." The canvas was successfully restored and all seven slashes remain faintly visible if you look closely.
+    </div>
+  </div>
+</div>
+
+<!-- 7. REMBRANDT -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">7</div>
+    <div>
+      <h2>Rembrandt — Self Portrait at the Age of 63</h2>
+      <div class="location">Room 23 &nbsp;<span class="wing-badge north">North Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Rembrandt van Rijn · 1669 · Oil on canvas · 86 × 70.5 cm · His final self-portrait</p>
+    <div class="directions-label">Directions from Room 30</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~3 min — same wing</div>
+      <div class="step"><span class="step-num">1</span><span>Continue through the North Wing to <strong>Room 23</strong>. The self-portrait is a modestly sized canvas — approach close enough to see the paint texture.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Painted in the year of his death, this was almost certainly Rembrandt's last self-portrait. He painted over 40 self-portraits through his life — more than any artist before him — creating an unparalleled visual autobiography from confident young master to bankrupt, bereft old man. He died within months of completing this one. The laughter lines, sagging jowls, and clouded eyes are rendered without mercy, vanity, or self-pity. Many art historians consider it the most honest self-portrait ever made.
+    </div>
+  </div>
+</div>
+
+<!-- 8. TURNER -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">8</div>
+    <div>
+      <h2>J.M.W. Turner — The Fighting Temeraire</h2>
+      <div class="location">Room 34 &nbsp;<span class="wing-badge east">East Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">J.M.W. Turner · 1839 · Oil on canvas · 90.7 × 121.6 cm · Voted the greatest painting in Britain</p>
+    <div class="directions-label">Directions from Room 23</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~5 min — cross to East Wing</div>
+      <div class="step"><span class="step-num">1</span><span>Cross the Central Vestibule and enter the <strong>East Wing</strong>, navigating to <strong>Room 34</strong>.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Voted the greatest painting in Britain in a 2005 BBC public poll. The Temeraire was a 98-gun warship that had fought heroically at the Battle of Trafalgar in 1805; Turner witnessed her being towed to a Rotherhithe breaker's yard and was moved to paint the scene as a meditation on the death of the age of sail. Despite being one of the National Gallery's most beloved works, Turner refused to sell it, calling it "my darling." He left his entire collection to the nation upon his death in 1851 — the Gallery received 300 oil paintings and nearly 30,000 works on paper.
+    </div>
+  </div>
+</div>
+
+<!-- 9. SEURAT -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">9</div>
+    <div>
+      <h2>Georges Seurat — Bathers at Asnières</h2>
+      <div class="location">Room 43 &nbsp;<span class="wing-badge east">East Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Georges Seurat · 1884 · Oil on canvas · 201 × 300 cm · Post-Impressionism</p>
+    <div class="directions-label">Directions from Room 34</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~2 min — same wing</div>
+      <div class="step"><span class="step-num">1</span><span>Continue east through the East Wing to <strong>Room 43</strong>. Bathers at Asnières fills most of one wall — look for the large horizontal canvas of figures by the Seine.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Seurat was just 24 when he completed this, and it was rejected by the official Paris Salon. Rather than the pointillist dot technique he later became famous for, he painted most of this in conventional brushstrokes — then went back over it and applied dots of contrasting colour on top in places, making it a hybrid of two methods simultaneously in development. The factory chimneys of Clichy smoking in the background are a deliberate statement: this is a modern working-class scene, not a classical idyll.
+    </div>
+  </div>
+</div>
+
+<!-- 10. VAN GOGH -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">10</div>
+    <div>
+      <h2>Vincent van Gogh — Sunflowers</h2>
+      <div class="location">Room 45 &nbsp;<span class="wing-badge east">East Wing</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Vincent van Gogh · 1888 · Oil on canvas · 92.1 × 73 cm · One of five versions Van Gogh painted</p>
+    <div class="directions-label">Directions from Room 43</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~1 min — adjacent room</div>
+      <div class="step"><span class="step-num">1</span><span>Walk one room further east into <strong>Room 45</strong>. The Sunflowers canvas glows from across the room — the yellow is immediately arresting.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Van Gogh painted five versions of sunflowers in vases in Arles in 1888–89, intending them to decorate Paul Gauguin's room in the Yellow House as a welcome gift. After their famous falling out and the ear incident, Gauguin asked Van Gogh to give him one of the sunflower paintings. Van Gogh refused. In 1987, a Japanese insurance company paid £24.75 million at auction for one version — then a world record for any painting. This National Gallery version is widely considered the finest of the five. Van Gogh painted it in a single session.
+    </div>
+  </div>
+</div>
+
+<div class="tip-box" style="margin-top:28px">
+  <h3>⏱ Practical Tips</h3>
+  <p style="margin:4px 0"><strong>Closes 6:00 PM on Thursdays.</strong> If time is tight, prioritise stops 1–5 (Sainsbury + West Wings) and then jump directly to stop 8 (Turner) in the East Wing — those four wings each take about 15 minutes to walk between.</p>
+  <p style="margin:4px 0">The gallery café is in the basement beneath the main building — good for a quick espresso on arrival.</p>
+  <p style="margin:4px 0 0">Trafalgar Square is directly outside the main entrance — worth a moment on the steps before heading to the BBC Proms.</p>
+</div>
+
+<a class="back-link" href="days/aug-20.html">Back to Aug 20</a>
+
+</div>
+
+<footer>
+  <div class="wrap">Paris &amp; London 2026 &nbsp;·&nbsp; <a href="index.html">Back to all days</a></div>
+</footer>
+</body>
+</html>
