@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Weather &middot; Paris & London</title>
 <link rel="stylesheet" href="assets/styles.css">
+
+<style>
+.lr-panel{background:#f8faff;border:1px solid #cbd5e1;border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:13px}
+.lr-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;gap:8px}
+.lr-meta{display:flex;flex-direction:column;gap:2px}
+.lr-source{font-weight:bold;color:#1d4ed8;text-decoration:none;font-size:13px}
+.lr-stamp{font-size:11px;color:#64748b}
+.lr-update-btn{background:#1d4ed8;color:#fff;border:none;border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.lr-update-btn:active{background:#1e40af}
+.lr-note{font-size:11px;color:#64748b;margin-bottom:10px}
+.lr-oor{background:#fffbeb;border-left:3px solid #f59e0b;border-radius:0 6px 6px 0;padding:8px 12px;font-size:12px;color:#92400e;margin-bottom:10px}
+.lr-rows{display:flex;flex-direction:column;gap:3px}
+.lr-row{display:grid;grid-template-columns:90px 28px 1fr 70px 60px 80px;align-items:center;gap:6px;padding:5px 6px;border-radius:6px;font-size:12px}
+.lr-row:nth-child(even){background:rgba(0,0,0,.03)}
+.lr-trip{background:#eff6ff!important;border-left:3px solid #2563eb;font-weight:600}
+.lr-date{color:#374151;font-size:12px}
+.lr-icon{font-size:16px;text-align:center}
+.lr-desc{color:#4b5563}
+.lr-temps{color:#dc2626;font-weight:500;text-align:right}
+.lr-precip{color:#2563eb;text-align:right}
+.lr-wind{color:#6b7280;text-align:right}
+@media(max-width:520px){
+  .lr-row{grid-template-columns:80px 24px 1fr 55px;gap:4px}
+  .lr-precip,.lr-wind{display:none}
+}
+</style>
 </head>
 <body>
 <nav class="topnav"><div class="wrap">
@@ -35,7 +61,22 @@
   <h2>Paris</h2>
   <span class="wc-dates">Aug 10 – 17</span>
 </div>
-<div class="wc-current" id="wx-paris-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
+<div class="lr-panel" id="lr-paris"><div class="lr-header"><div class="lr-meta"><a class="lr-source" href="https://meteofrance.com" target="_blank" rel="noopener">📡 Météo-France · Open-Meteo</a><span class="lr-stamp">Updated: 27 Jul 2026 at 12:22 · ECMWF model · 16-day range</span></div><button class="lr-update-btn" onclick="lrUpdate('paris','Please fetch a fresh 16-day long-range weather forecast for Paris and London from Open-Meteo, update the weather.html page on the parislondon2026 GitHub Pages site with the new data and a fresh timestamp, then commit and push to GitHub.')">🔄 Update</button></div><div class="lr-note">Paris trip: Aug 10–17 · ✈️ = your trip dates · Accuracy decreases beyond 7 days</div><div class="lr-rows"><div class="lr-row"><div class="lr-date">Mon 27 Jul</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">27° / 16°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 14 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Tue 28 Jul</div><div class="lr-icon">☀️</div><div class="lr-desc">Clear sky</div><div class="lr-temps">32° / 18°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 8 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Wed 29 Jul</div><div class="lr-icon">🌤️</div><div class="lr-desc">Mainly clear</div><div class="lr-temps">37° / 21°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Thu 30 Jul</div><div class="lr-icon">🌦️</div><div class="lr-desc">Showers</div><div class="lr-temps">29° / 21°</div><div class="lr-precip">💧 8%</div><div class="lr-wind">💨 10 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Fri 31 Jul</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">29° / 20°</div><div class="lr-precip">💧 6%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sat 1 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">30° / 19°</div><div class="lr-precip">💧 8%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sun 2 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">33° / 20°</div><div class="lr-precip">💧 5%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Mon 3 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">36° / 22°</div><div class="lr-precip">💧 15%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Tue 4 Aug</div><div class="lr-icon">🌦️</div><div class="lr-desc">Drizzle</div><div class="lr-temps">31° / 22°</div><div class="lr-precip">💧 20%</div><div class="lr-wind">💨 13 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Wed 5 Aug</div><div class="lr-icon">🌦️</div><div class="lr-desc">Light drizzle</div><div class="lr-temps">28° / 20°</div><div class="lr-precip">💧 16%</div><div class="lr-wind">💨 14 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Thu 6 Aug</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">28° / 17°</div><div class="lr-precip">💧 9%</div><div class="lr-wind">💨 11 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Fri 7 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">28° / 17°</div><div class="lr-precip">💧 12%</div><div class="lr-wind">💨 9 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sat 8 Aug</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">31° / 19°</div><div class="lr-precip">💧 14%</div><div class="lr-wind">💨 10 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sun 9 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">31° / 20°</div><div class="lr-precip">💧 12%</div><div class="lr-wind">💨 9 km/h</div></div>
+<div class="lr-row lr-trip"><div class="lr-date">Mon 10 Aug ✈️</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">36° / 22°</div><div class="lr-precip">💧 10%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row lr-trip"><div class="lr-date">Tue 11 Aug ✈️</div><div class="lr-icon">🌦️</div><div class="lr-desc">Drizzle</div><div class="lr-temps">31° / 19°</div><div class="lr-precip">—</div><div class="lr-wind">💨 20 km/h</div></div></div></div><div class="wc-current" id="wx-paris-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
 <div class="wc-forecast" id="wx-paris-forecast" data-lat="48.8566" data-lon="2.3522"></div>
 <div class="wc-links">
   <a href="https://wttr.in/Paris" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
@@ -71,7 +112,22 @@
   <h2>London</h2>
   <span class="wc-dates">Aug 17 – 23</span>
 </div>
-<div class="wc-current" id="wx-london-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
+<div class="lr-panel" id="lr-london"><div class="lr-header"><div class="lr-meta"><a class="lr-source" href="https://www.metoffice.gov.uk" target="_blank" rel="noopener">📡 Met Office · Open-Meteo</a><span class="lr-stamp">Updated: 27 Jul 2026 at 12:22 · ECMWF model · 16-day range</span></div><button class="lr-update-btn" onclick="lrUpdate('london','Please fetch a fresh 16-day long-range weather forecast for Paris and London from Open-Meteo, update the weather.html page on the parislondon2026 GitHub Pages site with the new data and a fresh timestamp, then commit and push to GitHub.')">🔄 Update</button></div><div class="lr-note">London trip: Aug 17–23 · ✈️ = your trip dates · Accuracy decreases beyond 7 days</div><div class="lr-oor">⚠️ Your London visit (Aug 17–23) is beyond the current 16-day model window. Click Update closer to departure for in-range forecasts.</div><div class="lr-rows"><div class="lr-row"><div class="lr-date">Mon 27 Jul</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">27° / 17°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 16 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Tue 28 Jul</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">30° / 19°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 13 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Wed 29 Jul</div><div class="lr-icon">☀️</div><div class="lr-desc">Clear sky</div><div class="lr-temps">34° / 21°</div><div class="lr-precip">💧 0%</div><div class="lr-wind">💨 20 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Thu 30 Jul</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">26° / 20°</div><div class="lr-precip">💧 14%</div><div class="lr-wind">💨 16 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Fri 31 Jul</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">24° / 16°</div><div class="lr-precip">💧 4%</div><div class="lr-wind">💨 12 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sat 1 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">26° / 18°</div><div class="lr-precip">💧 3%</div><div class="lr-wind">💨 17 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sun 2 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">29° / 18°</div><div class="lr-precip">💧 4%</div><div class="lr-wind">💨 18 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Mon 3 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">30° / 18°</div><div class="lr-precip">💧 13%</div><div class="lr-wind">💨 11 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Tue 4 Aug</div><div class="lr-icon">🌦️</div><div class="lr-desc">Light drizzle</div><div class="lr-temps">30° / 20°</div><div class="lr-precip">💧 35%</div><div class="lr-wind">💨 13 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Wed 5 Aug</div><div class="lr-icon">🌦️</div><div class="lr-desc">Light drizzle</div><div class="lr-temps">24° / 18°</div><div class="lr-precip">💧 30%</div><div class="lr-wind">💨 10 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Thu 6 Aug</div><div class="lr-icon">🌦️</div><div class="lr-desc">Light drizzle</div><div class="lr-temps">24° / 16°</div><div class="lr-precip">💧 18%</div><div class="lr-wind">💨 11 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Fri 7 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">25° / 15°</div><div class="lr-precip">💧 12%</div><div class="lr-wind">💨 11 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sat 8 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">26° / 17°</div><div class="lr-precip">💧 16%</div><div class="lr-wind">💨 20 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Sun 9 Aug</div><div class="lr-icon">☁️</div><div class="lr-desc">Overcast</div><div class="lr-temps">29° / 19°</div><div class="lr-precip">💧 20%</div><div class="lr-wind">💨 14 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Mon 10 Aug</div><div class="lr-icon">⛅</div><div class="lr-desc">Partly cloudy</div><div class="lr-temps">32° / 20°</div><div class="lr-precip">💧 20%</div><div class="lr-wind">💨 13 km/h</div></div>
+<div class="lr-row"><div class="lr-date">Tue 11 Aug</div><div class="lr-icon">❓</div><div class="lr-desc">—</div><div class="lr-temps">—</div><div class="lr-precip">—</div><div class="lr-wind">—</div></div></div></div><div class="wc-current" id="wx-london-current"><span class="wc-loading">Loading current conditions&hellip;</span></div>
 <div class="wc-forecast" id="wx-london-forecast" data-lat="51.5074" data-lon="-0.1278"></div>
 <div class="wc-links">
   <a href="https://wttr.in/London" target="_blank" rel="noopener">Detailed forecast &rarr;</a>
@@ -152,5 +208,20 @@
   loadCity("wx-giverny");
   loadCity("wx-london");
 })();
+</script>
+
+<script>
+function lrUpdate(city, prompt) {
+  if (typeof window.sendPrompt === 'function') {
+    window.sendPrompt(prompt);
+  } else {
+    navigator.clipboard.writeText(prompt).then(function() {
+      var btn = document.querySelector('#lr-' + city + ' .lr-update-btn');
+      var orig = btn.textContent;
+      btn.textContent = '✅ Copied!';
+      setTimeout(function(){ btn.textContent = orig; }, 2500);
+    });
+  }
+}
 </script>
 </body></html>
