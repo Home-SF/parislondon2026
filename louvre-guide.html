@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Louvre Highlights Guide — Paris &amp; London 2026</title>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .louvre-header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+    color: #f0e6c8;
+    padding: 32px 20px 24px;
+    text-align: center;
+    border-bottom: 3px solid #c9a84c;
+  }
+  .louvre-header h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: .04em; }
+  .louvre-header .sub { font-size: 13px; color: #c9a84c; margin: 0; }
+
+  .arrival-box {
+    background: #fff8e6;
+    border: 1px solid #e8c84a;
+    border-left: 4px solid #c9a84c;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .arrival-box h3 { margin: 0 0 10px; font-size: 15px; color: #7a5c00; }
+
+  .route-intro {
+    background: #f5f0ff;
+    border-left: 4px solid #7c3aed;
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #4a3070;
+    margin: 16px 0;
+  }
+
+  .highlight {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    margin: 24px 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .highlight-head {
+    background: #1a1a2e;
+    color: #f0e6c8;
+    padding: 14px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .highlight-num {
+    font-size: 22px;
+    font-weight: bold;
+    color: #c9a84c;
+    min-width: 32px;
+  }
+  .highlight-head h2 { margin: 0; font-size: 17px; }
+  .highlight-head .location { font-size: 11px; color: #a89bbc; margin-top: 2px; }
+
+  .highlight-body { padding: 16px 18px; }
+
+  .descriptor {
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+  }
+
+  .directions-label {
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7c3aed;
+    margin-bottom: 6px;
+  }
+  .directions { font-size: 13px; line-height: 1.7; margin-bottom: 14px; }
+
+  .factoid {
+    background: #f0fdf4;
+    border-left: 3px solid #16a34a;
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #166534;
+    line-height: 1.6;
+  }
+  .factoid strong { display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #15803d; }
+
+  .step { margin: 4px 0; display: flex; gap: 8px; font-size: 13px; line-height: 1.6; }
+  .step-num { background: #7c3aed; color: #fff; border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+
+  .wing-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .denon { background: #fef3c7; color: #92400e; }
+  .sully { background: #dbeafe; color: #1e40af; }
+  .richelieu { background: #fce7f3; color: #9d174d; }
+
+  .walk-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #666;
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .tip-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 20px 0;
+    font-size: 13px;
+    color: #1e40af;
+  }
+  .tip-box h3 { margin: 0 0 8px; font-size: 14px; }
+
+  footer { background: #f9f9f9; border-top: 1px solid #e5e7eb; padding: 16px 20px; text-align: center; font-size: 12px; color: #888; margin-top: 32px; }
+  .back-link { display: inline-block; margin: 20px 0 0; font-size: 13px; color: #7c3aed; text-decoration: none; }
+  .back-link:before { content: "← "; }
+</style>
+</head>
+<body>
+
+<div class="louvre-header">
+  <h1>🏛 The Louvre — Highlights Guide</h1>
+  <p class="sub">Friday Aug 14 &nbsp;·&nbsp; 9:30 AM &nbsp;·&nbsp; Party of 7</p>
+</div>
+
+<div class="wrap">
+
+<a class="back-link" href="days/aug-14.html">Back to Aug 14</a>
+
+<!-- ARRIVAL -->
+<div class="arrival-box">
+  <h3>📍 Arrival Instructions</h3>
+  <p style="margin:0 0 8px"><strong>Arrive by 9:15 AM</strong> and look for a staff member holding a <strong>"9:30 AM"</strong> sign near the entrance.</p>
+  <p style="margin:0 0 8px">Enter through the <strong>Porte des Lions</strong> entrance on the Seine side of the Denon Wing. If no staff member is present at that entrance, head into the underground <strong>Carrousel du Louvre</strong> instead — accessible via 99 Rue de Rivoli or directly from the <strong>Palais Royal – Musée du Louvre</strong> métro station (lines 1 &amp; 7).</p>
+  <p style="margin:0"><strong>Once inside:</strong> pass through the security checkpoint, then take the stairs or elevator up to the <strong>1st Floor of the Denon Wing</strong>.</p>
+</div>
+
+<div class="tip-box">
+  <h3>🗺 Today's Route at a Glance</h3>
+  Porte des Lions → <strong>1. Mona Lisa</strong> → <strong>2. Wedding Feast at Cana</strong> (same room, turn around) → back through Grand Galerie → <strong>3. Winged Victory</strong> (Daru staircase) → down to ground floor → <strong>4. Venus de Milo</strong> → <strong>5. Seated Scribe</strong> (Egyptian Antiquities) → cross to Richelieu → <strong>6. Hammurabi's Code</strong> → back to Denon ground floor → <strong>7. Michelangelo's Slaves</strong> → up to 1st floor → <strong>8. Apollo Gallery</strong> → <strong>9. Raft of the Medusa &amp; 10. Liberty Leading the People</strong>
+</div>
+
+<!-- 1. MONA LISA -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">1</div>
+    <div>
+      <h2>Mona Lisa <em>(La Joconde)</em></h2>
+      <div class="location">Room 711 (Salle des États) &nbsp;<span class="wing-badge denon">Denon Wing · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Leonardo da Vinci · 1503–1519 · Oil on poplar wood · 77 × 53 cm</p>
+    <div class="directions-label">Directions from Entrance</div>
+    <div class="directions">
+      <div class="step"><span class="step-num">1</span><span>After scanning your ticket, take the stairs up to the <strong>1st Floor, Denon Wing</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Walk straight through the Spanish and Italian painting galleries into the long corridor known as the <strong>Grand Galerie</strong>, heading east toward the centre of the museum.</span></div>
+      <div class="step"><span class="step-num">3</span><span>Look for the wide entrance on your <strong>right</strong> marked <strong>Room 711 — Salle des États</strong>.</span></div>
+      <div class="step"><span class="step-num">4</span><span>Step inside. The Mona Lisa hangs on the large <strong>freestanding wall directly across the room</strong> from the massive Veronese painting.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      She's smaller than almost everyone expects — just 77 × 53 cm, about the size of a large tablet. She was stolen in 1911 by a Louvre employee who had hidden overnight and walked out with the painting under his coat. It was missing for two full years before being recovered in Florence.
+    </div>
+  </div>
+</div>
+
+<!-- 2. WEDDING FEAST AT CANA -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">2</div>
+    <div>
+      <h2>The Wedding Feast at Cana</h2>
+      <div class="location">Room 711 (Salle des États) &nbsp;<span class="wing-badge denon">Denon Wing · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Paolo Veronese · 1563 · Oil on canvas · 677 × 994 cm — the largest painting in the Louvre</p>
+    <div class="directions-label">Directions from Mona Lisa</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 0 steps — same room</div>
+      <div class="step"><span class="step-num">1</span><span>Simply <strong>turn around</strong>. The Wedding Feast at Cana fills the entire wall directly opposite the Mona Lisa. Most visitors stand with their backs to it the whole time.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      Napoleon looted this painting from the monastery of San Giorgio Maggiore in Venice. When the Allies demanded its return after Waterloo in 1815, France argued it was too fragile to move — so they sent Venice a copy instead. The original Veronese stayed in Paris. Venice still has the copy today.
+    </div>
+  </div>
+</div>
+
+<!-- 3. WINGED VICTORY -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">3</div>
+    <div>
+      <h2>Winged Victory of Samothrace</h2>
+      <div class="location">Daru Staircase Landing &nbsp;<span class="wing-badge denon">Denon / Sully Junction · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Ancient Greek marble sculpture · c. 190 BC · Goddess of Victory (Nike) · 2.44 m tall</p>
+    <div class="directions-label">Directions from Room 711</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~3 min walk</div>
+      <div class="step"><span class="step-num">1</span><span>Exit Room 711 and turn <strong>right</strong>, heading back west through the Grand Galerie the way you came in.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Walk the full length of the Grand Galerie until you reach the <strong>Daru staircase</strong> — a wide, dramatic staircase at the junction of the Denon and Sully wings.</span></div>
+      <div class="step"><span class="step-num">3</span><span>She stands at the <strong>top of the staircase on a prow-shaped pedestal</strong>, impossible to miss. She commands the entire landing.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      She has no head and no arms — yet is widely considered one of the greatest sculptures ever made. Her missing right hand was discovered in 1950 in a crate in Vienna, where it had sat unidentified for decades. Scholars still debate the position of her arms: the leading theory is that her right arm was raised in a gesture of proclamation.
+    </div>
+  </div>
+</div>
+
+<!-- 4. VENUS DE MILO -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">4</div>
+    <div>
+      <h2>Venus de Milo <em>(Aphrodite of Milos)</em></h2>
+      <div class="location">Room 16 (Salle 16) &nbsp;<span class="wing-badge sully">Sully Wing · Ground Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Ancient Greek marble · c. 130–100 BC · Aphrodite, goddess of love and beauty · 2.02 m tall</p>
+    <div class="directions-label">Directions from Winged Victory</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~4 min walk</div>
+      <div class="step"><span class="step-num">1</span><span>From the Winged Victory landing, take the <strong>Daru staircase down</strong> to the ground floor.</span></div>
+      <div class="step"><span class="step-num">2</span><span>At the bottom, turn <strong>left</strong> and follow the signs into the <strong>Sully Wing — Greek Antiquities</strong>.</span></div>
+      <div class="step"><span class="step-num">3</span><span>Continue into <strong>Room 16</strong>. Venus de Milo stands in the centre of the room on a tall pedestal — you'll see her from the doorway.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      When she was found on the island of Milos in 1820, additional fragments were also recovered — including a hand holding an apple and an inscription naming the sculptor. Those fragments mysteriously disappeared, possibly to avoid competition with the already-famous Medici Venus in Florence. Without the inscription, we still don't know for certain who made her.
+    </div>
+  </div>
+</div>
+
+<!-- 5. SEATED SCRIBE -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">5</div>
+    <div>
+      <h2>The Seated Scribe <em>(Le Scribe accroupi)</em></h2>
+      <div class="location">Room 22 — Egyptian Antiquities &nbsp;<span class="wing-badge sully">Sully Wing · Ground Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">4th Dynasty Egypt · c. 2600–2350 BC · Painted limestone, alabaster, rock crystal · 53.7 cm tall</p>
+    <div class="directions-label">Directions from Venus de Milo</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~3 min walk</div>
+      <div class="step"><span class="step-num">1</span><span>From Room 16, continue east through the Sully Wing ground floor, following signs for <strong>Egyptian Antiquities</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Enter <strong>Room 22</strong>. The Seated Scribe is displayed in a glass case near the centre — small, only 54 cm tall, but instantly commanding.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      His eyes are made from rock crystal set in copper frames with alabaster surrounds — which is why they appear so disconcertingly alive after 4,500 years. Visitors regularly describe feeling that he is watching them. He was discovered at Saqqara in 1850, already holding the papyrus roll that identified him as a scribe of high rank.
+    </div>
+  </div>
+</div>
+
+<!-- 6. HAMMURABI'S CODE -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">6</div>
+    <div>
+      <h2>Code of Hammurabi</h2>
+      <div class="location">Room 3 — Near Eastern Antiquities &nbsp;<span class="wing-badge richelieu">Richelieu Wing · Ground Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Babylonian · 1754 BC · Black diorite basalt stele · 2.25 m tall · One of the earliest written legal codes in human history</p>
+    <div class="directions-label">Directions from Seated Scribe</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~5 min walk</div>
+      <div class="step"><span class="step-num">1</span><span>Exit the Egyptian Antiquities rooms and cross north through the Sully Wing toward the <strong>Richelieu Wing</strong>, following signs for <strong>Near Eastern Antiquities</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Find <strong>Room 3</strong>. The stele stands alone in the room — a towering black column you can't miss.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      The code contains 282 laws and is famous for "an eye for an eye" — but punishments varied sharply by social class. If a nobleman knocked out another nobleman's tooth, his tooth was knocked out in return. If he knocked out a commoner's tooth, he simply paid a fine. The relief carved at the top shows King Hammurabi receiving the laws directly from Shamash, the sun god, legitimising the code as divinely ordained.
+    </div>
+  </div>
+</div>
+
+<!-- 7. MICHELANGELO'S SLAVES -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">7</div>
+    <div>
+      <h2>Michelangelo's Slaves</h2>
+      <div class="location">Room 4 — Italian Sculpture &nbsp;<span class="wing-badge denon">Denon Wing · Ground Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Michelangelo Buonarroti · 1513–1516 · Marble · The Dying Slave (228 cm) &amp; The Rebellious Slave (215 cm)</p>
+    <div class="directions-label">Directions from Hammurabi's Code</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~5 min walk</div>
+      <div class="step"><span class="step-num">1</span><span>From the Richelieu Wing, head south back toward the Denon Wing on the <strong>ground floor</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Follow signs for <strong>Italian Sculpture</strong>, entering <strong>Room 4</strong>. The two Slaves stand prominently in the gallery — their raw, unfinished marble is immediately visible.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      They were commissioned for the never-completed tomb of Pope Julius II. Michelangelo gave them away to a Florentine banker, Roberto Strozzi, who then gifted them to King Francis I of France — which is why two Michelangelos ended up in Paris. The apparently "unfinished" quality may have been intentional: Michelangelo believed the sculpture already existed within the marble; his task was merely to liberate it.
+    </div>
+  </div>
+</div>
+
+<!-- 8. APOLLO GALLERY -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">8</div>
+    <div>
+      <h2>Apollo Gallery &amp; the Crown Jewels</h2>
+      <div class="location">Room 66 — Galerie d'Apollon &nbsp;<span class="wing-badge denon">Denon Wing · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">17th-century royal ceremonial gallery · French Crown Jewels including the 140-carat Régent Diamond</p>
+    <div class="directions-label">Directions from Michelangelo's Slaves</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~3 min walk (go up one floor)</div>
+      <div class="step"><span class="step-num">1</span><span>From Room 4, take the stairs up to the <strong>1st floor of the Denon Wing</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>Follow signs for <strong>Galerie d'Apollon — Room 66</strong>. The gallery runs east-west and is recognisable immediately by its extraordinary gilded ceiling.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      The ceiling was commissioned by Louis XIV and designed by Charles Le Brun — it directly inspired Versailles. But it was left unfinished for nearly 200 years. The central oval was finally painted in 1851 by Eugène Delacroix, the same artist who painted Liberty Leading the People. The 140-carat Régent Diamond on display here was once set into Napoleon's sword hilt for his coronation.
+    </div>
+  </div>
+</div>
+
+<!-- 9. RAFT OF THE MEDUSA -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">9</div>
+    <div>
+      <h2>The Raft of the Medusa</h2>
+      <div class="location">Room 700 — Large French Paintings &nbsp;<span class="wing-badge denon">Denon Wing · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Théodore Géricault · 1818–1819 · Oil on canvas · 491 × 716 cm · French Romanticism</p>
+    <div class="directions-label">Directions from Apollo Gallery</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 ~2 min walk — same floor</div>
+      <div class="step"><span class="step-num">1</span><span>Continue east along the 1st floor Denon Wing into the <strong>Large French Paintings rooms</strong>, following signs for <strong>Room 700</strong>.</span></div>
+      <div class="step"><span class="step-num">2</span><span>The Raft of the Medusa covers the majority of one entire wall — you will see it as you enter the room.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      It depicts a real political scandal. The French frigate Méduse ran aground in 1816 because its captain was an incompetent government appointee. Of 147 survivors placed on a makeshift raft, only 15 survived 13 days of starvation, violence, and cannibalism. The painting caused a furore when exhibited because it implicitly blamed the government. Géricault interviewed survivors and obtained actual limbs from a Paris hospital to ensure anatomical accuracy while painting.
+    </div>
+  </div>
+</div>
+
+<!-- 10. LIBERTY LEADING THE PEOPLE -->
+<div class="highlight">
+  <div class="highlight-head">
+    <div class="highlight-num">10</div>
+    <div>
+      <h2>Liberty Leading the People</h2>
+      <div class="location">Room 700 — Large French Paintings &nbsp;<span class="wing-badge denon">Denon Wing · 1st Floor</span></div>
+    </div>
+  </div>
+  <div class="highlight-body">
+    <p class="descriptor">Eugène Delacroix · 1830 · Oil on canvas · 260 × 325 cm · Commemorates the July Revolution of 1830</p>
+    <div class="directions-label">Directions from Raft of the Medusa</div>
+    <div class="directions">
+      <div class="walk-badge">🚶 0 steps — same room</div>
+      <div class="step"><span class="step-num">1</span><span>Look to the <strong>adjacent wall</strong> in Room 700. Liberty Leading the People hangs directly in the same gallery.</span></div>
+    </div>
+    <div class="factoid">
+      <strong>Did you know?</strong>
+      The figure of Liberty was scandalous at the time partly because she has visible armpit hair — a deliberate statement by Delacroix that she was a real woman, not a sanitised allegory. He painted himself into the scene as the man in the top hat to her right. The painting later inspired Victor Hugo while writing Les Misérables, and influenced the design of the Statue of Liberty. Despite painting it, Delacroix was not at the barricades — he admitted he participated in no fighting whatsoever.
+    </div>
+  </div>
+</div>
+
+<div class="tip-box" style="margin-top:28px">
+  <h3>⏱ Time &amp; Practical Tips</h3>
+  <p style="margin:4px 0">You have <strong>3 hours</strong> (9:30 AM – 12:30 PM). At roughly 15 minutes per stop including walking, this route fits comfortably without rushing.</p>
+  <p style="margin:4px 0">The museum gets significantly busier after 11 AM — prioritise the Mona Lisa first while the room is still manageable.</p>
+  <p style="margin:4px 0">Toilets are available near the Pyramid (ground floor) and beside the Daru staircase (1st floor).</p>
+  <p style="margin:4px 0 0">The café on the ground floor of the Richelieu Wing (near Hammurabi's Code) is a good mid-route stop if needed.</p>
+</div>
+
+<a class="back-link" href="days/aug-14.html">Back to Aug 14</a>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">Paris &amp; London 2026 &nbsp;·&nbsp; <a href="index.html">Back to all days</a></div>
+</footer>
+
+</body>
+</html>
