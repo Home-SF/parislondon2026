@@ -17,12 +17,12 @@ Hotels: Park Hyatt Vendôme (5 Rue de la Paix, 75002 Paris) · Nobu Hotel Portma
 | `assets/restaurants-map.js` | Map JS |
 
 ## Current Card Counts (as of July 2026)
-- Paris restaurants: **rest-1 through rest-75** (26 original + 49 added from KML)
-- London restaurants: **rest-1 through rest-55** (50 original + 5 added from KML)
+- Paris restaurants: **rest-1 through rest-82** (82 entries)
+- London restaurants: **rest-1 through rest-62** (62 entries)
 - Paris activities: **28 entries** (23 original + 5 added from KML)
 - London activities: **21 entries** (20 original + 1 added from KML)
 
-Next Paris restaurant: **rest-79**  
+Next Paris restaurant: **rest-83**  
 Next London restaurant: **rest-63**  
 Next Toronto restaurant: **rest-5**
 
@@ -102,60 +102,41 @@ Use `content.replace(marker, new_html + '\n' + marker, 1)`.
 
 ---
 
-## Dining Map Format (`restaurants-map.html`)
+## Dining Map Format
 
-Each city has two parts:
+The map uses **two files** that must be kept in sync:
 
-### 1. `data-markers` JSON attribute
-On the `<div class="map-container" id="map-CITY">` element:
+### 1. `assets/map-data.js`
+Holds all marker coordinates as `window._mapData`:
 
-```json
-[{"num": 1, "name": "Unicode-escaped name", "address": "Full address, City, Country"}]
+```js
+window._mapData = {
+  paris:  { markers: [{"num": 1, "name": "Name", "address": "Full address", "lat": 0.0, "lon": 0.0}, …], hotel: {…} },
+  london: { markers: […], hotel: {…} },
+  toronto: { markers: […], hotel: {…} }
+};
 ```
 
-- Use JSON unicode escapes for non-ASCII characters (e.g. `é` for é, `ô` for ô)
-- `name` is the display name shown on the map pin
-- `address` is geocoded by Leaflet — use the full postal address
+- `name` and `address` use **plain UTF-8** (no JSON escapes needed here)
+- `lat`/`lon` must be accurate — they are used directly, not geocoded
+- Each entry must have `num`, `name`, `address`, `lat`, `lon`
 
-### 2. Map legend HTML
-Follows the `map-container` div:
+### 2. Map legend in `restaurants-map.html`
+Each city section contains a `.map-legend` div:
 
 ```html
 <div class="map-legend">
   <div class="map-legend-row hotel"><span class="map-legend-num hotel">H</span>HOTEL NAME <em>(hotel)</em></div>
   <a class="map-legend-row" href="restaurants-CITY.html#rest-N"><span class="map-legend-num">N</span>Plain restaurant name</a>
-  <!-- more entries... -->
 </div>
 ```
 
-- Legend uses **plain UTF-8 characters** (not HTML entities or JSON escapes)
-- Both `data-markers` and legend must be updated together
-- Entries without a confirmed street address cannot be added to the map
+- Legend uses **plain UTF-8 characters**
+- Both files must be updated together whenever a restaurant is added
+- Entries without a confirmed address and coordinates cannot be added to the map
 
-### Python snippet for updating map JSON:
-```python
-import json, re
-
-def update_map(filepath, city_id, new_markers, new_legend_links):
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Update data-markers JSON
-    pattern = rf"(id=\"map-{city_id}\" data-markers=')(\[.*?\])(')"
-    def replacer(m):
-        existing = json.loads(m.group(2))
-        existing.extend(new_markers)
-        return m.group(1) + json.dumps(existing, ensure_ascii=True) + m.group(3)
-    content = re.sub(pattern, replacer, content, flags=re.DOTALL)
-    
-    # Append legend links before closing </div> of map-legend
-    # Find the legend div for this city and append before its closing </div>
-    legend_close = '</div></section>'  # adjust as needed
-    content = content.replace(legend_close, new_legend_links + legend_close, 1)
-    
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
-```
+### Updating the map programmatically
+Use the `update_map()` helper in `update_site.py` (repo root). It handles both the `map-data.js` append and the legend insertion. See that file for implementation details.
 
 ---
 
@@ -215,7 +196,7 @@ Use: `Check Google Maps for current address` in the `rest-addr` div, and set the
 7. Commit and push
 
 ### Helper functions (from `update_site.py`):
-See `update_site.py` in the outputs folder for `make_rest_card()`, `make_act_card()`, and `insert_before()`.
+See `update_site.py` in the repo root for `make_rest_card()`, `make_act_card()`, and `insert_before()`.
 
 ---
 
@@ -228,8 +209,6 @@ git add -A
 git commit -m "Description"
 # Then tell the user to run: git push origin main
 ```
-
----
 
 ---
 
@@ -253,6 +232,19 @@ Run through this list completely every time a new event is added to a day page. 
 
 ---
 
+
+## ✅ Site Facts Rule (F6)
+Every activity/sight card on any activities page must include **two** fact blocks:
+
+1. **Did you know?** — an interesting fact most visitors don't know
+   `<div class="act-fact"><span class="act-fact-label">Did you know?</span> TEXT</div>`
+
+2. **Well known** — the headline fact the site is famous for
+   `<div class="act-fact act-known"><span class="act-fact-label">Well known</span> TEXT</div>`
+
+Both blocks go just before the `<a class="act-website">` link.
+When adding a new sight to any activities page, always include both facts.
+When creating a new trip site from scratch, inherit this rule into its CLAUDE.md.
 ## Standing Rules
 
 ### SCHEDULING & CALENDAR
@@ -369,7 +361,7 @@ Every trip site's `index.html` must include a floating "What's Nearby?" button t
 
 1. **Wrong addresses**: Always verify addresses via web search — do not rely on memory or training data. Several addresses were wrong in the initial KML pass (ANONA, Géosmine, Argile were all incorrect).
 2. **Duplicate Menu links**: Don't add a Menu link if it's the same URL as the Website link.
-3. **Forgetting the dining map**: Every new restaurant card must also be added to `restaurants-map.html` (both `data-markers` JSON and legend).
-4. **HTML entities in JSON**: The `data-markers` attribute uses JSON — escape non-ASCII with `\uXXXX`. The legend HTML uses plain UTF-8.
+3. **Forgetting the dining map**: Every new restaurant card must also be added to `assets/map-data.js` (markers array) **and** the legend in `restaurants-map.html`. Use `update_map()` in `update_site.py`.
+4. **Encoding**: Both `map-data.js` and the legend use plain UTF-8 — no `\uXXXX` escapes needed.
 5. **Numbering continuity**: Paris restaurants are numbered across both the original entries AND the new ones. Never reuse a rest-N id.
 6. **rlinks order**: Always Website → Menu → Reserve → Michelin → Infatuation → muted.
