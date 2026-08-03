@@ -202,13 +202,11 @@ See `update_site.py` in the repo root for `make_rest_card()`, `make_act_card()`,
 
 ## Commit & Push
 
-The sandbox cannot push to GitHub (HTTPS auth not available). After making changes:
-```bash
-cd /path/to/parislondon2026
-git add -A
-git commit -m "Description"
-# Then tell the user to run: git push origin main
+Use `mcp__Control_your_Mac__osascript` to commit and push directly on the user's Mac (credentials are stored there). After making changes:
+```applescript
+do shell script "cd '/Volumes/MacMiniM4-EXT/mikecylee-m4/Library/CloudStorage/SynologyDrive-mikecylee-m4/Projects/parislondon2026' && git add -A && git commit -m 'Description' && git pull --rebase && git push 2>&1"
 ```
+No manual intervention required.
 
 ---
 
