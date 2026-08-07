@@ -36,7 +36,7 @@ const db = admin.firestore();
 const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 
 // ---- Configure these two before deploying ----
-const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
+const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>"; // verified in Resend
 // -----------------------------------------------
 
