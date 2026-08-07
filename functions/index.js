@@ -16,6 +16,18 @@
  *     emailed, so a re-run within the same hour (or a scheduler retry)
  *     never sends duplicates.
  *
+ * Email styling:
+ *   - Mirrors the site's postcard-stack design system (see assets/styles.css)
+ *     as closely as email clients allow: cream background, city-coded
+ *     accent colors (coral=Paris, cobalt=London, forest=Toronto, gold=travel
+ *     days), dashed-border "card" treatment for each event, monospace
+ *     timestamps, condensed display font for headings.
+ *   - Email clients strip @font-face/@import, so we use the same fallback
+ *     stacks the site's own CSS already declares: 'Arial Narrow', sans-serif
+ *     for display type and a generic monospace stack for --mono. Colors are
+ *     hardcoded hex (no CSS custom properties in email).
+ *   - Layout uses tables (not flex/grid) for cross-client reliability.
+ *
  * Required setup (see functions/README.md for full steps):
  *   1. Firebase project on the Blaze (pay-as-you-go) plan.
  *   2. A Resend account (resend.com) — free tier, 3,000 emails/month.
@@ -40,6 +52,42 @@ const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-
 const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>"; // verified in Resend
 // -----------------------------------------------
 
+// ---- Design tokens, mirrored from assets/styles.css ----
+const COLORS = {
+  bg: "#FBF6EC",
+  bgRaised: "#F3EAD6",
+  ink: "#241F1B",
+  inkSoft: "#6B6156",
+  inkFaint: "#A69C89",
+  rule: "#E6DCC8",
+  ruleStrong: "#D6C7A8",
+  navy: "#1D4E89",
+  brass: "#D9A441"
+};
+
+const CITY_THEMES = {
+  paris:   { color: "#E1512B", soft: "#FBE3DA" },
+  london:  { color: "#1D4E89", soft: "#DCE6F2" },
+  toronto: { color: "#1B7A5C", soft: "#DCEDE3" },
+  travel:  { color: "#B8842E", soft: "#F3E4C4" },
+  default: { color: COLORS.ink, soft: COLORS.bgRaised }
+};
+
+// Same fallback stacks the site's own CSS declares for --display and --mono,
+// since email clients won't load the @import'd Google Fonts.
+const FONT_DISPLAY = "'Arial Narrow', Arial, sans-serif";
+const FONT_MONO = "'Space Mono', 'Courier New', Courier, monospace";
+const FONT_BODY = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif";
+
+function getCityTheme(cityLabel) {
+  const label = cityLabel || "";
+  if (label.includes("→")) return CITY_THEMES.travel; // travel days are gold-coded on the site
+  if (label.includes("Paris")) return CITY_THEMES.paris;
+  if (label.includes("London")) return CITY_THEMES.london;
+  if (label.includes("Toronto")) return CITY_THEMES.toronto;
+  return CITY_THEMES.default;
+}
+
 function currentLocalHourAndDate(timeZone) {
   const now = new Date();
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -54,38 +102,118 @@ function currentLocalHourAndDate(timeZone) {
   };
 }
 
-function renderEventRow(ev) {
-  const noteHtml = ev.note ? `<div style="color:#726c60;font-size:13px;margin-top:2px;">${escapeHtml(ev.note)}</div>` : "";
-  const tag = ev.placeholder ? ' <span style="color:#a07c40;font-style:italic;">(tentative)</span>' : "";
-  return `<tr>
-    <td style="padding:8px 12px 8px 0;font-family:monospace;font-size:13px;color:#726c60;white-space:nowrap;vertical-align:top;">${escapeHtml(ev.time || "—")}</td>
-    <td style="padding:8px 0;border-top:1px solid #e2d9c6;">
-      <div style="font-weight:600;color:#201e1b;">${escapeHtml(ev.title)}${tag}</div>
-      ${noteHtml}
-    </td>
-  </tr>`;
-}
-
 function escapeHtml(str) {
   return String(str || "").replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[c]));
 }
 
+// Renders one event as a dashed-border "card" with a city-coded left rail,
+// echoing .event / .rest-card / .act-card from assets/styles.css.
+function renderEventRow(ev, theme) {
+  const noteHtml = ev.note
+    ? `<div style="font-family:${FONT_BODY};font-size:13px;color:${COLORS.inkSoft};line-height:1.5;margin-top:4px;">${escapeHtml(ev.note)}</div>`
+    : "";
+  const tag = ev.placeholder
+    ? ` <span style="font-family:${FONT_MONO};font-size:11px;font-style:italic;color:${theme.color};">(tentative)</span>`
+    : "";
+
+  return `
+  <tr>
+    <td style="padding:0 0 12px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;background:${COLORS.bgRaised};border:1.5px dashed ${COLORS.ruleStrong};border-left:4px solid ${theme.color};border-radius:8px;">
+        <tr>
+          <td style="width:82px;padding:14px 4px 14px 16px;vertical-align:top;font-family:${FONT_MONO};font-size:12px;color:${COLORS.inkSoft};white-space:nowrap;">
+            ${escapeHtml(ev.time || "—")}
+          </td>
+          <td style="padding:14px 16px 14px 6px;vertical-align:top;">
+            <div style="font-family:${FONT_BODY};font-size:15px;font-weight:600;color:${COLORS.ink};line-height:1.4;">${escapeHtml(ev.title)}${tag}</div>
+            ${noteHtml}
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>`;
+}
+
 function buildEmailHtml(day, tripTitle, siteUrl) {
-  const rows = (day.events || []).map(renderEventRow).join("");
-  const hotelLine = day.hotel ? `<p style="color:#726c60;font-size:14px;">Staying at <b>${escapeHtml(day.hotel)}</b></p>` : "";
+  const theme = getCityTheme(day.city_label);
+  const rows = (day.events || []).map((ev) => renderEventRow(ev, theme)).join("");
+  const eventsBlock = rows
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;margin-top:20px;">${rows}</table>`
+    : `<p style="font-family:${FONT_BODY};font-style:italic;color:${COLORS.inkFaint};margin-top:24px;">Nothing on the agenda yet for this day.</p>`;
+
+  const hotelLine = day.hotel
+    ? `<p style="font-family:${FONT_MONO};font-size:13px;color:${COLORS.inkSoft};margin:14px 0 0;">Staying at <b style="color:${COLORS.ink};font-weight:600;">${escapeHtml(day.hotel)}</b></p>`
+    : "";
+
   return `<!DOCTYPE html>
-<html><body style="margin:0;padding:0;background:#faf7f1;font-family:-apple-system,Helvetica,Arial,sans-serif;">
-<div style="max-width:560px;margin:0 auto;padding:24px 20px;">
-  <p style="font-family:monospace;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:#a07c40;margin:0 0 4px;">${escapeHtml(tripTitle)} &middot; ${escapeHtml(day.city_label)}</p>
-  <h1 style="font-size:28px;margin:0 0 4px;color:#201e1b;">${escapeHtml(day.display_date)}</h1>
-  <p style="color:#726c60;margin:0 0 4px;">${escapeHtml(day.weekday)} &middot; ${escapeHtml(day.kicker)}</p>
-  ${hotelLine}
-  <table style="width:100%;border-collapse:collapse;margin-top:16px;">${rows}</table>
-  <p style="margin-top:28px;"><a href="${siteUrl}" style="color:#1d4e89;">Open the full site &rarr;</a></p>
-</div>
-</body></html>`;
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:${COLORS.bg};">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.bg};">
+<tr><td align="center" style="padding:32px 16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${COLORS.bg};">
+
+  <!-- Eyebrow -->
+  <tr><td style="padding-bottom:6px;">
+    <span style="font-family:${FONT_MONO};font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:${COLORS.brass};">
+      ${escapeHtml(tripTitle)}
+    </span>
+  </td></tr>
+
+  <!-- City tag pill -->
+  <tr><td style="padding-bottom:14px;">
+    <span style="display:inline-block;font-family:${FONT_MONO};font-size:12px;letter-spacing:0.03em;text-transform:uppercase;color:${theme.color};background:${theme.soft};border:1.5px dashed ${theme.color};border-radius:100px;padding:5px 14px;">
+      ${escapeHtml(day.city_label)}
+    </span>
+  </td></tr>
+
+  <!-- Date heading -->
+  <tr><td style="padding-bottom:2px;">
+    <span style="font-family:${FONT_DISPLAY};font-weight:700;font-size:34px;line-height:1;letter-spacing:0.01em;text-transform:uppercase;color:${COLORS.ink};">
+      ${escapeHtml(day.display_date)}
+    </span>
+  </td></tr>
+
+  <!-- Weekday + kicker -->
+  <tr><td style="padding-bottom:2px;">
+    <span style="font-family:${FONT_BODY};font-size:15px;color:${COLORS.inkSoft};">
+      ${escapeHtml(day.weekday)} &middot; ${escapeHtml(day.kicker)}
+    </span>
+  </td></tr>
+
+  <!-- Hotel -->
+  <tr><td>${hotelLine}</td></tr>
+
+  <!-- Divider -->
+  <tr><td style="padding:22px 0 0;border-top:2px dashed ${COLORS.ruleStrong};"></td></tr>
+
+  <!-- Events -->
+  <tr><td>${eventsBlock}</td></tr>
+
+  <!-- CTA -->
+  <tr><td style="padding:12px 0 32px;">
+    <a href="${siteUrl}" style="display:inline-block;font-family:${FONT_MONO};font-size:13px;font-weight:700;text-decoration:none;color:#ffffff;background:${COLORS.navy};padding:10px 20px;border-radius:100px;">
+      Open the full site &rarr;
+    </a>
+  </td></tr>
+
+  <!-- Footer -->
+  <tr><td style="padding-top:16px;border-top:1px solid ${COLORS.rule};">
+    <span style="font-family:${FONT_MONO};font-size:11px;color:${COLORS.inkFaint};">
+      ${escapeHtml(tripTitle)} &middot; daily agenda, sent each morning at 8am local time
+    </span>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>`;
 }
 
 async function sendEmail(apiKey, toEmail, subject, html) {
