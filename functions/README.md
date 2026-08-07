@@ -1,5 +1,11 @@
 # Daily Agenda Email — Setup
 
+> **Redeploy needed:** `ITINERARY_FEED_URL` in `index.js` was corrected (Aug 7, 2026)
+> from the placeholder to `https://home-sf.github.io/parislondon2026/itinerary-feed.json`.
+> Run step 7 below (`npx firebase-tools deploy --only functions`) to push that fix live —
+> until you do, the deployed function is still hitting the old placeholder URL and every
+> hourly run fails silently.
+
 This sends everyone the day's agenda by email at 8:00 AM local time (relative
 to whichever city that day of the trip is in — Toronto, Paris, or London).
 
