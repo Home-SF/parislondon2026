@@ -33,24 +33,70 @@
       return;
     }
     navigator.geolocation.getCurrentPosition(function (pos) {
-      db.collection("checkins").add({
-        person: name,
-        lat: pos.coords.latitude,
-        lon: pos.coords.longitude,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      }).then(function () {
-        setLastPerson(name);
-        var now = new Date();
-        bodyEl.innerHTML = '<div class="checkin-status success">Checked in as <b>' + name + '</b> at ' +
-          now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + '.</div>' +
-          '<button type="button" class="checkin-close-btn">Done</button>';
-        bodyEl.querySelector(".checkin-close-btn").addEventListener("click", function () { closeModal(overlay); });
-      }).catch(function (err) {
-        bodyEl.innerHTML = '<div class="checkin-status">Could not save check-in. Try again in a moment.</div>';
-      });
+      renderPlaceNameStep(name, pos.coords.latitude, pos.coords.longitude, overlay, bodyEl);
     }, function (err) {
       bodyEl.innerHTML = '<div class="checkin-status">Location permission was denied or unavailable. Enable location access for this site to check in.</div>';
     }, { enableHighAccuracy: true, timeout: 15000 });
+  }
+
+  function renderPlaceNameStep(name, lat, lon, overlay, bodyEl) {
+    bodyEl.innerHTML = '';
+    var label = document.createElement("div");
+    label.className = "checkin-status";
+    label.textContent = "Where are you checking in?";
+    bodyEl.appendChild(label);
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "checkin-place-input";
+    input.placeholder = "e.g. Eiffel Tower, hotel lobby, Café de Flore";
+    input.maxLength = 80;
+    bodyEl.appendChild(input);
+
+    var saveBtn = document.createElement("button");
+    saveBtn.type = "button";
+    saveBtn.className = "checkin-quick-btn";
+    saveBtn.textContent = "Save Check In";
+    saveBtn.addEventListener("click", function () {
+      saveCheckIn(name, lat, lon, input.value.trim(), overlay, bodyEl);
+    });
+    bodyEl.appendChild(saveBtn);
+
+    var skipBtn = document.createElement("button");
+    skipBtn.type = "button";
+    skipBtn.className = "checkin-switch-link";
+    skipBtn.textContent = "Skip — just save the location";
+    skipBtn.addEventListener("click", function () {
+      saveCheckIn(name, lat, lon, "", overlay, bodyEl);
+    });
+    bodyEl.appendChild(skipBtn);
+
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); saveBtn.click(); }
+    });
+    input.focus();
+  }
+
+  function saveCheckIn(name, lat, lon, placeName, overlay, bodyEl) {
+    bodyEl.innerHTML = '<div class="checkin-status">Saving&hellip;</div>';
+    var data = {
+      person: name,
+      lat: lat,
+      lon: lon,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    if (placeName) data.placeName = placeName;
+    db.collection("checkins").add(data).then(function () {
+      setLastPerson(name);
+      var now = new Date();
+      var whereText = placeName ? ' at <b>' + placeName + '</b>' : '';
+      bodyEl.innerHTML = '<div class="checkin-status success">Checked in as <b>' + name + '</b>' + whereText + ', ' +
+        now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) + '.</div>' +
+        '<button type="button" class="checkin-close-btn">Done</button>';
+      bodyEl.querySelector(".checkin-close-btn").addEventListener("click", function () { closeModal(overlay); });
+    }).catch(function (err) {
+      bodyEl.innerHTML = '<div class="checkin-status">Could not save check-in. Try again in a moment.</div>';
+    });
   }
 
   function showModal() {
