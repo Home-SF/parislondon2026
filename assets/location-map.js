@@ -225,7 +225,8 @@
         radius: 7, color: "#fff", weight: 2, fillColor: color, fillOpacity: 1
       }).addTo(map);
       var when = c.timestamp && c.timestamp.toDate ? c.timestamp.toDate().toLocaleString() : "";
-      marker.bindPopup('<b>' + c.person + '</b><br>Checked in' + (when ? '<br>' + when : ''));
+      var whereLine = c.placeName ? ('<br>' + c.placeName) : '';
+      marker.bindPopup('<b>' + c.person + '</b>' + whereLine + '<br>Checked in' + (when ? '<br>' + when : ''));
       layersByPerson[key] = layersByPerson[key] || [];
       layersByPerson[key].push(marker);
       bounds.push([c.lat, c.lon]);
