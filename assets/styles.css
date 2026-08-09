@@ -1292,6 +1292,20 @@ a { color: inherit; }
   line-height: 1.5;
 }
 .checkin-status.success { color: var(--ink); }
+.checkin-place-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-raised);
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.checkin-place-input:focus { outline: none; border-color: var(--paris); }
 .checkin-quick-btn {
   display: block;
   width: 100%;
