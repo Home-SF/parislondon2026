@@ -53,7 +53,7 @@ const RESEND_API_KEY = defineSecret("RESEND_API_KEY");
 
 // ---- Configure these two before deploying ----
 const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
-const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>"; // verified in Resend
+const FROM_EMAIL = "Today's Agenda <trip@luckycommons.com>"; // verified in Resend
 // -----------------------------------------------
 
 // ---- Design tokens, mirrored from assets/styles.css ----
@@ -161,6 +161,13 @@ function buildEmailHtml(day, tripTitle, siteUrl) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${COLORS.bg};">
 <tr><td align="center" style="padding:32px 16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${COLORS.bg};">
+
+  <!-- Title -->
+  <tr><td style="padding-bottom:10px;">
+    <span style="font-family:${FONT_DISPLAY};font-weight:700;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;color:${theme.color};">
+      What's Happening Today
+    </span>
+  </td></tr>
 
   <!-- Eyebrow -->
   <tr><td style="padding-bottom:6px;">
