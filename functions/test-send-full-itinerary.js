@@ -1,39 +1,47 @@
 /**
  * ONE-OFF TEST SCRIPT — not part of the deployed Cloud Function.
- * Sends a single email containing EVERY day of the itinerary, to a
- * hardcoded list of test recipients, immediately when you run it.
+ * Sends a single email containing EVERY day of the itinerary, to the real
+ * participants in Firestore, immediately when you run it.
  *
  * This exists purely to verify the Resend integration and email
  * rendering work end-to-end before trusting the real scheduled function.
- * It does NOT touch Firestore (participants or emailSentLog) and does
- * NOT do any timezone/8am gating — run it whenever you want to test.
+ * It reads the same "participants" collection the real function uses, but
+ * does NOT touch "emailSentLog" and does NOT do any timezone/8am gating —
+ * run it whenever you want to test. Note: since it emails everyone for
+ * real, prefer TEST_RECIPIENTS_OVERRIDE (below) for a dry run to just
+ * yourself first.
  *
  * Usage (from inside the functions/ folder):
  *
  *   1. Get your Resend key back out (you already set it as a secret):
  *        npx firebase-tools functions:secrets:access RESEND_API_KEY
  *
- *   2. Fill in TEST_RECIPIENTS below with the 5 email addresses you have.
+ *   2. Get a service account key so this script (running outside the
+ *      Cloud Functions runtime) can read Firestore:
+ *        Firebase Console → Project settings (gear icon) → Service accounts
+ *        → "Generate new private key" → save the downloaded JSON file
+ *        somewhere local, e.g. ~/serviceAccountKey.json
  *
- *   3. Run it, passing the key as an environment variable:
- *        RESEND_API_KEY=paste-the-key-here node test-send-full-itinerary.js
+ *   3. Run it, passing both the Resend key and the credentials path:
+ *        RESEND_API_KEY=paste-the-key-here \
+ *        GOOGLE_APPLICATION_CREDENTIALS=~/serviceAccountKey.json \
+ *        node test-send-full-itinerary.js
  *
  * You should get the email within a few seconds. Once you're happy it
  * works, this file can just be left alone — it never runs automatically
  * and has no effect on the real scheduled function in index.js.
  */
 
-const ITINERARY_FEED_URL = "https://REPLACE-WITH-YOUR-GITHUB-USERNAME.github.io/parislondon2026/itinerary-feed.json";
+const admin = require("firebase-admin");
+
+const ITINERARY_FEED_URL = "https://home-sf.github.io/parislondon2026/itinerary-feed.json";
 const FROM_EMAIL = "Trip Agenda <trip@luckycommons.com>";
 
-// Fill these in with the 5 addresses you have — one string per person.
-const TEST_RECIPIENTS = [
-  "example1@email.com",
-  "example2@email.com",
-  "example3@email.com",
-  "example4@email.com",
-  "example5@email.com"
-];
+// Leave empty to send to every real participant in Firestore (the
+// production behavior). Fill in your own address(es) here instead to do a
+// silent dry run without emailing the whole group, e.g.:
+//   const TEST_RECIPIENTS_OVERRIDE = ["you@example.com"];
+const TEST_RECIPIENTS_OVERRIDE = [];
 
 function escapeHtml(str) {
   return String(str || "").replace(/[&<>"']/g, (c) => ({
@@ -67,19 +75,39 @@ function renderDaySection(day) {
   </div>`;
 }
 
+async function getRecipients() {
+  if (TEST_RECIPIENTS_OVERRIDE.length > 0) {
+    console.log(`Using TEST_RECIPIENTS_OVERRIDE (${TEST_RECIPIENTS_OVERRIDE.length} address(es)) instead of Firestore.`);
+    return TEST_RECIPIENTS_OVERRIDE;
+  }
+  console.log("Reading participants from Firestore...");
+  admin.initializeApp();
+  const db = admin.firestore();
+  const snap = await db.collection("participants").get();
+  if (snap.empty) {
+    console.error("No documents found in the 'participants' collection — nothing to send to.");
+    process.exit(1);
+  }
+  const emails = snap.docs.map((doc) => doc.data().email).filter(Boolean);
+  console.log(`Found ${emails.length} participant email(s) in Firestore.`);
+  return emails;
+}
+
 async function main() {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY — run with: RESEND_API_KEY=xxx node test-send-full-itinerary.js");
     process.exit(1);
   }
-  if (TEST_RECIPIENTS.some((r) => r.includes("example"))) {
-    console.error("Edit TEST_RECIPIENTS in this file first — it still has the placeholder addresses in it.");
-    process.exit(1);
-  }
+
+  const recipients = await getRecipients();
 
   console.log("Fetching itinerary feed...");
   const feedRes = await fetch(ITINERARY_FEED_URL, { cache: "no-store" });
+  if (!feedRes.ok) {
+    console.error(`Failed to fetch itinerary feed: ${feedRes.status} ${feedRes.statusText}`);
+    process.exit(1);
+  }
   const feed = await feedRes.json();
 
   const allDaysHtml = feed.days.map(renderDaySection).join("");
@@ -93,8 +121,8 @@ async function main() {
 </div>
 </body></html>`;
 
-  console.log(`Sending to ${TEST_RECIPIENTS.length} recipient(s)...`);
-  for (const email of TEST_RECIPIENTS) {
+  console.log(`Sending to ${recipients.length} recipient(s)...`);
+  for (const email of recipients) {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
