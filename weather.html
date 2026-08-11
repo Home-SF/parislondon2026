@@ -148,6 +148,11 @@
 <p class="weather-note">Forecast data from Open-Meteo (open-meteo.com), a free weather API with no key required &mdash; refreshes live on each page load. Nothing is stored on the site itself.</p>
 </div>
 <footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="index.html">Back to all days</a></div></footer>
+<button type="button" id="checkin-fab" class="checkin-fab">&#128205; Check In</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-firestore-compat.min.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/checkin.js"></script>
 <script>
 (function() {
   var WMO = {
