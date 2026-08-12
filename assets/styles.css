@@ -1210,6 +1210,25 @@ a { color: inherit; }
 }
 .checkin-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(36, 31, 27, 0.3); }
 
+.photo-fab {
+  position: fixed;
+  bottom: 78px;
+  right: 22px;
+  z-index: 500;
+  background: var(--brass);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 13px 20px;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(36, 31, 27, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.photo-fab:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(36, 31, 27, 0.3); }
+
 .nearby-fab {
   position: fixed;
   bottom: 78px;
@@ -1357,6 +1376,57 @@ a { color: inherit; }
   font-size: 0.82rem;
   cursor: pointer;
 }
+
+/* ---------- Photo/video upload button + modal ---------- */
+
+.media-title { color: var(--brass) !important; }
+
+.media-option-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-raised);
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-family: var(--body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: left;
+  transition: border-color 0.15s ease;
+}
+.media-option-btn:hover { border-color: var(--brass); }
+.media-option-icon { font-size: 1.3rem; line-height: 1; flex-shrink: 0; }
+
+.media-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 4px 0 14px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.media-progress-item {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.media-progress-item .media-progress-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.media-progress-item .ok { color: #1E7A3D; flex-shrink: 0; }
+.media-progress-item .fail { color: #C0392B; flex-shrink: 0; }
+.media-progress-item .pending { color: var(--ink-faint); flex-shrink: 0; }
 
 /* ---------- Trip Map page ---------- */
 
@@ -2096,6 +2166,7 @@ footer {
   .photo-cell img { height: 100px; }
   .photo-dropzone { padding: 20px 12px; }
   .checkin-fab { bottom: 16px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
+  .photo-fab { bottom: 66px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
   .nearby-fab { bottom: 66px; right: 16px; padding: 11px 16px; font-size: 0.78rem; }
   .nearby-status { bottom: 118px; right: 16px; max-width: 220px; }
   .checkin-people-grid { grid-template-columns: 1fr; }
