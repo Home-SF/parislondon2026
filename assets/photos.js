@@ -1,13 +1,14 @@
 /* ============================================================
-   Trip Photos — EXIF-based day sorting, stored in Firebase
-   (Firestore for the index, Storage for the image files)
-   Shared across every device that visits the site.
+   Trip Photos & Videos — EXIF-based day sorting for photos,
+   stored in Firebase (Firestore for the index, Storage for the
+   files). Shared across every device that visits the site.
    ============================================================ */
 
 (function (global) {
   var MAX_DIMENSION = 3200;
   var JPEG_QUALITY = 0.82;
   var COLLECTION = "photos";
+  var MAX_VIDEO_BYTES = 200 * 1024 * 1024; // 200MB safety cap
 
   var app, db, storage, initError = null;
 
@@ -85,7 +86,15 @@
   }
 
   function sanitizeFilename(name) {
-    return (name || "photo.jpg").replace(/[^a-zA-Z0-9._-]/g, "_");
+    return (name || "media").replace(/[^a-zA-Z0-9._-]/g, "_");
+  }
+
+  function extFromMime(mime) {
+    var m = /^video\/(\w+)/.exec(mime || "");
+    if (!m) return "mp4";
+    var sub = m[1].toLowerCase();
+    if (sub === "quicktime") return "mov";
+    return sub;
   }
 
   function fmtTime(t) {
@@ -97,13 +106,9 @@
     return h12 + ":" + m + " " + ampm;
   }
 
-  // Uploads one file: reads EXIF date, resizes, uploads to Storage,
+  // Uploads one image file: reads EXIF date, resizes, uploads to Storage,
   // writes a Firestore doc. Returns the saved record or null on failure.
-  async function addPhotoFile(file) {
-    ensureInit();
-    if (initError) throw initError;
-    if (!/^image\//.test(file.type)) return null;
-
+  async function addPhotoFileInternal(file) {
     var exifDT = await readExif(file);
     var dt = exifDT || fallbackDateTime(file);
 
@@ -120,6 +125,7 @@
     var url = await ref.getDownloadURL();
 
     var docData = {
+      type: "image",
       date: dt.date,
       time: dt.time,
       estimated: !!dt.estimated,
@@ -133,6 +139,43 @@
     return docData;
   }
 
+  // Uploads one video file as-is (no re-encoding — browsers can't
+  // transcode video). Videos don't carry EXIF, so day sorting always
+  // falls back to the file's lastModified timestamp.
+  async function addVideoFileInternal(file) {
+    if (file.size > MAX_VIDEO_BYTES) return null;
+    var dt = fallbackDateTime(file);
+    var ext = extFromMime(file.type);
+    var path = "videos/" + dt.date + "/" + Date.now() + "-" + sanitizeFilename(file.name || ("video." + ext));
+    var ref = storage.ref().child(path);
+    await ref.put(file, { contentType: file.type || "video/mp4" });
+    var url = await ref.getDownloadURL();
+
+    var docData = {
+      type: "video",
+      date: dt.date,
+      time: dt.time,
+      estimated: !!dt.estimated,
+      filename: file.name,
+      url: url,
+      storagePath: path,
+      addedAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+    var docRef = await db.collection(COLLECTION).add(docData);
+    docData.id = docRef.id;
+    return docData;
+  }
+
+  // Uploads one file (image or video) — dispatches by MIME type.
+  // Returns the saved record, or null if the file was skipped/failed.
+  async function addMediaFile(file) {
+    ensureInit();
+    if (initError) throw initError;
+    if (/^image\//.test(file.type)) return addPhotoFileInternal(file);
+    if (/^video\//.test(file.type)) return addVideoFileInternal(file);
+    return null;
+  }
+
   async function deletePhoto(id, storagePath) {
     ensureInit();
     try { await db.collection(COLLECTION).doc(id).delete(); } catch (e) { /* ignore */ }
@@ -141,38 +184,54 @@
     }
   }
 
-  function openLightbox(src, alt) {
+  function openLightbox(src, alt, isVideo) {
     var overlay = document.createElement("div");
     overlay.className = "photo-lightbox";
-    overlay.innerHTML = '<img src="' + src + '" alt="' + (alt || "").replace(/"/g, "&quot;") + '">';
-    overlay.addEventListener("click", function () { overlay.remove(); });
+    if (isVideo) {
+      overlay.innerHTML = '<video src="' + src + '" controls autoplay playsinline></video>';
+    } else {
+      overlay.innerHTML = '<img src="' + src + '" alt="' + (alt || "").replace(/"/g, "&quot;") + '">';
+    }
+    overlay.addEventListener("click", function (e) {
+      if (isVideo && e.target.tagName === "VIDEO") return;
+      overlay.remove();
+    });
     document.body.appendChild(overlay);
   }
 
   function renderGrid(containerEl, photos) {
     if (!photos.length) {
-      containerEl.innerHTML = '<div class="photo-empty">No photos added for this day yet.</div>';
+      containerEl.innerHTML = '<div class="photo-empty">No photos or videos added for this day yet.</div>';
       return;
     }
     containerEl.innerHTML = "";
     var grid = document.createElement("div");
     grid.className = "photo-grid";
     photos.forEach(function (p) {
+      var isVideo = p.type === "video";
       var cell = document.createElement("div");
       cell.className = "photo-cell";
-      var img = document.createElement("img");
-      img.src = p.url;
-      img.alt = p.filename || "";
-      img.loading = "lazy";
-      img.addEventListener("click", function () { openLightbox(p.url, p.filename); });
+      var media;
+      if (isVideo) {
+        media = document.createElement("video");
+        media.src = p.url;
+        media.muted = true;
+        media.preload = "metadata";
+      } else {
+        media = document.createElement("img");
+        media.src = p.url;
+        media.loading = "lazy";
+      }
+      media.alt = p.filename || "";
+      media.addEventListener("click", function () { openLightbox(p.url, p.filename, isVideo); });
       var cap = document.createElement("div");
       cap.className = "photo-cap";
-      cap.innerHTML = '<span>' + fmtTime(p.time) + (p.estimated ? ' <em title="No camera date found — estimated from file info (UTC)">(est.)</em>' : '') + '</span>' +
-        '<button type="button" class="photo-del" title="Remove photo">&times;</button>';
+      cap.innerHTML = '<span>' + (isVideo ? "&#127909; " : "") + fmtTime(p.time) + (p.estimated ? ' <em title="No camera date found — estimated from file info (UTC)">(est.)</em>' : '') + '</span>' +
+        '<button type="button" class="photo-del" title="Remove">&times;</button>';
       cap.querySelector(".photo-del").addEventListener("click", async function () {
         await deletePhoto(p.id, p.storagePath);
       });
-      cell.appendChild(img);
+      cell.appendChild(media);
       cell.appendChild(cap);
       grid.appendChild(cell);
     });
@@ -206,17 +265,19 @@
     function setStatus(msg) { if (statusEl) statusEl.textContent = msg; }
 
     async function handleFiles(fileList) {
-      var files = Array.prototype.filter.call(fileList, function (f) { return /^image\//.test(f.type); });
-      if (!files.length) { setStatus("No image files found."); return; }
-      setStatus("Uploading " + files.length + " photo" + (files.length > 1 ? "s" : "") + "\u2026");
+      var files = Array.prototype.filter.call(fileList, function (f) {
+        return /^image\//.test(f.type) || /^video\//.test(f.type);
+      });
+      if (!files.length) { setStatus("No photo or video files found."); return; }
+      setStatus("Uploading " + files.length + " file" + (files.length > 1 ? "s" : "") + "\u2026");
       var done = 0;
       for (var i = 0; i < files.length; i++) {
         try {
-          var rec = await addPhotoFile(files[i]);
+          var rec = await addMediaFile(files[i]);
           if (rec) done++;
         } catch (e) { /* skip failed file */ }
       }
-      setStatus(done + " of " + files.length + " photo" + (files.length > 1 ? "s" : "") + " uploaded.");
+      setStatus(done + " of " + files.length + " file" + (files.length > 1 ? "s" : "") + " uploaded.");
     }
 
     zoneEl.addEventListener("click", function () { inputEl.click(); });
@@ -244,7 +305,8 @@
   }
 
   global.TripPhotos = {
-    addPhotoFile: addPhotoFile,
+    addPhotoFile: addMediaFile, // back-compat alias — now handles video too
+    addMediaFile: addMediaFile,
     deletePhoto: deletePhoto,
     renderDayGallery: renderDayGallery,
     initUploadZone: initUploadZone,
