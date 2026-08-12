@@ -8,7 +8,7 @@
   var MAX_DIMENSION = 3200;
   var JPEG_QUALITY = 0.82;
   var COLLECTION = "photos";
-  var MAX_VIDEO_BYTES = 200 * 1024 * 1024; // 200MB safety cap
+  var MAX_VIDEO_BYTES = 500 * 1024 * 1024; // 500MB safety cap
 
   var app, db, storage, initError = null;
 
@@ -97,6 +97,15 @@
     return sub;
   }
 
+  function guessTypeFromName(name) {
+    var ext = (name || "").split(".").pop().toLowerCase();
+    var imageExts = ["jpg", "jpeg", "png", "gif", "heic", "heif", "webp", "bmp"];
+    var videoExts = ["mov", "mp4", "m4v", "3gp", "avi", "webm", "mkv"];
+    if (imageExts.indexOf(ext) !== -1) return "image/" + (ext === "jpg" ? "jpeg" : ext);
+    if (videoExts.indexOf(ext) !== -1) return "video/" + ext;
+    return "";
+  }
+
   function fmtTime(t) {
     if (!t) return "";
     var parts = t.split(":");
@@ -107,7 +116,7 @@
   }
 
   // Uploads one image file: reads EXIF date, resizes, uploads to Storage,
-  // writes a Firestore doc. Returns the saved record or null on failure.
+  // writes a Firestore doc. Returns the saved record.
   async function addPhotoFileInternal(file) {
     var exifDT = await readExif(file);
     var dt = exifDT || fallbackDateTime(file);
@@ -116,7 +125,7 @@
     try {
       blob = await resizeToBlob(file);
     } catch (e) {
-      return null;
+      throw new Error("Could not process image" + (e && e.message ? ": " + e.message : ""));
     }
 
     var path = "photos/" + dt.date + "/" + Date.now() + "-" + sanitizeFilename(file.name);
@@ -143,7 +152,11 @@
   // transcode video). Videos don't carry EXIF, so day sorting always
   // falls back to the file's lastModified timestamp.
   async function addVideoFileInternal(file) {
-    if (file.size > MAX_VIDEO_BYTES) return null;
+    if (file.size > MAX_VIDEO_BYTES) {
+      var mb = (file.size / (1024 * 1024)).toFixed(0);
+      var capMb = MAX_VIDEO_BYTES / (1024 * 1024);
+      throw new Error("Video too large (" + mb + "MB, limit " + capMb + "MB)");
+    }
     var dt = fallbackDateTime(file);
     var ext = extFromMime(file.type);
     var path = "videos/" + dt.date + "/" + Date.now() + "-" + sanitizeFilename(file.name || ("video." + ext));
@@ -166,14 +179,18 @@
     return docData;
   }
 
-  // Uploads one file (image or video) — dispatches by MIME type.
-  // Returns the saved record, or null if the file was skipped/failed.
+  // Uploads one file (image or video) — dispatches by MIME type, falling
+  // back to guessing from the filename extension when the browser hands
+  // back an empty MIME type (happens on some mobile browsers for
+  // camera-captured clips). Returns the saved record, or throws with a
+  // human-readable reason if the upload was skipped or failed.
   async function addMediaFile(file) {
     ensureInit();
     if (initError) throw initError;
-    if (/^image\//.test(file.type)) return addPhotoFileInternal(file);
-    if (/^video\//.test(file.type)) return addVideoFileInternal(file);
-    return null;
+    var type = file.type || guessTypeFromName(file.name);
+    if (/^image\//.test(type)) return addPhotoFileInternal(file);
+    if (/^video\//.test(type)) return addVideoFileInternal(file);
+    throw new Error("Unrecognized file type" + (file.type ? " (" + file.type + ")" : ""));
   }
 
   async function deletePhoto(id, storagePath) {
@@ -266,7 +283,7 @@
 
     async function handleFiles(fileList) {
       var files = Array.prototype.filter.call(fileList, function (f) {
-        return /^image\//.test(f.type) || /^video\//.test(f.type);
+        return /^image\//.test(f.type) || /^video\//.test(f.type) || !!guessTypeFromName(f.name);
       });
       if (!files.length) { setStatus("No photo or video files found."); return; }
       setStatus("Uploading " + files.length + " file" + (files.length > 1 ? "s" : "") + "\u2026");
