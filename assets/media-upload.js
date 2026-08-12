@@ -15,7 +15,17 @@
     input.accept = accept;
     input.multiple = !capture;
     if (capture) input.capture = "environment";
-    input.style.display = "none";
+    // Deliberately NOT display:none — some mobile browsers (notably iOS
+    // Safari) never fire the "change" event on a file input that isn't in
+    // the render tree. Push it off-screen instead so it stays "visible"
+    // to the browser's event system while being invisible to the user.
+    input.style.position = "fixed";
+    input.style.top = "-9999px";
+    input.style.left = "-9999px";
+    input.style.width = "1px";
+    input.style.height = "1px";
+    input.style.opacity = "0";
+    input.style.pointerEvents = "none";
     document.body.appendChild(input);
     return input;
   }
@@ -89,8 +99,10 @@
         var input = makeHiddenInput(accept, capture);
         input.addEventListener("change", function () {
           var files = Array.prototype.slice.call(input.files || []);
-          input.remove();
           if (files.length) uploadFiles(overlay, bodyEl, files);
+          // Remove on a later tick — some mobile browsers are still
+          // reading from the input synchronously right after "change".
+          setTimeout(function () { input.remove(); }, 0);
         });
         input.click();
       });
