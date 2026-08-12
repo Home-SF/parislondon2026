@@ -30,6 +30,11 @@
     return input;
   }
 
+  function truncate(str, n) {
+    str = String(str || "");
+    return str.length > n ? str.slice(0, n - 1) + "\u2026" : str;
+  }
+
   function renderProgress(bodyEl, files) {
     bodyEl.innerHTML = "";
     var list = document.createElement("div");
@@ -65,10 +70,12 @@
         } else {
           stateEls[i].className = "fail";
           stateEls[i].textContent = "skipped";
+          failed++;
         }
       } catch (e) {
         stateEls[i].className = "fail";
-        stateEls[i].textContent = "failed";
+        stateEls[i].title = (e && e.message) || "";
+        stateEls[i].textContent = truncate((e && e.message) || "failed", 28);
         failed++;
       }
     }
