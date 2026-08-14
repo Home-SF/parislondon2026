@@ -170,8 +170,9 @@
       "email_timezone": "Europe/Paris",
       "events": [
         { "time": "9:30 AM", "title": "Visit Notre Dame Cathedral", "note": "Free entry to the nave", "placeholder": false },
-        { "time": "TBD", "title": "Park Hyatt Vendôme to Gare du Nord", "note": "Taxi to the station — exact time depends on the train we book", "placeholder": true },
-        { "time": "Depart: 3:02 PM · Arrive: 4:30 PM", "title": "Eurostar ES 9039 — Paris to London", "note": "Whole group of 7 traveling together · Depart Gare du Nord · Arrive St Pancras International · Journey time ~2h28m", "placeholder": false },
+        { "time": "TBD", "title": "Park Hyatt Vendôme to Gare du Nord", "note": "Taxi to the station — must arrive by 1:32 PM (90 min before departure) for check-in and security; exact departure time from hotel depends on traffic", "placeholder": true },
+        { "time": "1:32 PM", "title": "Arrive at Gare du Nord — Eurostar check-in", "note": "Arrive 90 minutes before departure · Whole group of 7 · Allow time for security and border control ahead of the 3:02 PM departure", "placeholder": false },
+        { "time": "Depart: 3:02 PM · Arrive: 4:30 PM", "title": "Eurostar ES 9039 — Paris to London", "note": "Whole group of 7 traveling together · Depart Gare du Nord · Arrive St Pancras International · Journey time ~2h28m · Arrive at the station by 1:32 PM (90 min prior) for check-in", "placeholder": false },
         { "time": "TBD", "title": "St Pancras to Nobu Hotel - Portman Square", "note": "Taxi to the hotel on arrival into London", "placeholder": true },
         { "time": "", "title": "Check in — Nobu Hotel - Portman Square", "note": "", "placeholder": false },
         { "time": "7:30 PM", "title": "Dinner — The Seashell of Lisson Grove", "note": "Party of 7 · 24 hours notice to cancel, no penalty", "placeholder": false }
