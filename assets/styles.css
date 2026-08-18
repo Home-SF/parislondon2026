@@ -311,6 +311,38 @@ a { color: inherit; }
 .city-section.london .day-card:not(.travel) { border-left: 4px solid var(--london); }
 .city-section.toronto .day-card:not(.travel) { border-left: 4px solid var(--toronto); }
 
+/* Today highlight — driven by assets/today-highlight.js */
+.day-card.is-today {
+  border: 2.5px solid var(--brass);
+  background: linear-gradient(135deg, #FFF1D2, var(--bg-raised));
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.35), 3px 5px 0 rgba(36, 31, 27, 0.12);
+  transform: rotate(0deg) scale(1.035);
+  z-index: 1;
+}
+.day-card.is-today:hover {
+  border-color: var(--brass);
+  transform: rotate(0deg) scale(1.035) translateY(-2px);
+}
+.day-card.is-today .num {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+.day-card.is-today::before {
+  content: 'TODAY';
+  position: absolute;
+  top: -11px;
+  left: 14px;
+  background: var(--brass);
+  color: #fff;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(36, 31, 27, 0.25);
+}
+
 /* ---------- Day page ---------- */
 
 .day-hero {
