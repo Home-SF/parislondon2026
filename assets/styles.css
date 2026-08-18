@@ -313,9 +313,9 @@ a { color: inherit; }
 
 /* Today highlight — driven by assets/today-highlight.js */
 .day-card.is-today {
-  border: 2.5px solid var(--brass);
-  background: linear-gradient(135deg, #FFF1D2, var(--bg-raised));
-  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.35), 3px 5px 0 rgba(36, 31, 27, 0.12);
+  border: 3px solid var(--brass);
+  background: #F6DC9E;
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.4), 3px 5px 0 rgba(36, 31, 27, 0.15);
   transform: rotate(0deg) scale(1.035);
   z-index: 1;
 }
