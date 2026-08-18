@@ -187,11 +187,11 @@
       "hotel": "Nobu Hotel - Portman Square",
       "email_timezone": "Europe/London",
       "events": [
-        { "time": "11:00 AM", "title": "Borough Market", "note": "90-minute visit — Kappacasein, Neal's Yard Dairy, Bread Ahead, Brindisa, Monmouth Coffee and more", "placeholder": false },
+        { "time": "10:00 AM", "title": "Borough Market", "note": "90-minute visit — Kappacasein, Neal's Yard Dairy, Bread Ahead, Brindisa, Monmouth Coffee and more", "placeholder": false },
         { "time": "12:15 PM", "title": "Lunch — Barrowboy & Banker", "note": "Party of 7 · No cancellation policy, but table only held for 15 minutes", "placeholder": false },
         { "time": "2:15 PM – 4:15 PM", "title": "Buckingham Palace — Self-Guided Tour", "note": "State Rooms summer opening — book timed-entry tickets in advance", "placeholder": false },
         { "time": "5:30 PM", "title": "Pre-theatre dinner — Ambassador Clubhouse", "note": "Party of 7 · Michelin 1 Star · Cancel by Aug 17, 5:30 PM (24 hrs ahead) to avoid a cancellation fee", "placeholder": false },
-        { "time": "Evening", "title": "Les Misérables — Sondheim Theatre", "note": "Row L, seats 18–24", "placeholder": false }
+        { "time": "7:30 PM", "title": "Les Misérables — Sondheim Theatre", "note": "Row L, seats 18–24", "placeholder": false }
       ]
     },
     {
@@ -266,7 +266,7 @@
       "hotel": "",
       "email_timezone": "Europe/London",
       "events": [
-        { "time": "Depart: 10:15 AM · Arrive: 1:50 PM · Duration: ~11h35m", "title": "Flight DL 5965 — London (LHR) to San Francisco (SFO)", "note": "Seats 5K / 5G / 5D", "placeholder": false }
+        { "time": "Depart: 12:45 PM · Arrive: 3:45 PM · Duration: ~11h00m", "title": "Flight DL 5965 — London (LHR) to San Francisco (SFO)", "note": "Seats 5K / 5G / 5D", "placeholder": false }
       ]
     }
   ]
