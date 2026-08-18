@@ -313,26 +313,29 @@ a { color: inherit; }
 
 /* Today highlight — driven by assets/today-highlight.js */
 .day-card.is-today {
-  border: 3px solid var(--brass);
-  background: #F6DC9E;
-  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.4), 3px 5px 0 rgba(36, 31, 27, 0.15);
+  border: 3px solid #B8842E;
+  background: #F0C878;
+  box-shadow: 0 0 0 3px rgba(184, 132, 46, 0.45), 4px 6px 0 rgba(36, 31, 27, 0.18);
   transform: rotate(0deg) scale(1.035);
   z-index: 1;
 }
 .day-card.is-today:hover {
-  border-color: var(--brass);
+  border-color: #B8842E;
   transform: rotate(0deg) scale(1.035) translateY(-2px);
 }
 .day-card.is-today .num {
-  border-color: var(--brass);
-  color: var(--brass);
+  border-color: #B8842E;
+  color: #8A611E;
+}
+.day-card.is-today .kk {
+  color: #6B4E17;
 }
 .day-card.is-today::before {
   content: 'TODAY';
   position: absolute;
   top: -11px;
   left: 14px;
-  background: var(--brass);
+  background: #B8842E;
   color: #fff;
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -340,7 +343,7 @@ a { color: inherit; }
   letter-spacing: 0.06em;
   padding: 3px 10px;
   border-radius: 100px;
-  box-shadow: 0 2px 6px rgba(36, 31, 27, 0.25);
+  box-shadow: 0 2px 6px rgba(36, 31, 27, 0.3);
 }
 
 /* ---------- Day page ---------- */
