@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Status &middot; Paris & London</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="topnav"><div class="wrap">
+<a class="brand" href="index.html">Paris <em>&amp;</em> London <em>2026</em></a>
+<div class="navlinks"><a class="back" href="location-map.html">Trip Map</a><a class="back" href="index.html">&larr; Home</a></div>
+</div></nav>
+<header class="hero"><div class="wrap">
+<p class="eyebrow">Right now</p>
+<h1>Live Status</h1>
+<p class="sub">Shows anyone who's checked in within the last 2 minutes. Pins disappear automatically once they age out &mdash; hit Check In to show up here.</p>
+</div></header>
+<div class="wrap">
+
+<div class="live-status-banner"><span class="live-dot"></span><span id="live-count-label">Checking for recent check-ins&hellip;</span></div>
+
+<div class="map-container" id="live-map"></div>
+
+<div class="live-people-list" id="live-people-list"></div>
+
+</div>
+<footer><div class="wrap">Paris &amp; London 2026 &middot; <a href="index.html">Back to all days</a></div></footer>
+<button type="button" id="checkin-fab" class="checkin-fab">&#128205; Check In</button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-app-compat.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/12.15.0/firebase-firestore-compat.min.js"></script>
+<script src="assets/firebase-config.js"></script>
+<script src="assets/live-status.js"></script>
+<script src="assets/checkin.js"></script>
+</body></html>
