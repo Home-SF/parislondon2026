@@ -1,6 +1,8 @@
 /* ============================================================
    Check In — logs a GPS point + timestamp to Firebase so it
-   shows up on the Trip Map page for everyone.
+   shows up on the Trip Map page for everyone. The place-name
+   field is pre-filled with a reverse-geocoded guess (free,
+   keyless Nominatim) that the person can accept, edit, or clear.
    ============================================================ */
 
 (function () {
@@ -25,6 +27,34 @@
     overlay.remove();
   }
 
+  // Builds a short, human-friendly default like "Café de Flore" or
+  // "12 Rue de Rivoli" instead of a full comma-separated address.
+  async function reverseGeocodeShort(lat, lon) {
+    try {
+      var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + lat + "&lon=" + lon + "&zoom=18&addressdetails=1";
+      var res = await fetch(url, { headers: { "Accept": "application/json" } });
+      var data = await res.json();
+      if (!data) return null;
+
+      if (data.name) return data.name;
+
+      var addr = data.address || {};
+      var priorityKeys = ["amenity", "shop", "tourism", "leisure", "building", "office", "aeroway", "railway", "historic"];
+      for (var i = 0; i < priorityKeys.length; i++) {
+        if (addr[priorityKeys[i]]) return addr[priorityKeys[i]];
+      }
+      if (addr.road) {
+        return (addr.house_number ? addr.house_number + " " : "") + addr.road;
+      }
+      if (addr.neighbourhood) return addr.neighbourhood;
+      if (addr.suburb) return addr.suburb;
+      if (data.display_name) return data.display_name.split(",")[0];
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
   function doCheckIn(name, overlay, bodyEl) {
     ensureInit();
     bodyEl.innerHTML = '<div class="checkin-status">Getting your location&hellip;</div>';
@@ -33,24 +63,38 @@
       return;
     }
     navigator.geolocation.getCurrentPosition(function (pos) {
-      renderPlaceNameStep(name, pos.coords.latitude, pos.coords.longitude, overlay, bodyEl);
+      var lat = pos.coords.latitude, lon = pos.coords.longitude;
+      bodyEl.innerHTML = '<div class="checkin-status">Looking up the location name&hellip;</div>';
+      reverseGeocodeShort(lat, lon).then(function (guess) {
+        renderPlaceNameStep(name, lat, lon, guess, overlay, bodyEl);
+      });
     }, function (err) {
       bodyEl.innerHTML = '<div class="checkin-status">Location permission was denied or unavailable. Enable location access for this site to check in.</div>';
     }, { enableHighAccuracy: true, timeout: 15000 });
   }
 
-  function renderPlaceNameStep(name, lat, lon, overlay, bodyEl) {
+  function renderPlaceNameStep(name, lat, lon, guess, overlay, bodyEl) {
     bodyEl.innerHTML = '';
     var label = document.createElement("div");
     label.className = "checkin-status";
     label.textContent = "Where are you checking in?";
     bodyEl.appendChild(label);
 
+    if (guess) {
+      var hint = document.createElement("div");
+      hint.className = "checkin-status";
+      hint.style.fontSize = "0.78rem";
+      hint.style.marginTop = "-6px";
+      hint.textContent = "Guessed from your location \u2014 edit or clear it if it's wrong.";
+      bodyEl.appendChild(hint);
+    }
+
     var input = document.createElement("input");
     input.type = "text";
     input.className = "checkin-place-input";
-    input.placeholder = "e.g. Eiffel Tower, hotel lobby, Café de Flore";
+    input.placeholder = "e.g. Eiffel Tower, hotel lobby, Caf\u00e9 de Flore";
     input.maxLength = 80;
+    input.value = guess || "";
     bodyEl.appendChild(input);
 
     var saveBtn = document.createElement("button");
@@ -75,6 +119,7 @@
       if (e.key === "Enter") { e.preventDefault(); saveBtn.click(); }
     });
     input.focus();
+    input.select();
   }
 
   function saveCheckIn(name, lat, lon, placeName, overlay, bodyEl) {
