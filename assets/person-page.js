@@ -57,7 +57,7 @@
       points.sort(function (a, b) {
         var ta = a.timestamp && a.timestamp.toMillis ? a.timestamp.toMillis() : 0;
         var tb = b.timestamp && b.timestamp.toMillis ? b.timestamp.toMillis() : 0;
-        return tb - ta; // most recent first
+        return ta - tb; // chronological — earliest first
       });
 
       var mapEl = document.getElementById("map-" + city.key);
