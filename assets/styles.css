@@ -2135,6 +2135,133 @@ a { color: inherit; }
   font-size: 0.94rem;
 }
 
+/* ---------- Person check-in page ---------- */
+
+.person-city-block {
+  margin: 40px 0;
+}
+.person-city-block h2 {
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+.person-city-block.paris h2 { color: var(--paris); }
+.person-city-block.london h2 { color: var(--london); }
+.person-city-block.toronto h2 { color: var(--toronto); }
+
+.person-map {
+  height: 320px;
+  border-radius: 10px;
+  border: 1.5px dashed var(--rule-strong);
+  overflow: hidden;
+  background: var(--bg-raised);
+}
+
+.person-empty {
+  padding: 20px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  color: var(--ink-faint);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.checkin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+.checkin-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg-raised);
+  font-size: 0.88rem;
+}
+.checkin-row .cr-place { font-weight: 600; }
+.checkin-row .cr-time {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ---------- Live status page ---------- */
+
+.live-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1.5px dashed var(--rule-strong);
+  border-radius: 10px;
+  background: var(--bg-raised);
+  margin-bottom: 20px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+.live-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1E7A3D;
+  flex-shrink: 0;
+  animation: live-pulse 1.6s infinite ease-in-out;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.live-status-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #fff;
+  background: #1E7A3D;
+  padding: 8px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  transition: background 0.15s ease;
+}
+.live-status-link:hover { background: #175F30; }
+
+.live-people-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.live-person-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 100px;
+  border: 1px solid var(--rule-strong);
+  background: var(--bg-raised);
+}
+.live-person-chip .lp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
 /* ---------- Footer ---------- */
 
 footer {
@@ -2211,6 +2338,8 @@ footer {
   .meal-row { grid-template-columns: 1fr; gap: 8px; }
   .bird-species-cols { grid-template-columns: 1fr; gap: 16px; }
   .bird-best-time-hero { font-size: 1.9rem; }
+  .person-map { height: 240px; }
+  .checkin-row { flex-direction: column; align-items: flex-start; gap: 2px; }
 }
 
 @media (max-width: 380px) {
@@ -2221,4 +2350,5 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .day-card { transition: none; }
+  .live-dot { animation: none; }
 }
