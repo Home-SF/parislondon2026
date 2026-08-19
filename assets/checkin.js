@@ -33,6 +33,10 @@
     try {
       var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + lat + "&lon=" + lon + "&zoom=18&addressdetails=1";
       var res = await fetch(url, { headers: { "Accept": "application/json" } });
+      if (!res.ok) {
+        console.warn("Check-in geocode lookup failed:", res.status, res.statusText);
+        return null;
+      }
       var data = await res.json();
       if (!data) return null;
 
@@ -51,6 +55,7 @@
       if (data.display_name) return data.display_name.split(",")[0];
       return null;
     } catch (e) {
+      console.warn("Check-in geocode lookup threw:", e);
       return null;
     }
   }
@@ -80,14 +85,14 @@
     label.textContent = "Where are you checking in?";
     bodyEl.appendChild(label);
 
-    if (guess) {
-      var hint = document.createElement("div");
-      hint.className = "checkin-status";
-      hint.style.fontSize = "0.78rem";
-      hint.style.marginTop = "-6px";
-      hint.textContent = "Guessed from your location \u2014 edit or clear it if it's wrong.";
-      bodyEl.appendChild(hint);
-    }
+    var hint = document.createElement("div");
+    hint.className = "checkin-status";
+    hint.style.fontSize = "0.78rem";
+    hint.style.marginTop = "-6px";
+    hint.textContent = guess
+      ? "Guessed from your location \u2014 edit or clear it if it's wrong."
+      : "Couldn't guess a name for this spot \u2014 type one below, or skip.";
+    bodyEl.appendChild(hint);
 
     var input = document.createElement("input");
     input.type = "text";
