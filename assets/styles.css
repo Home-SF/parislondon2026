@@ -139,13 +139,22 @@ a { color: inherit; }
   flex-wrap: wrap;
   gap: 8px;
 }
-.travelers span {
+.travelers span,
+.travelers a {
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--ink-soft);
   border: 1px solid var(--rule-strong);
   padding: 5px 12px;
   border-radius: 100px;
+}
+.travelers a {
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.travelers a:hover {
+  border-color: var(--paris);
+  color: var(--ink);
 }
 
 /* ---------- Route line (signature element: postal route) ---------- */
