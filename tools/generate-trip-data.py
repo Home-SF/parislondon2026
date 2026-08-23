@@ -3,6 +3,7 @@
 generate-trip-data.py
 Parses parislondon2026 static HTML pages → structured trip-data.json
 Run from the repo root: python3 tools/generate-trip-data.py
+Outputs: tools/trip-data.json
 """
 
 import json
@@ -25,7 +26,7 @@ MONTH_MAP = {
     'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
 }
 
-# ─── helpers ────────────────────────────────────────────────────────────────────────────────────
+# ─── helpers ────────────────────────────────────────────────────────────────────────────
 
 def txt(el):
     """Get clean text from a BeautifulSoup element."""
@@ -35,8 +36,8 @@ def txt(el):
 
 
 def parse_reservation(visit_text):
-    """
-    Parse rest-visit text into structured reservation fields.
+    """Parse rest-visit text into structured reservation fields.
+
     Examples:
       "Dinner planned — Aug 11, 7:30 PM (party of 3)"
       "Lunch planned — Aug 13, 1:30 PM, 1 hour · Reservation code a9FUab"
@@ -47,24 +48,29 @@ def parse_reservation(visit_text):
 
     result = {}
 
+    # Meal type
     m = re.match(r'^(Breakfast|Brunch|Lunch|Dinner)', visit_text, re.IGNORECASE)
     if m:
         result["mealType"] = m.group(1).lower()
 
+    # Date → ISO
     m = re.search(r'(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})', visit_text)
     if m:
         month = MONTH_MAP[m.group(1)]
         day = m.group(2).zfill(2)
         result["reservationDate"] = f"2026-{month}-{day}"
 
+    # Time
     m = re.search(r'(\d{1,2}:\d{2}\s*(?:AM|PM))', visit_text, re.IGNORECASE)
     if m:
         result["reservationTime"] = m.group(1).strip()
 
+    # Party size
     m = re.search(r'party of (\d+)', visit_text, re.IGNORECASE)
     if m:
         result["reservationPartySize"] = int(m.group(1))
 
+    # Duration
     m = re.search(r'(\d+)\s+hours?', visit_text, re.IGNORECASE)
     if m:
         result["reservationDurationMin"] = int(m.group(1)) * 60
@@ -73,6 +79,7 @@ def parse_reservation(visit_text):
         if m:
             result["reservationDurationMin"] = int(m.group(1))
 
+    # Reservation code
     m = re.search(r'[Rr]eservation code\s+(\S+)', visit_text)
     if m:
         result["reservationCode"] = m.group(1)
@@ -111,6 +118,7 @@ def extract_links(rlinks_div):
                 elif 'instagram' in label_lower:
                     links['instagram'] = href
                 elif label_lower:
+                    # Catch-all: use first word of label as key
                     key = re.sub(r'[^a-z0-9]', '_', label_lower)[:20].strip('_')
                     if key:
                         links[key] = href
@@ -122,7 +130,7 @@ def extract_links(rlinks_div):
     return links, muted
 
 
-# ─── restaurant parser ───────────────────────────────────────────────────────────────────────────────────
+# ─── restaurant parser ──────────────────────────────────────────────────────────────────────
 
 def parse_restaurants(html_content, city):
     soup = BeautifulSoup(html_content, 'lxml')
@@ -141,12 +149,14 @@ def parse_restaurants(html_content, city):
 
         el_classes = el.get('class', [])
 
+        # Arrondissement / neighbourhood group header
         if 'arr-header' in el_classes:
             h2 = el.find('h2')
             if h2:
                 current_group = txt(h2)
             continue
 
+        # Restaurant card
         if 'rest-card' not in el_classes:
             continue
 
@@ -154,6 +164,7 @@ def parse_restaurants(html_content, city):
         is_reserved = 'reserved' in el_classes and 'not-reserved' not in el_classes
         is_cancelled = 'rest-cancelled' in el_classes
 
+        # Number
         num_span = el.find('span', class_='rest-num')
         raw_id = el.get('id', '').replace('rest-', '')
         try:
@@ -161,9 +172,11 @@ def parse_restaurants(html_content, city):
         except ValueError:
             num = order
 
+        # Name
         h3 = el.find('h3')
         name = txt(h3)
 
+        # Address + neighbourhood (neighbourhood is a child span)
         addr_div = el.find('div', class_='rest-addr')
         neighborhood = ""
         address = ""
@@ -174,16 +187,20 @@ def parse_restaurants(html_content, city):
                 nb_span.extract()
             address = txt(addr_div)
 
+        # Hours
         hours_div = el.find('div', class_='rest-hours')
         hours = txt(hours_div)
 
+        # Visit / reservation details
         visit_div = el.find('div', class_='rest-visit')
         visit_text = txt(visit_div)
         reservation_data = parse_reservation(visit_text) if visit_text else {}
 
+        # Cancellation policy
         cancel_div = el.find('div', class_='rest-cancel')
         cancel_policy = txt(cancel_div)
 
+        # Links
         rlinks_div = el.find('div', class_='rlinks')
         links, muted = extract_links(rlinks_div)
 
@@ -215,7 +232,7 @@ def parse_restaurants(html_content, city):
     return restaurants
 
 
-# ─── activity parser ─────────────────────────────────────────────────────────────────────────────────────
+# ─── activity parser ───────────────────────────────────────────────────────────────────────
 
 def parse_activities(html_content, city):
     soup = BeautifulSoup(html_content, 'lxml')
@@ -237,18 +254,23 @@ def parse_activities(html_content, city):
         order += 1
         is_planned = 'act-planned' in el_classes
 
+        # Name
         h3 = el.find('h3')
         name = txt(h3)
 
+        # Address
         addr_div = el.find('div', class_='rest-addr')
         address = txt(addr_div)
 
+        # Hours
         hours_div = el.find('div', class_='rest-hours')
         hours = txt(hours_div)
 
+        # Fee
         fee_div = el.find('div', class_='act-fee')
         fee = txt(fee_div)
 
+        # Facts — extract label first, then remaining text
         facts = []
         for fact_div in el.find_all('div', class_='act-fact'):
             label_span = fact_div.find('span', class_='act-fact-label')
@@ -257,11 +279,17 @@ def parse_activities(html_content, city):
                 label_span.extract()
             fact_text = txt(fact_div)
             is_known = 'act-known' in fact_div.get('class', [])
-            facts.append({"label": label, "text": fact_text, "isKnown": is_known})
+            facts.append({
+                "label": label,
+                "text": fact_text,
+                "isKnown": is_known,
+            })
 
+        # Website
         website_link = el.find('a', class_='act-website')
         website = website_link.get('href', '') if website_link else ""
 
+        # Slug for URL use
         slug = re.sub(r'[^a-z0-9]+', '-', name.lower()).strip('-')
 
         activities.append({
@@ -282,23 +310,24 @@ def parse_activities(html_content, city):
     return activities
 
 
-# ─── main ───────────────────────────────────────────────────────────────────────────────────────
+# ─── main ───────────────────────────────────────────────────────────────────────────────
 
 def main():
-    # Script lives in tools/ but reads HTML from repo root
-    base = Path(__file__).parent.parent
+    tools_dir = Path(__file__).parent      # tools/
+    repo_root = tools_dir.parent           # repo root (HTML files live here)
 
     rest_files = {
-        "paris":   base / "restaurants-paris.html",
-        "london":  base / "restaurants-london.html",
-        "toronto": base / "restaurants-toronto.html",
+        "paris":   repo_root / "restaurants-paris.html",
+        "london":  repo_root / "restaurants-london.html",
+        "toronto": repo_root / "restaurants-toronto.html",
     }
     act_files = {
-        "paris":  base / "activities-paris.html",
-        "london": base / "activities-london.html",
+        "paris":  repo_root / "activities-paris.html",
+        "london": repo_root / "activities-london.html",
     }
 
-    itinerary_path = base / "itinerary-feed.json"
+    # Load itinerary
+    itinerary_path = repo_root / "itinerary-feed.json"
     itinerary_data = {}
     if itinerary_path.exists():
         with open(itinerary_path, encoding='utf-8') as f:
@@ -306,6 +335,7 @@ def main():
     else:
         print("WARNING: itinerary-feed.json not found", file=sys.stderr)
 
+    # Parse restaurants
     all_restaurants = []
     for city, path in rest_files.items():
         if not path.exists():
@@ -319,6 +349,7 @@ def main():
         print(f"  → {len(rests)} restaurants ({reserved_count} reserved)", file=sys.stderr)
         all_restaurants.extend(rests)
 
+    # Parse activities
     all_activities = []
     for city, path in act_files.items():
         if not path.exists():
@@ -332,6 +363,7 @@ def main():
         print(f"  → {len(acts)} activities ({planned_count} planned)", file=sys.stderr)
         all_activities.extend(acts)
 
+    # Build output
     trip_data = {
         "tripId": TRIP_ID,
         "generatedAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -345,10 +377,11 @@ def main():
         "activities": all_activities,
     }
 
-    out_path = base / "trip-data.json"
+    out_path = tools_dir / "trip-data.json"
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(trip_data, f, ensure_ascii=False, indent=2)
 
+    # Summary
     n_days = len(trip_data["days"])
     n_rest = len(all_restaurants)
     n_rest_res = sum(1 for r in all_restaurants if r['reserved'])
@@ -357,6 +390,13 @@ def main():
 
     print(f"\n✓ {out_path}", file=sys.stderr)
     print(f"  {n_days} days  |  {n_rest} restaurants ({n_rest_res} reserved)  |  {n_act} activities ({n_act_pl} planned)", file=sys.stderr)
+
+    # Quick sanity: show a sample reserved restaurant
+    reserved = [r for r in all_restaurants if r['reserved']]
+    if reserved:
+        r = reserved[0]
+        print(f"\n  Sample reserved: {r['city']} #{r['num']} {r['name']}", file=sys.stderr)
+        print(f"    date={r.get('reservationDate','')} time={r.get('reservationTime','')} party={r.get('reservationPartySize','?')}", file=sys.stderr)
 
 
 if __name__ == "__main__":
