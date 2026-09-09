@@ -64,10 +64,12 @@
       var dot = document.createElement("span");
       dot.className = "lp-dot";
       dot.style.background = colorFor(d.person);
-      var label = document.createElement("span");
-      label.textContent = d.person + (d.placeName ? " \u2014 " + d.placeName : "");
+      var nameSlug = d.person.toLowerCase().replace(/\s+/g, '-');
+      var link = document.createElement("a");
+      link.href = "people/" + nameSlug + ".html";
+      link.textContent = d.person + (d.placeName ? " — " + d.placeName : "");
       chip.appendChild(dot);
-      chip.appendChild(label);
+      chip.appendChild(link);
       listEl.appendChild(chip);
     });
   }
