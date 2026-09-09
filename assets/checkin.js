@@ -3,6 +3,10 @@
    shows up on the Trip Map page for everyone. The place-name
    field is pre-filled with a reverse-geocoded guess (free,
    keyless Nominatim) that the person can accept, edit, or clear.
+
+   On a person's own page (window._personPage is set) the picker
+   is skipped — the check-in is automatically attributed to that
+   person.
    ============================================================ */
 
 (function () {
@@ -64,7 +68,7 @@
     ensureInit();
     bodyEl.innerHTML = '<div class="checkin-status">Getting your location&hellip;</div>';
     if (!navigator.geolocation) {
-      bodyEl.innerHTML = '<div class="checkin-status">Location isn\u2019t available in this browser.</div>';
+      bodyEl.innerHTML = '<div class="checkin-status">Location isn’t available in this browser.</div>';
       return;
     }
     navigator.geolocation.getCurrentPosition(function (pos) {
@@ -90,14 +94,14 @@
     hint.style.fontSize = "0.78rem";
     hint.style.marginTop = "-6px";
     hint.textContent = guess
-      ? "Guessed from your location \u2014 edit or clear it if it's wrong."
-      : "Couldn't guess a name for this spot \u2014 type one below, or skip.";
+      ? "Guessed from your location — edit or clear it if it's wrong."
+      : "Couldn't guess a name for this spot — type one below, or skip.";
     bodyEl.appendChild(hint);
 
     var input = document.createElement("input");
     input.type = "text";
     input.className = "checkin-place-input";
-    input.placeholder = "e.g. Eiffel Tower, hotel lobby, Caf\u00e9 de Flore";
+    input.placeholder = "e.g. Eiffel Tower, hotel lobby, Café de Flore";
     input.maxLength = 80;
     input.value = guess || "";
     bodyEl.appendChild(input);
@@ -165,6 +169,19 @@
     var body = document.createElement("div");
     body.className = "checkin-body";
 
+    box.appendChild(closeX);
+    box.appendChild(title);
+    box.appendChild(body);
+    overlay.appendChild(box);
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(overlay); });
+    document.body.appendChild(overlay);
+
+    // On a person's own page, skip the picker and check in as them directly.
+    if (window._personPage && window._personPage.name) {
+      doCheckIn(window._personPage.name, overlay, body);
+      return;
+    }
+
     var last = getLastPerson();
     if (last) {
       var quick = document.createElement("button");
@@ -201,13 +218,6 @@
       });
       body.appendChild(grid);
     }
-
-    box.appendChild(closeX);
-    box.appendChild(title);
-    box.appendChild(body);
-    overlay.appendChild(box);
-    overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(overlay); });
-    document.body.appendChild(overlay);
   }
 
   document.addEventListener("DOMContentLoaded", function () {
